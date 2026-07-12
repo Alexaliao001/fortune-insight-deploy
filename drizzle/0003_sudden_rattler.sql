@@ -1,0 +1,20 @@
+CREATE TABLE `dream_records` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`userId` int,
+	`sessionId` varchar(64),
+	`title` varchar(200),
+	`dreamContent` text NOT NULL,
+	`dreamDate` timestamp,
+	`emotions` json,
+	`keyElements` json,
+	`dreamType` enum('normal','nightmare','lucid','recurring','prophetic') DEFAULT 'normal',
+	`clarity` int,
+	`interpretation` text,
+	`psychologyInsight` text,
+	`growthSuggestion` text,
+	`symbolAnalysis` json,
+	`isPaid` boolean DEFAULT false,
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `dream_records_id` PRIMARY KEY(`id`)
+);

@@ -1,0 +1,1 @@
+ALTER TABLE `horoscopes` ADD `deepAnalysis` text;

@@ -1,0 +1,912 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-serif: Georgia, 'Songti SC', 'SimSun', 'Noto Serif CJK SC', serif;
+  --font-display: Georgia, 'Songti SC', 'SimSun', 'Noto Serif CJK SC', serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', 'Hiragino Sans GB', sans-serif;
+}
+
+/* 宇宙美学配色 - 深邃星空 + 金色/琥珀色强调 */
+:root {
+  --primary: #d4a843;
+  --primary-foreground: #141828;
+  --sidebar-primary: #c49a3a;
+  --sidebar-primary-foreground: #f0ece4;
+  --chart-1: #d4a843;
+  --chart-2: #d06888;
+  --chart-3: #40bcc2;
+  --chart-4: #8868b0;
+  --chart-5: #5868a0;
+  --radius: 0.75rem;
+  --background: #0d0f1a;
+  --foreground: #ebe6dc;
+  --card: #161828;
+  --card-foreground: #ebe6dc;
+  --popover: #1a1c2e;
+  --popover-foreground: #ebe6dc;
+  --secondary: #282840;
+  --secondary-foreground: #ebe6dc;
+  --muted: #1e2034;
+  --muted-foreground: #a09890;
+  --accent: #302850;
+  --accent-foreground: #f0ece0;
+  --destructive: #c83828;
+  --destructive-foreground: #fafafa;
+  --border: #2c2e44;
+  --input: #1c1e30;
+  --ring: #d4a843;
+  --sidebar: #121424;
+  --sidebar-foreground: #ddd8ce;
+  --sidebar-accent: #282840;
+  --sidebar-accent-foreground: #f0ece0;
+  --sidebar-border: #282a40;
+  --sidebar-ring: #d4a843;
+  
+  /* 宇宙美学特殊颜色 */
+  --cosmic-gold: #d4a843;
+  --cosmic-amber: #c08020;
+  --cosmic-cyan: #3aabb0;
+  --cosmic-rose: #c06080;
+  --cosmic-violet: #7848b0;
+  --cosmic-indigo: #583898;
+  --cosmic-star: #f5ecd0;
+  --cosmic-nebula: #582858;
+}
+
+.dark {
+  --primary: #d4a843;
+  --primary-foreground: #141828;
+  --sidebar-primary: #c49a3a;
+  --sidebar-primary-foreground: #f0ece4;
+  --background: #0d0f1a;
+  --foreground: #ebe6dc;
+  --card: #161828;
+  --card-foreground: #ebe6dc;
+  --popover: #1a1c2e;
+  --popover-foreground: #ebe6dc;
+  --secondary: #282840;
+  --secondary-foreground: #ebe6dc;
+  --muted: #1e2034;
+  --muted-foreground: #a09890;
+  --accent: #302850;
+  --accent-foreground: #f0ece0;
+  --destructive: #c83828;
+  --destructive-foreground: #fafafa;
+  --border: #2c2e44;
+  --input: #1c1e30;
+  --ring: #d4a843;
+  --chart-1: #d4a843;
+  --chart-2: #d06888;
+  --chart-3: #40bcc2;
+  --chart-4: #8868b0;
+  --chart-5: #5868a0;
+  --sidebar: #121424;
+  --sidebar-foreground: #ddd8ce;
+  --sidebar-accent: #282840;
+  --sidebar-accent-foreground: #f0ece0;
+  --sidebar-border: #282a40;
+  --sidebar-ring: #d4a843;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', 'Hiragino Sans GB', sans-serif;
+    background: linear-gradient(160deg, 
+      #080918 0%, 
+      #0c0e1c 25%, 
+      #0f1428 50%, 
+      #0e0d1c 75%, 
+      #0a0818 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  
+  /* 自定义滚动条 */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(80, 65, 30, 0.4);
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(110, 90, 35, 0.6);
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer utilities {
+  /* ===== 发光文字效果 ===== */
+  .text-glow-gold {
+    text-shadow: 0 0 10px rgba(212, 168, 67, 0.5), 
+                 0 0 30px rgba(212, 168, 67, 0.3),
+                 0 0 60px rgba(212, 168, 67, 0.15);
+  }
+  
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(58, 171, 176, 0.5), 
+                 0 0 30px rgba(58, 171, 176, 0.3),
+                 0 0 60px rgba(58, 171, 176, 0.15);
+  }
+  
+  .text-glow-rose {
+    text-shadow: 0 0 10px rgba(192, 96, 128, 0.5), 
+                 0 0 30px rgba(192, 96, 128, 0.3),
+                 0 0 60px rgba(192, 96, 128, 0.15);
+  }
+
+  .text-glow-violet {
+    text-shadow: 0 0 10px rgba(120, 72, 176, 0.5), 
+                 0 0 30px rgba(120, 72, 176, 0.3),
+                 0 0 60px rgba(120, 72, 176, 0.15);
+  }
+  
+  /* ===== 发光边框效果 ===== */
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(212, 168, 67, 0.2),
+                0 0 40px rgba(212, 168, 67, 0.1),
+                inset 0 1px 0 rgba(212, 168, 67, 0.15);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(58, 171, 176, 0.2),
+                0 0 40px rgba(58, 171, 176, 0.1),
+                inset 0 1px 0 rgba(58, 171, 176, 0.15);
+  }
+
+  .glow-violet {
+    box-shadow: 0 0 20px rgba(120, 72, 176, 0.2),
+                0 0 40px rgba(120, 72, 176, 0.1),
+                inset 0 1px 0 rgba(120, 72, 176, 0.15);
+  }
+
+  .glow-rose {
+    box-shadow: 0 0 20px rgba(192, 96, 128, 0.2),
+                0 0 40px rgba(192, 96, 128, 0.1),
+                inset 0 1px 0 rgba(192, 96, 128, 0.15);
+  }
+
+  /* ===== 玻璃态效果 ===== */
+  .glass {
+    background: rgba(22, 24, 40, 0.75);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border: 1px solid rgba(212, 168, 67, 0.14);
+  }
+  
+  .glass-card {
+    background: linear-gradient(145deg, 
+      rgba(22, 20, 40, 0.85) 0%, 
+      rgba(15, 14, 30, 0.7) 100%);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border: 1px solid rgba(212, 168, 67, 0.18);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(212, 168, 67, 0.35);
+    box-shadow: 0 0 30px rgba(212, 168, 67, 0.12),
+                0 8px 32px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* ===== 渐变边框动画 ===== */
+  .border-gradient {
+    position: relative;
+    border: none !important;
+  }
+
+  .border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, 
+      rgba(212, 168, 67, 0.4), 
+      rgba(120, 72, 176, 0.2), 
+      rgba(58, 171, 176, 0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  /* ===== 渐变文字 ===== */
+  .gradient-text {
+    background: linear-gradient(135deg, 
+      #e0b94e 0%, 
+      #d49028 40%,
+      #b88e30 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-cosmic {
+    background: linear-gradient(135deg, 
+      #d4a843 0%, 
+      #c06080 50%,
+      #7848b0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-cyan {
+    background: linear-gradient(135deg, 
+      #3aabb0 0%, 
+      #2888b0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ===== 装饰性字体 - 使用系统字体栈 ===== */
+  .font-display {
+    font-family: Georgia, 'Songti SC', 'SimSun', 'Noto Serif CJK SC', serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .font-serif {
+    font-family: Georgia, 'Songti SC', 'SimSun', 'Noto Serif CJK SC', serif;
+  }
+
+  /* ===== 脉动动画 ===== */
+  .pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { 
+      box-shadow: 0 0 20px rgba(212, 168, 67, 0.15); 
+    }
+    50% { 
+      box-shadow: 0 0 40px rgba(212, 168, 67, 0.3), 0 0 60px rgba(212, 168, 67, 0.1); 
+    }
+  }
+
+  /* ===== 浮动动画 ===== */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* ===== 旋转光晕 ===== */
+  .rotate-glow {
+    animation: rotateGlow 8s linear infinite;
+  }
+
+  @keyframes rotateGlow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+
+  /* ===== 星星闪烁 ===== */
+  .twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* ===== 宇宙背景星星 ===== */
+  .stars-bg {
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, #f5ecd0, transparent),
+      radial-gradient(2px 2px at 40px 70px, #e5dcc8, transparent),
+      radial-gradient(1px 1px at 90px 40px, #d5ccb8, transparent),
+      radial-gradient(2px 2px at 160px 120px, #f5ecd0, transparent),
+      radial-gradient(1px 1px at 230px 80px, #ddd4c0, transparent),
+      radial-gradient(2px 2px at 300px 150px, #e5dcc8, transparent),
+      radial-gradient(1px 1px at 370px 60px, #d5ccb8, transparent),
+      radial-gradient(2px 2px at 450px 180px, #f5ecd0, transparent);
+    background-size: 500px 200px;
+    background-repeat: repeat;
+  }
+
+  /* ===== 神秘符号装饰线 ===== */
+  .mystic-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mystic-divider::before,
+  .mystic-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.3), transparent);
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+}
+
+/* Intersection Observer reveal animations - replaces framer-motion whileInView */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+.reveal-on-scroll.reveal-left {
+  transform: translateX(-24px);
+}
+.reveal-on-scroll.reveal-right {
+  transform: translateX(24px);
+}
+/* Stagger children delays via CSS custom property */
+.reveal-stagger > .reveal-on-scroll {
+  transition-delay: calc(var(--reveal-index, 0) * 100ms);
+}
+
+/* Shimmer动画 - 用于骨架屏 */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    #1e2034 0%,
+    #2a2c48 50%,
+    #1e2034 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* 离线状态指示 */
+body.offline::before {
+  content: "网络已断开 - 部分功能可能不可用";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  padding: 8px 16px;
+  background: #c83828;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+/* 网络恢复提示 */
+body.online-restored::before {
+  content: "网络已恢复";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  padding: 8px 16px;
+  background: #389848;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  animation: slideDown 0.3s ease-out, fadeOut 0.3s ease-out 2s forwards;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* 加载进度条 */
+.loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #d4a843, #7848b0, #3aabb0);
+  z-index: 9999;
+  animation: loadingProgress 2s ease-in-out infinite;
+}
+
+@keyframes loadingProgress {
+  0% { width: 0%; left: 0; }
+  50% { width: 70%; left: 0; }
+  100% { width: 100%; left: 0; }
+}
+
+/* ===== 渐变边框卡片动画 ===== */
+@keyframes borderRotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animated-border {
+  position: relative;
+  background: #161828;
+  border-radius: var(--radius);
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--angle), 
+    rgba(212, 168, 67, 0.5), 
+    rgba(120, 72, 176, 0.3), 
+    rgba(58, 171, 176, 0.5), 
+    rgba(212, 168, 67, 0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  animation: borderRotate 4s linear infinite;
+  pointer-events: none;
+}
+
+
+/* ===== Premium Paywall Blur Effect ===== */
+.paywall-blur {
+  position: relative;
+  overflow: hidden;
+}
+
+.paywall-blur::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(15, 15, 26, 0.3) 30%,
+    rgba(15, 15, 26, 0.7) 60%,
+    rgba(15, 15, 26, 0.95) 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ===== Smooth Page Transitions ===== */
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ===== Mobile Touch Optimizations ===== */
+@media (max-width: 640px) {
+  /* Larger touch targets on mobile */
+  button, a, [role="button"] {
+    min-height: 44px;
+  }
+  
+  /* Prevent text selection on interactive elements */
+  .glass-card {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* Smoother scrolling on iOS */
+  .overflow-auto, .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Reduce motion for mobile performance */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ===== Premium Card Hover Effects ===== */
+.premium-card {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(212, 168, 67, 0.1),
+              0 0 60px rgba(212, 168, 67, 0.05);
+}
+
+/* ===== Scroll Snap for Mobile Carousels ===== */
+.snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.snap-center {
+  scroll-snap-align: center;
+}
+
+/* ===== Typing animation for AI responses ===== */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: #d4a843;
+  font-weight: 300;
+}
+
+/* ===== Glass morphism enhancement ===== */
+.glass-premium {
+  background: rgba(22, 24, 40, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(212, 168, 67, 0.15);
+}
+
+
+/* ===== Pure CSS Starry Background (replaces Canvas) ===== */
+/* Small stars - many, faint, slow twinkle */
+.starry-layer {
+  position: absolute;
+  inset: 0;
+  will-change: opacity;
+}
+
+.starry-small {
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(245, 236, 208, 0.7), transparent),
+    radial-gradient(1px 1px at 25% 35%, rgba(220, 215, 200, 0.5), transparent),
+    radial-gradient(1px 1px at 40% 8%, rgba(245, 236, 208, 0.6), transparent),
+    radial-gradient(1px 1px at 55% 55%, rgba(200, 210, 230, 0.5), transparent),
+    radial-gradient(1px 1px at 70% 22%, rgba(245, 236, 208, 0.4), transparent),
+    radial-gradient(1px 1px at 85% 42%, rgba(220, 215, 200, 0.6), transparent),
+    radial-gradient(1px 1px at 15% 65%, rgba(200, 210, 230, 0.5), transparent),
+    radial-gradient(1px 1px at 35% 80%, rgba(245, 236, 208, 0.4), transparent),
+    radial-gradient(1px 1px at 60% 72%, rgba(220, 215, 200, 0.5), transparent),
+    radial-gradient(1px 1px at 80% 88%, rgba(245, 236, 208, 0.6), transparent),
+    radial-gradient(1px 1px at 5% 92%, rgba(200, 210, 230, 0.4), transparent),
+    radial-gradient(1px 1px at 48% 45%, rgba(245, 236, 208, 0.5), transparent),
+    radial-gradient(1px 1px at 92% 60%, rgba(220, 215, 200, 0.4), transparent),
+    radial-gradient(1px 1px at 30% 12%, rgba(200, 210, 230, 0.6), transparent),
+    radial-gradient(1px 1px at 75% 95%, rgba(245, 236, 208, 0.5), transparent);
+  animation: twinkleSmall 4s ease-in-out infinite alternate;
+}
+
+/* Medium stars - fewer, brighter, medium twinkle */
+.starry-medium {
+  background-image:
+    radial-gradient(1.5px 1.5px at 18% 28%, rgba(245, 236, 208, 0.8), transparent),
+    radial-gradient(1.5px 1.5px at 45% 18%, rgba(255, 225, 160, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 72% 48%, rgba(245, 236, 208, 0.8), transparent),
+    radial-gradient(1.5px 1.5px at 28% 72%, rgba(200, 210, 230, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 88% 32%, rgba(255, 225, 160, 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 55% 85%, rgba(245, 236, 208, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 8% 55%, rgba(200, 210, 230, 0.8), transparent),
+    radial-gradient(1.5px 1.5px at 65% 5%, rgba(255, 225, 160, 0.7), transparent);
+  animation: twinkleMedium 5s ease-in-out infinite alternate;
+  animation-delay: -1.5s;
+}
+
+/* Large golden stars - few, brightest, with glow */
+.starry-large {
+  background-image:
+    radial-gradient(2.5px 2.5px at 22% 20%, rgba(255, 215, 140, 0.9), rgba(255, 215, 140, 0.2) 3px, transparent 5px),
+    radial-gradient(2px 2px at 58% 35%, rgba(255, 225, 160, 0.8), rgba(255, 225, 160, 0.15) 3px, transparent 5px),
+    radial-gradient(2.5px 2.5px at 82% 65%, rgba(255, 215, 140, 0.9), rgba(255, 215, 140, 0.2) 3px, transparent 5px),
+    radial-gradient(2px 2px at 38% 78%, rgba(200, 220, 255, 0.8), rgba(200, 220, 255, 0.15) 3px, transparent 5px),
+    radial-gradient(2.5px 2.5px at 12% 85%, rgba(255, 215, 140, 0.7), rgba(255, 215, 140, 0.1) 3px, transparent 5px);
+  animation: twinkleLarge 6s ease-in-out infinite alternate;
+  animation-delay: -3s;
+}
+
+@keyframes twinkleSmall {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.8; }
+}
+
+@keyframes twinkleMedium {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes twinkleLarge {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* Shooting stars - pure CSS */
+.shooting-star {
+  position: absolute;
+  width: 80px;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(200, 230, 255, 0.8), transparent);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.shooting-star::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(200, 230, 255, 0.4), transparent);
+}
+
+.shooting-star-1 {
+  top: 15%;
+  left: -80px;
+  transform: rotate(35deg);
+  animation: shootingStar1 12s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+.shooting-star-2 {
+  top: 40%;
+  left: -80px;
+  transform: rotate(25deg);
+  animation: shootingStar2 15s ease-in-out infinite;
+  animation-delay: 8s;
+}
+
+@keyframes shootingStar1 {
+  0%, 95%, 100% { opacity: 0; transform: translate(0, 0) rotate(35deg); }
+  2% { opacity: 1; }
+  8% { opacity: 0; transform: translate(calc(100vw + 80px), calc(100vw * 0.35)) rotate(35deg); }
+}
+
+@keyframes shootingStar2 {
+  0%, 95%, 100% { opacity: 0; transform: translate(0, 0) rotate(25deg); }
+  3% { opacity: 1; }
+  10% { opacity: 0; transform: translate(calc(100vw + 80px), calc(100vw * 0.23)) rotate(25deg); }
+}
+
+/* Reduce starry animations on mobile for performance */
+@media (max-width: 640px) {
+  .starry-small { animation-duration: 8s; }
+  .starry-medium { animation-duration: 10s; }
+  .starry-large { animation-duration: 12s; }
+  .shooting-star { display: none; }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .starry-layer { animation: none !important; opacity: 0.6; }
+  .shooting-star { display: none !important; }
+}
+
+/* ===== Framer Motion Animation Fallback ===== */
+/* Ensures content becomes visible even if framer-motion animations fail to trigger
+   (e.g., due to third-party script interference in production) */
+@keyframes motionFallbackReveal {
+  to {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Target framer-motion elements that have inline style opacity:0 set by initial prop.
+   After 1.5s delay, force them visible via CSS animation as a safety net. */
+[style*="opacity: 0"][style*="transform:"],
+[style*="opacity:0"][style*="transform:"],
+[style*="opacity: 0"][style*="translate"],
+[style*="opacity:0"][style*="translate"] {
+  animation: motionFallbackReveal 0.4s ease-out 0.8s forwards;
+}
+
+/* For elements with only opacity:0 (no transform) */
+[style*="opacity: 0"]:not([style*="transform"]):not([style*="translate"]):not(.shooting-star):not(.starry-layer):not([class*="cursor"]):not([data-no-fallback]) {
+  animation: motionFallbackReveal 0.4s ease-out 0.8s forwards;
+}
+
+/* ===== T05 Tarot drawing altar atmosphere (drawing stage only) ===== */
+@keyframes tarotAltarBreathe {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes tarotAltarTwinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+[data-tarot-altar="1"] {
+  position: relative;
+  isolation: isolate;
+  border-radius: 1.25rem;
+  padding: 1.25rem 0.75rem 1.5rem;
+  /* soft candle-lit well — keeps text readable */
+  background:
+    radial-gradient(
+      ellipse 70% 55% at 50% 42%,
+      rgba(212, 168, 67, 0.09) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 90% 80% at 50% 100%,
+      rgba(26, 16, 48, 0.55) 0%,
+      transparent 70%
+    );
+  border: 1px solid rgba(212, 168, 67, 0.08);
+}
+
+[data-tarot-altar="1"]::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 8% 12% 28%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(212, 168, 67, 0.14) 0%,
+    rgba(212, 168, 67, 0.04) 45%,
+    transparent 70%
+  );
+  animation: tarotAltarBreathe 4.5s ease-in-out infinite;
+}
+
+[data-tarot-altar="1"]::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  /* sparse star dust — fixed dots, not full-screen particles */
+  background-image:
+    radial-gradient(1px 1px at 12% 22%, rgba(240, 230, 200, 0.55), transparent),
+    radial-gradient(1px 1px at 78% 18%, rgba(212, 168, 67, 0.45), transparent),
+    radial-gradient(1.5px 1.5px at 55% 12%, rgba(240, 230, 200, 0.4), transparent),
+    radial-gradient(1px 1px at 30% 70%, rgba(212, 168, 67, 0.35), transparent),
+    radial-gradient(1px 1px at 88% 62%, rgba(240, 230, 200, 0.35), transparent),
+    radial-gradient(1px 1px at 18% 48%, rgba(212, 168, 67, 0.3), transparent);
+  animation: tarotAltarTwinkle 3.2s ease-in-out infinite;
+}
+
+[data-tarot-altar="1"] > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-tarot-altar="1"]::before,
+  [data-tarot-altar="1"]::after {
+    animation: none;
+    opacity: 0.35;
+  }
+}

@@ -1,0 +1,1 @@
+ALTER TABLE `dream_records` ADD `deepAnalysis` text;

@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>主页 Wireframe 对照 · 4 包</title>
+  <style>
+    :root {
+      --bg: #0d0f1a;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.1);
+      --gold: #d4a843;
+      --gold-dim: rgba(212,168,67,0.15);
+      --rose: #c06080;
+      --text: #f0e6c8;
+      --muted: rgba(240,230,200,0.55);
+      --cyan: #3aabb0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "SF Pro Text", "PingFang SC", "Helvetica Neue", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    /* ── chrome ── */
+    .chrome {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(13,15,26,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px 14px;
+    }
+    .chrome h1 {
+      font-size: 14px; font-weight: 600; letter-spacing: 0.04em;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .chrome p { font-size: 12px; color: var(--muted); margin-bottom: 12px; max-width: 720px; }
+    .tabs {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .tab {
+      appearance: none; border: 1px solid var(--border);
+      background: transparent; color: var(--muted);
+      padding: 8px 14px; border-radius: 999px;
+      font-size: 12px; cursor: pointer; transition: 0.15s;
+    }
+    .tab:hover { border-color: var(--gold); color: var(--text); }
+    .tab.active {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .meta-bar {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+    }
+    .chip {
+      font-size: 11px; padding: 3px 10px; border-radius: 6px;
+      background: rgba(255,255,255,0.05); color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .chip strong { color: var(--gold); font-weight: 600; }
+    .chip.diff { border-color: rgba(192,96,128,0.4); color: #e8a0b5; }
+    /* ── stage ── */
+    .stage { max-width: 1100px; margin: 0 auto; padding: 20px 16px 80px; }
+    .pack { display: none; }
+    .pack.active { display: block; }
+    .section-label {
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(212,168,67,0.5); margin: 28px 0 10px;
+    }
+    .section-label:first-child { margin-top: 8px; }
+    /* ── phone frame optional ── */
+    .frames {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 900px) {
+      .frames.dual { grid-template-columns: 1fr 1fr; align-items: start; }
+      .frames.desktop-hero { grid-template-columns: 1fr; }
+    }
+    .device {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #12152a 0%, #0d0f1a 100%);
+      box-shadow: 0 0 0 1px rgba(212,168,67,0.06), 0 24px 60px rgba(0,0,0,0.4);
+    }
+    .device-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+    }
+    .device-bar .logo { color: var(--gold); font-weight: 600; }
+    .device-bar .nav { color: var(--muted); display: flex; gap: 12px; }
+    .device-body { padding: 20px 16px 28px; position: relative; }
+    /* ambient orbs */
+    .orb {
+      position: absolute; border-radius: 50%; pointer-events: none; filter: blur(40px);
+    }
+    .orb.g { width: 160px; height: 160px; background: rgba(212,168,67,0.07); top: 20px; left: 10%; }
+    .orb.p { width: 120px; height: 120px; background: rgba(120,72,176,0.08); top: 80px; right: 5%; }
+    /* hero */
+    .hero { text-align: center; position: relative; z-index: 1; }
+    .hero h2 {
+      font-size: clamp(28px, 6vw, 42px);
+      font-weight: 700;
+      background: linear-gradient(135deg, #f0e6c8, var(--gold), #e8c878);
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent;
+      letter-spacing: 0.06em;
+    }
+    .hero .sub {
+      font-size: clamp(16px, 3.5vw, 22px);
+      font-weight: 300;
+      color: rgba(240,230,200,0.88);
+      margin-top: 4px;
+    }
+    .hero .value {
+      font-size: 13px; color: var(--muted); margin: 14px auto 0;
+      max-width: 320px; font-weight: 300;
+    }
+    .hook {
+      font-size: 12px; color: rgba(212,168,67,0.85);
+      margin: 16px 0 10px;
+    }
+    .btns { display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto; }
+    @media (min-width: 480px) {
+      .btns.row { flex-direction: row; max-width: 420px; justify-content: center; }
+      .btns.row .btn { flex: 1; }
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 12px 18px; border-radius: 12px; font-size: 14px; font-weight: 600;
+      border: none; cursor: default; text-align: center;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, var(--rose), var(--gold));
+      color: #fff;
+      box-shadow: 0 0 24px rgba(192,96,128,0.25);
+    }
+    .btn-secondary {
+      background: var(--gold);
+      color: #0d0f1a;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(212,168,67,0.35);
+      color: var(--gold);
+    }
+    .btn-ghost {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px; padding: 8px 12px;
+    }
+    .micro {
+      font-size: 11px; color: var(--muted); margin-top: 12px;
+    }
+    .stats {
+      display: flex; justify-content: center; gap: 28px; margin-top: 18px;
+    }
+    .stats div { text-align: center; }
+    .stats .n { font-size: 20px; font-weight: 700; color: var(--gold); }
+    .stats .l { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+    /* alert soft */
+    .alert {
+      margin: 0 auto 14px; max-width: 400px;
+      padding: 10px 12px; border-radius: 12px;
+      border: 1px solid rgba(212,168,67,0.25);
+      background: rgba(212,168,67,0.08);
+      font-size: 12px; text-align: left;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .alert .t { color: var(--gold); font-weight: 600; }
+    .alert .d { color: var(--muted); font-size: 11px; margin-top: 2px; }
+    .alert.scare {
+      border-color: rgba(239,68,68,0.35);
+      background: rgba(239,68,68,0.08);
+    }
+    .alert.scare .t { color: #f87171; }
+    /* desktop two-col hero */
+    .hero-grid {
+      display: grid; gap: 20px; align-items: center;
+    }
+    @media (min-width: 800px) {
+      .hero-grid.two { grid-template-columns: 1.1fr 0.9fr; text-align: left; }
+      .hero-grid.two .hero { text-align: left; }
+      .hero-grid.two .btns { margin: 0; }
+      .hero-grid.two .stats { justify-content: flex-start; }
+      .hero-grid.two .value { margin-left: 0; }
+    }
+    /* preview mock card */
+    .preview-card {
+      border: 1px solid rgba(212,168,67,0.2);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,0.03);
+      text-align: left;
+    }
+    .preview-card .ph { font-size: 11px; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+    .preview-inner {
+      display: flex; gap: 12px; align-items: stretch;
+    }
+    .card-faces {
+      display: flex; gap: 4px;
+    }
+    .mini-card {
+      width: 36px; height: 56px; border-radius: 6px;
+      background: linear-gradient(160deg, #2a1f4a, #1a1030);
+      border: 1px solid rgba(212,168,67,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+    }
+    .preview-text { flex: 1; font-size: 11px; color: var(--muted); }
+    .preview-text strong { display: block; color: var(--text); font-size: 12px; margin-bottom: 4px; }
+    .preview-text .kw { color: var(--gold); margin: 4px 0; }
+    .preview-note { font-size: 10px; color: rgba(240,230,200,0.35); margin-top: 8px; }
+    /* trust */
+    .trust {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 20px;
+      padding: 14px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      margin-top: 22px; opacity: 0.85;
+    }
+    .trust span { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+    /* blocks */
+    .block {
+      margin-top: 20px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: var(--card);
+    }
+    .block h3 { font-size: 14px; margin-bottom: 6px; }
+    .block p { font-size: 12px; color: var(--muted); }
+    .career {
+      border-color: rgba(245,158,11,0.35);
+      background: linear-gradient(90deg, rgba(245,158,11,0.1), transparent);
+      display: flex; gap: 12px; align-items: center;
+    }
+    .career .ico {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(245,158,11,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .badge {
+      display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 999px;
+      background: rgba(245,158,11,0.15); color: #fbbf24;
+      border: 1px solid rgba(245,158,11,0.3); margin-bottom: 4px;
+    }
+    .grid4 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px;
+    }
+    @media (min-width: 700px) {
+      .grid4.cols4 { grid-template-columns: repeat(4, 1fr); }
+    }
+    .svc {
+      border: 1px solid var(--border); border-radius: 14px; padding: 12px;
+      background: rgba(255,255,255,0.02); min-height: 100px;
+    }
+    .svc .b {
+      font-size: 10px; color: var(--gold);
+      border: 1px solid rgba(212,168,67,0.25);
+      background: var(--gold-dim);
+      padding: 1px 6px; border-radius: 999px; display: inline-block; margin-bottom: 6px;
+    }
+    .svc .b.quota { color: #a78bfa; border-color: rgba(167,139,250,0.3); background: rgba(167,139,250,0.1); }
+    .svc h4 { font-size: 13px; margin-bottom: 4px; }
+    .svc p { font-size: 11px; color: var(--muted); }
+    .compat {
+      margin-top: 10px;
+      border: 1px solid rgba(236,72,153,0.25);
+      border-radius: 14px;
+      padding: 14px;
+      background: linear-gradient(90deg, rgba(236,72,153,0.08), rgba(120,72,176,0.08));
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .compat h4 { font-size: 14px; }
+    .compat p { font-size: 11px; color: var(--muted); }
+    .feat3 {
+      display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 12px;
+    }
+    @media (min-width: 700px) { .feat3 { grid-template-columns: repeat(3, 1fr); } }
+    .feat {
+      text-align: center; padding: 16px 12px; border-radius: 14px;
+      border: 1px solid var(--border); background: rgba(255,255,255,0.02);
+    }
+    .feat h4 { font-size: 13px; margin: 8px 0 4px; }
+    .feat p { font-size: 11px; color: var(--muted); }
+    .testi {
+      display: grid; gap: 10px; margin-top: 12px;
+    }
+    @media (min-width: 700px) { .testi { grid-template-columns: repeat(3, 1fr); } }
+    .tcard {
+      border: 1px solid var(--border); border-radius: 14px; padding: 14px;
+      font-size: 12px; color: rgba(240,230,200,0.8); font-style: italic;
+    }
+    .tcard .who { font-style: normal; font-size: 11px; color: var(--muted); margin-top: 10px; border-top: 1px solid var(--border); padding-top: 8px; }
+    .member {
+      margin-top: 16px; border-radius: 18px; padding: 22px 18px; text-align: center;
+      border: 1px solid rgba(212,168,67,0.25);
+      background: linear-gradient(135deg, rgba(212,168,67,0.08), rgba(120,72,176,0.08));
+    }
+    .member h3 { font-size: 18px; margin: 8px 0 8px; }
+    .member p { font-size: 12px; color: var(--muted); max-width: 400px; margin: 0 auto 14px; }
+    .member .price { color: var(--gold); font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+    .community-row {
+      margin-top: 16px; padding: 14px 16px; border-radius: 14px;
+      border: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .community-row h4 { font-size: 13px; }
+    .community-row p { font-size: 11px; color: var(--muted); }
+    .gone {
+      margin-top: 12px; padding: 10px; border: 1px dashed rgba(248,113,113,0.35);
+      border-radius: 10px; font-size: 11px; color: #f87171; text-align: center;
+    }
+    .note-box {
+      margin-top: 24px; padding: 14px 16px; border-radius: 12px;
+      background: rgba(58,171,176,0.08); border: 1px solid rgba(58,171,176,0.25);
+      font-size: 12px; color: var(--muted);
+    }
+    .note-box strong { color: var(--cyan); }
+    .diff-tag {
+      display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 4px;
+      background: rgba(192,96,128,0.2); color: #f0a8bc; margin-left: 6px; vertical-align: middle;
+    }
+    .en { opacity: 0.65; font-size: 0.92em; }
+    footer.page-foot {
+      text-align: center; padding: 24px; font-size: 11px; color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="chrome">
+    <h1>主页 Wireframe 对照 · 4 完整包</h1>
+    <p>每包是「整页结构 + 关键文案」。差异用粉标签标出。静态预览，非生产代码。打开本文件即可切换。</p>
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab active" data-pack="p1">包1 · 保守全 A<br><span style="font-weight:400;opacity:.7">1A 2A 3A 4A</span></button>
+      <button type="button" class="tab" data-pack="p2">包2 · 推荐<br><span style="font-weight:400;opacity:.7">1A 2A 3B 4A</span></button>
+      <button type="button" class="tab" data-pack="p3">包3 · 转化向<br><span style="font-weight:400;opacity:.7">1A 2B 3B 4A</span></button>
+      <button type="button" class="tab" data-pack="p4">包4 · 最简<br><span style="font-weight:400;opacity:.7">1B 2A 3B 4B</span></button>
+    </div>
+    <div class="meta-bar" id="metaBar"></div>
+  </div>
+
+  <div class="stage">
+
+    <!-- ═══════════════ PACK 1 全 A ═══════════════ -->
+    <div class="pack active" id="p1">
+      <div class="section-label">Desktop 首屏（双栏预览 1A）</div>
+      <div class="device">
+        <div class="device-bar">
+          <span class="logo">洞察未来</span>
+          <span class="nav"><span>服务</span><span>社区</span><span>会员</span><span>登录</span></span>
+        </div>
+        <div class="device-body">
+          <div class="orb g"></div><div class="orb p"></div>
+          <div class="alert">
+            <div>
+              <div class="t">今日主题 · 事业与选择 <span class="diff-tag">3A 弱化 Alert</span></div>
+              <div class="d">适合抽事业牌，看清下一步 — 非恐吓式「逆行警告」</div>
+            </div>
+          </div>
+          <div class="hero-grid two">
+            <div class="hero">
+              <h2>洞察未来</h2>
+              <div class="sub">遇见更好的自己</div>
+              <p class="value">AI 塔罗 · 八字 · 星座 · 解梦 — 心理学视角，理性而不迷信</p>
+              <p class="hook">✦ 先免费体验一次，再决定要不要深入</p>
+              <div class="btns row">
+                <div class="btn btn-primary">★ 免费抽一副塔罗</div>
+                <div class="btn btn-secondary">注册领 14 天无限 <span class="diff-tag">2A →/login</span></div>
+              </div>
+              <p class="micro">游客可先体验核心功能 · 注册解锁 14 天无限</p>
+              <div class="stats">
+                <div><div class="n">12k+</div><div class="l">报告已生成</div></div>
+                <div><div class="n" style="color:var(--cyan)">融合</div><div class="l">东西方</div></div>
+                <div><div class="n" style="color:var(--rose)">可体验</div><div class="l">无需先付费</div></div>
+              </div>
+            </div>
+            <div class="preview-card">
+              <div class="ph">你会得到什么 · What you'll get</div>
+              <div class="preview-inner">
+                <div class="card-faces">
+                  <div class="mini-card">♥</div>
+                  <div class="mini-card">✦</div>
+                  <div class="mini-card">☾</div>
+                </div>
+                <div class="preview-text">
+                  <strong>圣杯三 · 正位</strong>
+                  <div class="kw">关键词：连接 · 庆祝 · 支持</div>
+                  关系中出现转机的信号；建议主动沟通一次真实感受…
+                </div>
+              </div>
+              <div class="preview-note">示例结构 · 非你的个性化结果</div>
+            </div>
+          </div>
+          <div class="trust">
+            <span>🔒 Stripe 安全支付</span>
+            <span>🛡 数据加密传输</span>
+            <span>♡ 会员费 10% 公益</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-label">服务区 · Career 高亮 + 合盘</div>
+      <div class="device"><div class="device-body" style="padding-top:16px">
+        <div class="block career">
+          <div class="ico">💼</div>
+          <div style="flex:1">
+            <span class="badge">推荐路径</span>
+            <h3>工作卡关了？用塔罗看清下一步</h3>
+            <p>跳槽 · 面试 · 职场选择 → /tarot?type=career</p>
+          </div>
+          <div class="btn btn-ghost">开始 →</div>
+        </div>
+        <div class="grid4 cols4">
+          <div class="svc"><span class="b">可体验</span><h4>塔罗</h4><p>牌阵解读</p></div>
+          <div class="svc"><span class="b">可体验</span><h4>星座</h4><p>每日运势</p></div>
+          <div class="svc"><span class="b">可体验</span><h4>解梦</h4><p>心理视角</p></div>
+          <div class="svc"><span class="b quota">需额度</span><h4>八字</h4><p>命盘分析</p></div>
+        </div>
+        <div class="compat">
+          <div>
+            <span class="badge" style="background:rgba(236,72,153,0.15);color:#f9a8d4;border-color:rgba(236,72,153,0.3)">热门</span>
+            <h4>关系合盘</h4>
+            <p>双人缘分与相处建议 · 无 NEW 角标</p>
+          </div>
+          <div class="btn btn-ghost">试试 →</div>
+        </div>
+      </div></div>
+
+      <div class="section-label">证言 · 会员试用 · 社区</div>
+      <div class="device"><div class="device-body" style="padding-top:16px">
+        <p style="font-size:11px;color:var(--muted);letter-spacing:0.2em;text-align:center">用户反馈</p>
+        <h3 style="text-align:center;margin:6px 0 12px;font-size:18px">真实使用感受</h3>
+        <div class="testi">
+          <div class="tcard">"吵架后试了爱情塔罗…"<div class="who">小雨 · 用户</div></div>
+          <div class="tcard">"八字合婚分析很细…"<div class="who">晓琳 · 用户</div></div>
+          <div class="tcard">"每天看运势成了习惯…"<div class="who">思思 · 用户</div></div>
+        </div>
+        <div class="member">
+          <div class="badge">试用优先</div>
+          <h3>先免费 14 天，再决定是否留下</h3>
+          <p>注册即送 14 天无限塔罗 / 八字 / 解梦。到期回到免费额度。</p>
+          <div class="btns row" style="max-width:380px">
+            <div class="btn btn-primary">注册领试用</div>
+            <div class="btn btn-outline">查看会员方案</div>
+          </div>
+          <p class="micro" style="margin-top:12px">年付约 ¥16.6/月 · 会员费 10% 公益</p>
+        </div>
+        <div class="community-row">
+          <div>
+            <h4>社区 · 分享感悟与科普 <span class="diff-tag">4A 单行</span></h4>
+            <p>不展开四宫格，一点进入</p>
+          </div>
+          <div class="btn btn-ghost">进入社区 →</div>
+        </div>
+      </div></div>
+
+      <div class="note-box">
+        <strong>包1 特点：</strong>最完整。Alert 弱化保留、桌面双栏预览、次 CTA 去登录、社区单行。
+        适合「信息架构完整、仍要运营位」的团队。
+      </div>
+    </div>
+
+    <!-- ═══════════════ PACK 2 推荐 AABA ═══════════════ -->
+    <div class="pack" id="p2">
+      <div class="section-label">Desktop 首屏（双栏 · 无 Alert）</div>
+      <div class="device">
+        <div class="device-bar">
+          <span class="logo">洞察未来</span>
+          <span class="nav"><span>服务</span><span>社区</span><span>会员</span><span>登录</span></span>
+        </div>
+        <div class="device-body">
+          <div class="orb g"></div><div class="orb p"></div>
+          <div class="gone">✕ CosmicAlert 首屏不出现 <span class="diff-tag">3B</span> · 可在服务区用眉标「今日适合：事业牌」</div>
+          <div class="hero-grid two" style="margin-top:16px">
+            <div class="hero">
+              <h2>洞察未来</h2>
+              <div class="sub">遇见更好的自己</div>
+              <p class="value">AI 塔罗 · 八字 · 星座 · 解梦 — 心理学视角，理性而不迷信</p>
+              <p class="hook">✦ 先免费体验一次，再决定要不要深入</p>
+              <div class="btns row">
+                <div class="btn btn-primary">★ 免费抽一副塔罗</div>
+                <div class="btn btn-secondary">注册领 14 天无限</div>
+              </div>
+              <p class="micro">游客可先体验 · 注册解锁 14 天无限</p>
+              <div class="stats">
+                <div><div class="n">12k+</div><div class="l">报告已生成</div></div>
+                <div><div class="n" style="color:var(--cyan)">融合</div><div class="l">东西方</div></div>
+                <div><div class="n" style="color:var(--rose)">可体验</div><div class="l">无需先付费</div></div>
+              </div>
+            </div>
+            <div class="preview-card">
+              <div class="ph">你会得到什么</div>
+              <div class="preview-inner">
+                <div class="card-faces">
+                  <div class="mini-card">♥</div>
+                  <div class="mini-card">✦</div>
+                  <div class="mini-card">☾</div>
+                </div>
+                <div class="preview-text">
+                  <strong>圣杯三 · 正位</strong>
+                  <div class="kw">连接 · 庆祝 · 支持</div>
+                  结构化解读：现状 / 阻碍 / 建议…
+                </div>
+              </div>
+              <div class="preview-note">示例 · 非个性化结果</div>
+            </div>
+          </div>
+          <div class="trust">
+            <span>🔒 Stripe</span>
+            <span>🛡 加密传输</span>
+            <span>♡ 10% 公益</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-label">服务区（眉标代替 Alert）</div>
+      <div class="device"><div class="device-body" style="padding-top:16px">
+        <p style="font-size:11px;color:rgba(212,168,67,0.7);margin-bottom:8px">今日适合 · 事业牌阵 <span class="diff-tag">替代 3A</span></p>
+        <div class="block career">
+          <div class="ico">💼</div>
+          <div style="flex:1">
+            <span class="badge">推荐路径</span>
+            <h3>工作卡关了？用塔罗看清下一步</h3>
+            <p>一键进入事业牌阵</p>
+          </div>
+          <div class="btn btn-ghost">开始 →</div>
+        </div>
+        <div class="grid4 cols4">
+          <div class="svc"><span class="b">可体验</span><h4>塔罗</h4><p>牌阵解读</p></div>
+          <div class="svc"><span class="b">可体验</span><h4>星座</h4><p>每日运势</p></div>
+          <div class="svc"><span class="b">可体验</span><h4>解梦</h4><p>心理视角</p></div>
+          <div class="svc"><span class="b quota">需额度</span><h4>八字</h4><p>命盘分析</p></div>
+        </div>
+        <div class="compat">
+          <div><h4>💕 关系合盘</h4><p>热门 · 非 NEW</p></div>
+          <div class="btn btn-ghost">试试 →</div>
+        </div>
+      </div></div>
+
+      <div class="section-label">试用 CTA + 社区单行</div>
+      <div class="device"><div class="device-body" style="padding-top:16px">
+        <div class="member">
+          <div class="badge">试用优先</div>
+          <h3>先免费 14 天，再决定是否留下</h3>
+          <p>注册即送无限塔罗 / 八字 / 解梦。</p>
+          <div class="btns row" style="max-width:380px">
+            <div class="btn btn-primary">注册领试用 → /login</div>
+            <div class="btn btn-outline">会员方案</div>
+          </div>
+        </div>
+        <div class="community-row">
+          <div><h4>社区</h4><p>分享感悟 · 专家科普</p></div>
+          <div class="btn btn-ghost">进入 →</div>
+        </div>
+      </div></div>
+
+      <div class="note-box">
+        <strong>包2 推荐：</strong>与包1 相同骨架，但<strong>去掉首屏 Alert</strong>，把「今日适合」收到服务区眉标。
+        首屏只剩：价值 + 双 CTA + 预览。转化路径最干净，仍保留社区入口。
+      </div>
+    </div>
+
+    <!-- ═══════════════ PACK 3 转化向 ═══════════════ -->
+    <div class="pack" id="p3">
+      <div class="section-label">Desktop 首屏 · 次 CTA 进会员页（2B）</div>
+      <div class="device">
+        <div class="device-bar">
+          <span class="logo">洞察未来</span>
+          <span class="nav"><span>服务</span><span>会员</span><span>登录</span></span>
+        </div>
+        <div class="device-body">
+          <div class="orb g"></div>
+          <div class="gone">✕ 无 Alert（3B）</div>
+          <div class="hero-grid two" style="margin-top:14px">
+            <div class="hero">
+              <h2>洞察未来</h2>
+              <div class="sub">遇见更好的自己</div>
+              <p class="value">AI 塔罗 · 八字 · 星座 · 解梦</p>
+              <p class="hook">✦ 你的命运报告结构如下 — 先免费抽一次</p>
+              <div class="btns row">
+                <div class="btn btn-primary">★ 免费抽一副塔罗</div>
+                <div class="btn btn-secondary">14 天无限 · 看方案 <span class="diff-tag">2B →/membership</span></div>
+              </div>
+              <p class="micro">主按钮立刻体验 · 次按钮去会员页读清试用与价格</p>
+              <div class="stats">
+                <div><div class="n">12k+</div><div class="l">报告</div></div>
+                <div><div class="n" style="color:var(--gold)">14 天</div><div class="l">试用说明在会员页</div></div>
+              </div>
+            </div>
+            <div class="preview-card">
+              <div class="ph">报告长这样</div>
+              <div class="preview-inner">
+                <div class="card-faces">
+                  <div class="mini-card">Ⅰ</div>
+                  <div class="mini-card">Ⅶ</div>
+                  <div class="mini-card">Ⅹ</div>
+                </div>
+                <div class="preview-text">
+                  <strong>三张牌 · 事业阵</strong>
+                  <div class="kw">现状 · 挑战 · 建议</div>
+                  会员页可对照「试用含什么」
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="trust">
+            <span>🔒 Stripe</span>
+            <span>🛡 加密</span>
+            <span>♡ 10% 公益</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-label">会员块更重（与次 CTA 呼应）</div>
+      <div class="device"><div class="device-body" style="padding-top:16px">
+        <div class="block career">
+          <div class="ico">💼</div>
+          <div style="flex:1">
+            <span class="badge">推荐</span>
+            <h3>事业塔罗</h3>
+            <p>工作卡关 → 一键进入</p>
+          </div>
+          <div class="btn btn-ghost">开始 →</div>
+        </div>
+        <div class="grid4 cols4" style="margin-top:12px">
+          <div class="svc"><span class="b">可体验</span><h4>塔罗</h4><p>…</p></div>
+          <div class="svc"><span class="b">可体验</span><h4>星座</h4><p>…</p></div>
+          <div class="svc"><span class="b">可体验</span><h4>解梦</h4><p>…</p></div>
+          <div class="svc"><span class="b quota">需额度</span><h4>八字</h4><p>…</p></div>
+        </div>
+        <div class="member">
+          <div class="badge">与 Hero 次 CTA 同目的地</div>
+          <h3>14 天无限 + 年付更省</h3>
+          <p>注册试用详情、额度表、年付 ¥16.6/月 都在会员页讲清楚。主页只负责引流。</p>
+          <div class="price">¥16.6/月起 · 试用 14 天</div>
+          <div class="btns row" style="max-width:360px;margin-top:12px">
+            <div class="btn btn-primary">打开会员页</div>
+            <div class="btn btn-outline">先抽免费塔罗</div>
+          </div>
+        </div>
+        <div class="community-row">
+          <div><h4>社区</h4><p>单行保留</p></div>
+          <div class="btn btn-ghost">进入 →</div>
+        </div>
+      </div></div>
+
+      <div class="note-box">
+        <strong>包3 转化向：</strong>次 CTA 进 <strong>/membership</strong>，让犹豫用户先看清试用与价格再注册。
+        适合「主页短、会员页承担说服」的漏斗。风险：多一次跳转才注册。
+      </div>
+    </div>
+
+    <!-- ═══════════════ PACK 4 最简 ═══════════════ -->
+    <div class="pack" id="p4">
+      <div class="section-label">Mobile / 单栏 · 预览独立节（1B）· 无 Alert · 无社区块</div>
+      <div class="device" style="max-width:420px;margin:0 auto">
+        <div class="device-bar">
+          <span class="logo">洞察未来</span>
+          <span class="nav"><span>登录</span></span>
+        </div>
+        <div class="device-body">
+          <div class="orb g"></div>
+          <div class="hero">
+            <h2>洞察未来</h2>
+            <div class="sub">遇见更好的自己</div>
+            <p class="value">AI 塔罗 · 八字 · 星座 · 解梦<br>心理学视角，理性而不迷信</p>
+            <p class="hook">✦ 先免费体验一次</p>
+            <div class="btns">
+              <div class="btn btn-primary">★ 免费抽一副塔罗</div>
+              <div class="btn btn-secondary">注册领 14 天无限</div>
+            </div>
+            <p class="micro">游客可先体验 · 注册后 14 天无限</p>
+            <div class="stats">
+              <div><div class="n">融合</div><div class="l">东西方</div></div>
+              <div><div class="n" style="color:var(--rose)">可体验</div><div class="l">先试再定</div></div>
+            </div>
+          </div>
+          <div class="trust" style="margin-top:18px">
+            <span>🔒 Stripe</span>
+            <span>🛡 加密</span>
+            <span>♡ 公益</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-label">预览独立一节（1B · 非 Hero 双栏）</div>
+      <div class="device" style="max-width:420px;margin:0 auto"><div class="device-body" style="padding-top:16px">
+        <p style="font-size:11px;color:var(--gold);letter-spacing:0.15em;text-align:center">WHAT YOU GET</p>
+        <h3 style="text-align:center;font-size:16px;margin:6px 0 12px">你会得到什么 <span class="diff-tag">1B</span></h3>
+        <div class="preview-card">
+          <div class="preview-inner">
+            <div class="card-faces">
+              <div class="mini-card">♥</div>
+              <div class="mini-card">✦</div>
+              <div class="mini-card">☾</div>
+            </div>
+            <div class="preview-text">
+              <strong>示例报告结构</strong>
+              <div class="kw">牌面 · 关键词 · 建议</div>
+              实现最简单：Hero 不双栏
+            </div>
+          </div>
+        </div>
+        <div class="block career" style="margin-top:14px">
+          <div class="ico">💼</div>
+          <div style="flex:1">
+            <span class="badge">推荐</span>
+            <h3 style="font-size:14px">事业塔罗</h3>
+            <p>工作卡关了？</p>
+          </div>
+          <div class="btn btn-ghost">开始</div>
+        </div>
+        <div class="grid4" style="margin-top:12px">
+          <div class="svc"><span class="b">可体验</span><h4>塔罗</h4><p>…</p></div>
+          <div class="svc"><span class="b">可体验</span><h4>星座</h4><p>…</p></div>
+          <div class="svc"><span class="b">可体验</span><h4>解梦</h4><p>…</p></div>
+          <div class="svc"><span class="b quota">需额度</span><h4>八字</h4><p>…</p></div>
+        </div>
+        <div class="member">
+          <h3 style="font-size:16px">先免费 14 天</h3>
+          <p>注册解锁无限体验</p>
+          <div class="btn btn-primary" style="width:100%">注册领试用</div>
+        </div>
+        <div class="gone">✕ 主页无社区块 <span class="diff-tag">4B</span> · 仅 Footer「社区」链接</div>
+        <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:16px">
+          Footer · 关于 · 条款 · <u>社区</u> · 公益
+        </p>
+      </div></div>
+
+      <div class="note-box">
+        <strong>包4 最简：</strong>实现成本最低。单栏预览节、无 Alert、无主页社区。
+        适合先上线验证转化，再加运营位。桌面也不做双栏。
+      </div>
+    </div>
+
+    <!-- comparison table -->
+    <div class="section-label" style="margin-top:40px">四包差异速查</div>
+    <div class="device"><div class="device-body" style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:12px">
+        <thead>
+          <tr style="color:var(--gold);text-align:left">
+            <th style="padding:8px;border-bottom:1px solid var(--border)">维度</th>
+            <th style="padding:8px;border-bottom:1px solid var(--border)">包1 全A</th>
+            <th style="padding:8px;border-bottom:1px solid var(--border)">包2 推荐</th>
+            <th style="padding:8px;border-bottom:1px solid var(--border)">包3 转化</th>
+            <th style="padding:8px;border-bottom:1px solid var(--border)">包4 最简</th>
+          </tr>
+        </thead>
+        <tbody style="color:var(--muted)">
+          <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">1 预览</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">双栏</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">双栏</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">双栏</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">独立节</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">2 次 CTA</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">/login</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">/login</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">/membership</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">/login</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">3 Alert</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">弱化保留</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">删除</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">删除</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)">删除</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;padding-top:8px">4 社区</td>
+            <td style="padding:8px">单行</td>
+            <td style="padding:8px">单行</td>
+            <td style="padding:8px">单行</td>
+            <td style="padding:8px">仅 Footer</td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div>
+  </div>
+
+  <footer class="page-foot">
+    文件：HOME_WIREFRAME_PREVIEWS.html · 与 HOME_WIREFRAME.md 配套 · 选包后实现 Home.tsx
+  </footer>
+
+  <script>
+    const meta = {
+      p1: [
+        ["编码", "1A 2A 3A 4A"],
+        ["一句话", "完整运营位 + 双栏预览"],
+        ["代价", "首屏仍略满"],
+      ],
+      p2: [
+        ["编码", "1A 2A 3B 4A"],
+        ["一句话", "首屏最干净 · 推荐默认"],
+        ["代价", "少运营紧急感"],
+      ],
+      p3: [
+        ["编码", "1A 2B 3B 4A"],
+        ["一句话", "次 CTA 去会员页讲清价格"],
+        ["代价", "注册多一跳"],
+      ],
+      p4: [
+        ["编码", "1B 2A 3B 4B"],
+        ["一句话", "实现最快 · 移动单栏"],
+        ["代价", "桌面气场弱、无社区曝光"],
+      ],
+    };
+
+    function show(id) {
+      document.querySelectorAll(".pack").forEach((el) => el.classList.toggle("active", el.id === id));
+      document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("active", t.dataset.pack === id));
+      const bar = document.getElementById("metaBar");
+      bar.innerHTML = (meta[id] || []).map(([k, v]) =>
+        `<span class="chip"><strong>${k}</strong> ${v}</span>`
+      ).join("");
+      history.replaceState(null, "", "#" + id);
+    }
+
+    document.querySelectorAll(".tab").forEach((t) => {
+      t.addEventListener("click", () => show(t.dataset.pack));
+    });
+
+    const initial = (location.hash || "#p1").slice(1);
+    show(["p1", "p2", "p3", "p4"].includes(initial) ? initial : "p1");
+  </script>
+</body>
+</html>
