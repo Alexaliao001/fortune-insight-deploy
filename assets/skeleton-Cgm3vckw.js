@@ -1,0 +1,1 @@
+import{j as o}from"./vendor-m3zpxQRA.js";import{c as s}from"./index-Bltbed-r.js";function c({className:t,...e}){return o.jsx("div",{"data-loc":"client/src/components/ui/skeleton.tsx:5","data-slot":"skeleton",className:s("bg-accent animate-pulse rounded-md",t),...e})}export{c as S};

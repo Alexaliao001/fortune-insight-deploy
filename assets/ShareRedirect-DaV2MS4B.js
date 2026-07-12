@@ -1,0 +1,1 @@
+import{br as s,r as n}from"./vendor-m3zpxQRA.js";function m(){const[,t]=s();return n.useEffect(()=>{const c=new URLSearchParams(window.location.search),e=new URLSearchParams;for(const a of["utm_source","utm_medium","utm_campaign"]){const o=c.get(a);o&&e.set(a,o)}const r=e.toString();t(r?`/?${r}`:"/",{replace:!0})},[t]),null}export{m as default};
