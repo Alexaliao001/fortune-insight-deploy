@@ -18,7 +18,7 @@ function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
     const server = net.createServer();
     const host = process.env.HOST || "0.0.0.0";
-  server.listen(port, host, () => {
+    server.listen(port, host, () => {
       server.close(() => resolve(true));
     });
     server.on("error", () => resolve(false));
