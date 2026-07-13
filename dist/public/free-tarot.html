@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Free Tarot Preview — Fortune Insight</title>
+  <meta name="description" content="Free single-card tarot preview. Rule-based meanings, no login. Educational only." />
+  <link rel="canonical" href="https://fortunesite.one/free-tarot" />
+  <style>
+    :root {
+      --bg: #0c0a12;
+      --panel: #16121f;
+      --border: rgba(186, 160, 255, 0.22);
+      --text: #f4efff;
+      --muted: rgba(244, 239, 255, 0.55);
+      --accent: #c4a5ff;
+      --gold: #e8c47c;
+      --bad: #f07178;
+      --ok: #7dcea0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(1200px 600px at 50% -10%, #2a1f45 0%, var(--bg) 55%);
+      color: var(--text);
+    }
+    .wrap { max-width: 420px; margin: 0 auto; padding: 1.5rem 1.1rem 3rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 1.45rem; margin: 0.4rem 0 0.35rem; letter-spacing: 0.02em; }
+    .sub { color: var(--muted); font-size: 0.9rem; line-height: 1.45; margin: 0 0 1.25rem; }
+    .badge {
+      display: inline-block; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(232,196,124,.35); border-radius: 999px;
+      padding: 0.2rem 0.65rem;
+    }
+    .panel {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.15rem; margin-bottom: 1rem;
+    }
+    label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.35rem; }
+    input, select, button {
+      width: 100%; font: inherit; border-radius: 10px; border: 1px solid var(--border);
+      background: #0f0c16; color: var(--text); padding: 0.7rem 0.85rem;
+    }
+    button {
+      margin-top: 0.85rem; background: linear-gradient(135deg, #8b6fd4, #6a4fb8);
+      border: 0; font-weight: 600; cursor: pointer;
+    }
+    button:disabled { opacity: 0.55; cursor: wait; }
+    .row { display: grid; gap: 0.75rem; }
+    .card-face {
+      text-align: center; padding: 1.25rem 0.75rem;
+      border-radius: 12px; border: 1px solid var(--border);
+      background: linear-gradient(160deg, rgba(196,165,255,.12), rgba(15,12,22,.9));
+    }
+    .card-face .name { font-size: 1.35rem; font-weight: 700; margin: 0.35rem 0; }
+    .card-face .ori { color: var(--gold); font-size: 0.85rem; }
+    .kw { display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: center; margin: 0.75rem 0; }
+    .kw span {
+      font-size: 0.72rem; padding: 0.2rem 0.5rem; border-radius: 999px;
+      background: rgba(196,165,255,.12); color: var(--accent); border: 1px solid var(--border);
+    }
+    .meaning { line-height: 1.55; font-size: 0.95rem; color: rgba(244,239,255,.88); }
+    .status { font-size: 0.85rem; color: var(--muted); min-height: 1.2em; margin-top: 0.5rem; }
+    .status.bad { color: var(--bad); }
+    .status.ok { color: var(--ok); }
+    .disc { font-size: 0.75rem; color: var(--muted); line-height: 1.4; margin-top: 0.85rem; }
+    .empty { color: var(--muted); text-align: center; padding: 1.5rem 0.5rem; font-size: 0.9rem; }
+    footer { margin-top: 1.5rem; font-size: 0.8rem; color: var(--muted); text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="badge">Free · no login</span>
+    <h1 id="title">访客免费塔罗 · 1 牌阵</h1>
+    <p class="sub" id="sub">
+      规则牌义预览，不调用 AI。结果仅供娱乐与自我反思。
+      <a href="/">← Fortune Insight</a>
+    </p>
+
+    <section class="panel">
+      <div class="row">
+        <div>
+          <label for="lang" id="labLang">语言</label>
+          <select id="lang">
+            <option value="zh" selected>中文</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+        <div>
+          <label for="q" id="labQ">你的问题（可选）</label>
+          <input id="q" maxlength="200" placeholder="例如：今天的情绪倾向？" autocomplete="off" />
+        </div>
+        <button type="button" id="draw">抽一张牌</button>
+        <p class="status" id="status"></p>
+      </div>
+    </section>
+
+    <section class="panel" id="resultPanel">
+      <div id="result" class="empty">尚未抽牌 — 点上方按钮开始</div>
+    </section>
+
+    <footer>
+      <span id="healthLine">checking /health…</span><br />
+      API: <code>POST /api/tarot/preview</code> · source=rules
+    </footer>
+  </div>
+
+  <script>
+    const i18n = {
+      zh: {
+        title: "访客免费塔罗 · 1 牌阵",
+        sub: "规则牌义预览，不调用 AI。结果仅供娱乐与自我反思。",
+        labLang: "语言",
+        labQ: "你的问题（可选）",
+        ph: "例如：今天的情绪倾向？",
+        draw: "抽一张牌",
+        empty: "尚未抽牌 — 点上方按钮开始",
+        loading: "抽牌中…",
+        fail: "抽牌失败",
+        rate: "次数太多，请稍后再试",
+      },
+      en: {
+        title: "Free Tarot · Single Card",
+        sub: "Rule-based preview, no AI. Educational and entertainment only.",
+        labLang: "Language",
+        labQ: "Your question (optional)",
+        ph: "e.g. What energy should I notice today?",
+        draw: "Draw one card",
+        empty: "No card yet — tap the button above",
+        loading: "Drawing…",
+        fail: "Draw failed",
+        rate: "Too many draws — try again later",
+      },
+    };
+
+    function applyLang() {
+      const lang = document.getElementById("lang").value;
+      const t = i18n[lang] || i18n.zh;
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("sub").innerHTML = t.sub + ' <a href="/">← Fortune Insight</a>';
+      document.getElementById("labLang").textContent = t.labLang;
+      document.getElementById("labQ").textContent = t.labQ;
+      document.getElementById("q").placeholder = t.ph;
+      document.getElementById("draw").textContent = t.draw;
+      const r = document.getElementById("result");
+      if (r.dataset.filled !== "1") r.textContent = t.empty;
+    }
+
+    document.getElementById("lang").addEventListener("change", applyLang);
+    applyLang();
+
+    async function refreshHealth() {
+      try {
+        const r = await fetch("/health");
+        const j = await r.json();
+        document.getElementById("healthLine").textContent =
+          `health ok service=${j.service} tarot_preview=${j.tarot_preview} v=${j.version}`;
+      } catch {
+        document.getElementById("healthLine").textContent = "health unreachable (cold start?)";
+      }
+    }
+    refreshHealth();
+
+    document.getElementById("draw").addEventListener("click", async () => {
+      const lang = document.getElementById("lang").value;
+      const t = i18n[lang] || i18n.zh;
+      const btn = document.getElementById("draw");
+      const status = document.getElementById("status");
+      const result = document.getElementById("result");
+      btn.disabled = true;
+      status.className = "status";
+      status.textContent = t.loading;
+      try {
+        const r = await fetch("/api/tarot/preview", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            language: lang,
+            question: document.getElementById("q").value.trim(),
+          }),
+        });
+        const j = await r.json();
+        if (r.status === 429) {
+          status.className = "status bad";
+          status.textContent = t.rate;
+          result.className = "empty";
+          result.dataset.filled = "0";
+          result.textContent = j.error_detail || t.rate;
+          return;
+        }
+        if (!j.ok || !j.card) {
+          status.className = "status bad";
+          status.textContent = t.fail + (j.error ? `: ${j.error}` : "");
+          result.className = "empty";
+          result.dataset.filled = "0";
+          result.textContent = j.error_detail || t.fail;
+          return;
+        }
+        status.className = "status ok";
+        status.textContent = `source=${j.source} · remaining≈${(j.meta && j.meta.rate_remaining) ?? "?"}`;
+        const c = j.card;
+        const name = lang === "en" ? c.name_en : c.name_zh;
+        const kws = (c.keywords || []).map((k) => `<span>${escapeHtml(k)}</span>`).join("");
+        result.className = "card-face";
+        result.dataset.filled = "1";
+        result.innerHTML = `
+          <div class="ori">${escapeHtml(c.orientation || "")}</div>
+          <div class="name">${escapeHtml(name)}</div>
+          <div class="kw">${kws}</div>
+          <p class="meaning">${escapeHtml(c.meaning || j.summary || "")}</p>
+          <p class="disc">${escapeHtml(j.disclaimer || "")}</p>
+        `;
+      } catch (e) {
+        status.className = "status bad";
+        status.textContent = String(e);
+        result.className = "empty";
+        result.dataset.filled = "0";
+        result.textContent = t.fail;
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+  </script>
+</body>
+</html>

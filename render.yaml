@@ -4,9 +4,9 @@ services:
     runtime: node
     plan: free
     region: oregon
-    buildCommand: npm install && npm run build
-    startCommand: npm start
-    healthCheckPath: /
+    buildCommand: echo prebuilt-static+api
+    startCommand: NODE_ENV=production node dist/index.js
+    healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production

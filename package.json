@@ -1,10 +1,11 @@
 {
-  "name": "static-host",
+  "name": "fortune-insight-host",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "echo prebuilt",
-    "start": "NODE_ENV=production node dist/index.js"
+    "build": "cp server/host.mjs dist/index.js && cp server/tarot_rules.mjs dist/tarot_rules.mjs && echo prebuilt-static+api",
+    "start": "NODE_ENV=production node dist/index.js",
+    "dev": "node server/host.mjs"
   },
   "engines": { "node": ">=20" }
 }
