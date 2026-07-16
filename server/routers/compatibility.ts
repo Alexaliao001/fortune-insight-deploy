@@ -490,6 +490,7 @@ ${compatData}
 请提供专业、深入的合盘分析，包含全部10个维度，最后附上JSON评分块。`;
 
       const response = await invokeLLM({
+        language,
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt },
@@ -498,6 +499,39 @@ ${compatData}
 
       const rawContentRaw = response.choices[0]?.message?.content || "";
       const rawContent = typeof rawContentRaw === "string" ? rawContentRaw : "";
+
+      if (response.degradation) {
+        return {
+          id: undefined,
+          overallScore: compat.overallScore,
+          scores: {
+            loveScore: 0,
+            passionScore: 0,
+            communicationScore: 0,
+            trustScore: 0,
+            growthScore: 0,
+            longTermScore: 0,
+            summary: response.degradation.message,
+          },
+          deepAnalysis: response.degradation.message,
+          source: "daily_limit" as const,
+          degradation: response.degradation,
+          elementCompat: {
+            score: compat.elementCompat.score,
+            dynamic: isEn ? compat.elementCompat.dynamic : compat.elementCompat.dynamicChinese,
+          },
+          modalityCompat: {
+            score: compat.modalityCompat.score,
+            dynamic: isEn ? compat.modalityCompat.dynamic : compat.modalityCompat.dynamicChinese,
+          },
+          polarityCompat: {
+            score: compat.polarityCompat.score,
+            dynamic: isEn ? compat.polarityCompat.dynamic : compat.polarityCompat.dynamicChinese,
+          },
+          sign1: { name: meta1.name, nameChinese: meta1.nameChinese, symbol: meta1.symbol, element: meta1.element, elementChinese: meta1.elementChinese },
+          sign2: { name: meta2.name, nameChinese: meta2.nameChinese, symbol: meta2.symbol, element: meta2.element, elementChinese: meta2.elementChinese },
+        };
+      }
 
       // Extract JSON scores
       let scores = {
@@ -566,6 +600,8 @@ ${compatData}
         overallScore: compat.overallScore,
         scores,
         deepAnalysis,
+        source: "ai" as const,
+        degradation: null,
         elementCompat: {
           score: compat.elementCompat.score,
           dynamic: isEn ? compat.elementCompat.dynamic : compat.elementCompat.dynamicChinese,

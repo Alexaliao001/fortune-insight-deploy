@@ -1,6 +1,8 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
+import { invokeLLM } from "./_core/llm";
+import { consumeUsage } from "./db";
 
 // Mock the LLM module
 vi.mock("./_core/llm", () => ({
@@ -142,5 +144,42 @@ describe("tarot.getReading", () => {
 
     expect(result).toBeDefined();
     expect(result.spread).toBeDefined();
+  });
+
+  it("returns daily-limit degradation without consuming authenticated usage", async () => {
+    vi.mocked(invokeLLM).mockResolvedValueOnce({
+      id: "daily-limit",
+      created: 0,
+      model: "none",
+      choices: [
+        {
+          index: 0,
+          message: {
+            role: "assistant",
+            content:
+              "Today's AI interpretation quota has been reached. You can still view the basic calculated result; please return tomorrow. This attempt does not consume your usage allowance.",
+          },
+          finish_reason: "stop",
+        },
+      ],
+      usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
+      degradation: {
+        code: "LLM_DAILY_LIMIT",
+        source: "daily_limit",
+        message:
+          "Today's AI interpretation quota has been reached. You can still view the basic calculated result; please return tomorrow. This attempt does not consume your usage allowance.",
+        retryAt: "2026-07-17T00:00:00.000Z",
+        dailyLimit: 200,
+      },
+    });
+
+    const result = await appRouter.createCaller(createAuthContext()).tarot.getReading({
+      questionType: "general",
+      language: "en",
+    });
+
+    expect(result.source).toBe("daily_limit");
+    expect(result.degradation?.code).toBe("LLM_DAILY_LIMIT");
+    expect(consumeUsage).not.toHaveBeenCalled();
   });
 });

@@ -148,6 +148,13 @@
       "when": 1773001000000,
       "tag": "0020_user_password",
       "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "5",
+      "when": 1784199267000,
+      "tag": "0021_llm_daily_usage",
+      "breakpoints": true
     }
   ]
 }

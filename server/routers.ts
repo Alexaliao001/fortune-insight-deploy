@@ -110,6 +110,7 @@ async function generateAICustomerServiceReply(userMessage: string): Promise<stri
   // 如果没有匹配到特定关键词，使用LLM生成回复
   try {
     const response = await invokeLLM({
+      language: lang,
       messages: [
         { 
           role: "system", 

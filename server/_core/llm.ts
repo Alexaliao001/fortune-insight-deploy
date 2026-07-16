@@ -1,4 +1,9 @@
 import { ENV } from "./env";
+import {
+  buildLlmDailyLimitDegradation,
+  reserveLlmCall,
+  type LlmDailyLimitDegradation,
+} from "./llmBudget";
 
 export type Role = "system" | "user" | "assistant" | "tool" | "function";
 
@@ -57,6 +62,7 @@ export type ToolChoice =
 
 export type InvokeParams = {
   messages: Message[];
+  language?: "zh" | "en";
   tools?: Tool[];
   toolChoice?: ToolChoice;
   tool_choice?: ToolChoice;
@@ -95,6 +101,7 @@ export type InvokeResult = {
     completion_tokens: number;
     total_tokens: number;
   };
+  degradation?: LlmDailyLimitDegradation;
 };
 
 export type JsonSchema = {
@@ -209,15 +216,118 @@ const normalizeToolChoice = (
   return toolChoice;
 };
 
-const resolveApiUrl = () =>
-  ENV.forgeApiUrl && ENV.forgeApiUrl.trim().length > 0
-    ? `${ENV.forgeApiUrl.replace(/\/$/, "")}/v1/chat/completions`
-    : "https://forge.manus.im/v1/chat/completions";
+const DEFAULT_LLM_MODEL = "gemini-2.5-flash";
+const DEFAULT_FORGE_API_URL = "https://forge.manus.im";
+const LLM_REQUEST_TIMEOUT_MS = 60_000;
+const LLM_MAX_ATTEMPTS = 2;
 
-const assertApiKey = () => {
-  if (!ENV.forgeApiKey) {
-    throw new Error("OPENAI_API_KEY is not configured");
+const normalizeChatCompletionsUrl = (rawUrl: string): string => {
+  const baseUrl = rawUrl.trim().replace(/\/+$/, "");
+  if (baseUrl.endsWith("/chat/completions")) return baseUrl;
+  if (/\/(?:v\d+(?:beta\d+)?|openai)$/.test(baseUrl)) {
+    return `${baseUrl}/chat/completions`;
   }
+  return `${baseUrl}/v1/chat/completions`;
+};
+
+const isForgeUrl = (rawUrl: string): boolean => {
+  try {
+    const hostname = new URL(rawUrl).hostname;
+    return (
+      hostname === "forge.manus.im" || hostname.endsWith(".forge.manus.im")
+    );
+  } catch {
+    return false;
+  }
+};
+
+const resolveLlmConfig = () => {
+  const explicitApiUrl = ENV.llmApiUrl.trim();
+  const rawApiUrl =
+    explicitApiUrl || ENV.forgeApiUrl.trim() || DEFAULT_FORGE_API_URL;
+
+  return {
+    apiUrl: normalizeChatCompletionsUrl(rawApiUrl),
+    apiKey: (ENV.llmApiKey || ENV.forgeApiKey).trim(),
+    model: ENV.llmModel.trim() || DEFAULT_LLM_MODEL,
+    usesForge: !explicitApiUrl || isForgeUrl(rawApiUrl),
+  };
+};
+
+const assertApiKey = (apiKey: string) => {
+  if (!apiKey) {
+    throw new Error(
+      "LLM_API_KEY is not configured (BUILT_IN_FORGE_API_KEY is supported as a legacy fallback)"
+    );
+  }
+};
+
+class LlmHttpError extends Error {
+  constructor(
+    message: string,
+    readonly retryable: boolean
+  ) {
+    super(message);
+  }
+}
+
+const isRetryableStatus = (status: number): boolean =>
+  status === 408 || status === 429 || status >= 500;
+
+const requestCompletion = async (
+  apiUrl: string,
+  apiKey: string,
+  payload: Record<string, unknown>
+): Promise<InvokeResult> => {
+  let lastError: unknown;
+
+  for (let attempt = 0; attempt < LLM_MAX_ATTEMPTS; attempt += 1) {
+    const controller = new AbortController();
+    const timeout = setTimeout(
+      () => controller.abort(),
+      LLM_REQUEST_TIMEOUT_MS
+    );
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new LlmHttpError(
+          `LLM invoke failed: ${response.status} ${response.statusText} – ${errorText}`,
+          isRetryableStatus(response.status)
+        );
+      }
+
+      return (await response.json()) as InvokeResult;
+    } catch (error) {
+      const timedOut = controller.signal.aborted;
+      const retryable =
+        timedOut || !(error instanceof LlmHttpError) || error.retryable;
+      lastError = timedOut
+        ? new Error(`LLM invoke timed out after ${LLM_REQUEST_TIMEOUT_MS}ms`)
+        : error;
+
+      if (attempt + 1 < LLM_MAX_ATTEMPTS && retryable) {
+        continue;
+      }
+      throw lastError;
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
+  throw lastError instanceof Error
+    ? lastError
+    : new Error("LLM invoke failed after retry");
 };
 
 const normalizeResponseFormat = ({
@@ -266,7 +376,30 @@ const normalizeResponseFormat = ({
 };
 
 export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
-  assertApiKey();
+  const config = resolveLlmConfig();
+  assertApiKey(config.apiKey);
+
+  const reservation = await reserveLlmCall();
+  if (!reservation.allowed) {
+    const degradation = buildLlmDailyLimitDegradation(
+      params.language ?? "zh",
+      reservation
+    );
+    return {
+      id: `daily-limit-${reservation.dateKey}`,
+      created: Math.floor(Date.now() / 1000),
+      model: config.model,
+      choices: [
+        {
+          index: 0,
+          message: { role: "assistant", content: degradation.message },
+          finish_reason: "stop",
+        },
+      ],
+      usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
+      degradation,
+    };
+  }
 
   const {
     messages,
@@ -280,7 +413,7 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
   } = params;
 
   const payload: Record<string, unknown> = {
-    model: "gemini-2.5-flash",
+    model: config.model,
     messages: messages.map(normalizeMessage),
   };
 
@@ -296,9 +429,11 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
     payload.tool_choice = normalizedToolChoice;
   }
 
-  payload.max_tokens = 32768
-  payload.thinking = {
-    "budget_tokens": 128
+  payload.max_tokens = 32768;
+  if (config.usesForge) {
+    payload.thinking = {
+      budget_tokens: 128,
+    };
   }
 
   const normalizedResponseFormat = normalizeResponseFormat({
@@ -312,21 +447,5 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
     payload.response_format = normalizedResponseFormat;
   }
 
-  const response = await fetch(resolveApiUrl(), {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      authorization: `Bearer ${ENV.forgeApiKey}`,
-    },
-    body: JSON.stringify(payload),
-  });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(
-      `LLM invoke failed: ${response.status} ${response.statusText} – ${errorText}`
-    );
-  }
-
-  return (await response.json()) as InvokeResult;
+  return requestCompletion(config.apiUrl, config.apiKey, payload);
 }

@@ -257,6 +257,19 @@ export type UsageTracking = typeof usageTracking.$inferSelect;
 export type InsertUsageTracking = typeof usageTracking.$inferInsert;
 
 /**
+ * 服务级 LLM 日调用计数（UTC），用于跨进程/重启的成本硬上限。
+ */
+export const llmDailyUsage = mysqlTable("llm_daily_usage", {
+  dateKey: varchar("dateKey", { length: 10 }).primaryKey(),
+  usedCount: int("usedCount").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type LlmDailyUsage = typeof llmDailyUsage.$inferSelect;
+export type InsertLlmDailyUsage = typeof llmDailyUsage.$inferInsert;
+
+/**
  * 单次购买凭证表 - 记录用户购买的单次使用权
  */
 export const purchaseCredits = mysqlTable("purchase_credits", {

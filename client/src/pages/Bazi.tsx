@@ -54,6 +54,7 @@ export default function Bazi() {
   const [birthHour, setBirthHour] = useState("");
   const [gender, setGender] = useState<"male" | "female" | "unknown" | "">("");
   const [reading, setReading] = useState("");
+  const [llmDegraded, setLlmDegraded] = useState(false);
   const [chartData, setChartData] = useState<any>(null);
   const [isExporting, setIsExporting] = useState(false);
   const [sessionId] = useState(() => `bazi_${Date.now()}_${Math.random().toString(36).slice(2)}`);
@@ -203,9 +204,18 @@ export default function Bazi() {
 
   const baziMutation = trpc.bazi.getReading.useMutation({
     onSuccess: (data) => {
+      const degraded = Boolean(data.degradation);
+      setLlmDegraded(degraded);
       setReading(data.reading);
       if (data.chart) setChartData(data.chart);
       setStage("result");
+      if (degraded) {
+        toast.info(data.degradation?.message);
+        return;
+      }
+      if (!isAuthenticated) {
+        consumeGuestUsage("bazi");
+      }
       incrementUsageCount();
       // Auto-save report
       if (isAuthenticated) {
@@ -250,9 +260,9 @@ export default function Bazi() {
         setShowUsageModal(true);
         return;
       }
-      consumeGuestUsage("bazi");
     }
     
+    setLlmDegraded(false);
     setStage("loading");
     baziMutation.mutate({
       birthYear: parseInt(birthYear),
@@ -272,6 +282,7 @@ export default function Bazi() {
     setBirthHour("");
     setGender("");
     setReading("");
+    setLlmDegraded(false);
     setChartData(null);
   };
 
@@ -503,7 +514,7 @@ export default function Bazi() {
                   <BaZiReport
                     chart={chartData}
                     reading={reading}
-                    isPaid={premiumStatus.showFullReport}
+                    isPaid={llmDegraded || premiumStatus.showFullReport}
                     onUnlock={() => setShowUsageModal(true)}
                   />
                 ) : reading ? (
@@ -521,20 +532,23 @@ export default function Bazi() {
                 ) : null}
 
                 {/* Premium upsell banner */}
-                {reading && !premiumStatus.showFullReport && (
+                {reading && !llmDegraded && !premiumStatus.showFullReport && (
                   <PaywallCTA featureType="bazi" variant="banner" />
                 )}
                 {/* Deeper Insights comparison card */}
-                {reading && !premiumStatus.showFullReport && (
+                {reading && !llmDegraded && !premiumStatus.showFullReport && (
                   <DeeperInsightsCard featureType="bazi" className="mt-6" />
                 )}
                 {/* Soft paywall - blurred deep analysis preview */}
-                {reading && !premiumStatus.showFullReport && (
-                  <SoftPaywall featureType="bazi" />
+                {reading && (llmDegraded || !premiumStatus.showFullReport) && (
+                  <SoftPaywall
+                    featureType="bazi"
+                    reason={llmDegraded ? "daily-limit" : "upgrade"}
+                  />
                 )}
 
                 {/* TTS */}
-                {reading && (
+                {reading && !llmDegraded && (
                   <div className="flex justify-center">
                     <TextToSpeech
                       text={reading}
@@ -558,7 +572,7 @@ export default function Bazi() {
                   <Button
                     variant="outline"
                     onClick={generatePDF}
-                    disabled={isExporting}
+                    disabled={isExporting || llmDegraded}
                     className="gap-2 border-amber-500/50 text-amber-400 hover:bg-amber-500/10"
                   >
                     {isExporting ? (
@@ -568,7 +582,7 @@ export default function Bazi() {
                     )}
                     {t.bazi.export}
                   </Button>
-                  {reading && (
+                  {reading && !llmDegraded && (
                     <ShareResultCard
                       type="bazi"
                       title={language === "zh" ? "八字精批结果" : "BaZi Analysis"}
@@ -589,7 +603,7 @@ export default function Bazi() {
                       }}
                     />
                   )}
-                  {!isAuthenticated && reading && (
+                  {!isAuthenticated && reading && !llmDegraded && (
                     <div className="w-full max-w-md mx-auto mt-2">
                       <div className="rounded-2xl border border-cosmic-gold/30 bg-gradient-to-br from-cosmic-gold/10 to-transparent p-5 text-center space-y-3">
                         <Sparkles className="w-6 h-6 text-cosmic-gold mx-auto" />
@@ -611,12 +625,12 @@ export default function Bazi() {
                 </div>
 
                 {/* Cross-sell: recommend other features */}
-                {reading && (
+                {reading && !llmDegraded && (
                   <CrossSellCard currentFeature="bazi" className="mt-8" />
                 )}
 
                 {/* 继续咨询对话模块 */}
-                {reading && (
+                {reading && !llmDegraded && (
                   <BaziChat
                     birthYear={parseInt(birthYear)}
                     birthMonth={parseInt(birthMonth)}

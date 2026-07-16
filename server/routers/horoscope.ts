@@ -474,7 +474,6 @@ export const horoscopeRouter = router({
         if (!usage.canUse) {
           throw new Error("FREE_LIMIT_REACHED");
         }
-        await consumeUsage(ctx.user.id, "horoscope");
       }
 
       // Check cache first (key includes language — zh/en must not share a row)
@@ -495,6 +494,9 @@ export const horoscopeRouter = router({
           .limit(1);
 
         if (cached && cached.deepAnalysis) {
+          if (ctx.user?.id) {
+            await consumeUsage(ctx.user.id, "horoscope");
+          }
           return {
             content: cached.content,
             deepAnalysis: cached.deepAnalysis,
@@ -507,6 +509,8 @@ export const horoscopeRouter = router({
             luckyColor: cached.luckyColor,
             luckyNumber: cached.luckyNumber,
             advice: cached.advice,
+            source: "cache" as const,
+            degradation: null,
             signData: undefined as ReturnType<typeof getZodiacSign> | undefined,
           };
         }
@@ -632,6 +636,7 @@ ${planetaryContext}
 请提供专业、深入的占星分析，包含全部10个维度，最后附上JSON评分块。`;
 
       const response = await invokeLLM({
+        language,
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt },
@@ -640,6 +645,37 @@ ${planetaryContext}
 
       const rawContentRaw = response.choices[0]?.message?.content || "";
       const rawContent = typeof rawContentRaw === "string" ? rawContentRaw : "";
+
+      if (response.degradation) {
+        return {
+          content: response.degradation.message,
+          deepAnalysis: response.degradation.message,
+          overall: 0,
+          love: { score: 0, advice: "" },
+          career: { score: 0, advice: "" },
+          wealth: { score: 0, advice: "" },
+          health: "",
+          encouragement: "",
+          luckyColor: null,
+          luckyNumber: null,
+          advice: response.degradation.message,
+          source: "daily_limit" as const,
+          degradation: response.degradation,
+          signData: {
+            name: zodiacSign.name,
+            nameChinese: zodiacSign.nameChinese,
+            symbol: zodiacSign.symbol,
+            element: zodiacSign.element,
+            elementChinese: zodiacSign.elementChinese,
+            rulingPlanet: zodiacSign.rulingPlanet,
+            rulingPlanetChinese: zodiacSign.rulingPlanetChinese,
+          },
+        };
+      }
+
+      if (ctx.user?.id) {
+        await consumeUsage(ctx.user.id, "horoscope");
+      }
 
       // Extract JSON scores from the end of the response
       let scores = {
@@ -716,6 +752,8 @@ ${planetaryContext}
         luckyColor: scores.luckyColor,
         luckyNumber: scores.luckyNumber,
         advice: scores.advice,
+        source: "ai" as const,
+        degradation: null,
         signData: {
           name: zodiacSign.name,
           nameChinese: zodiacSign.nameChinese,

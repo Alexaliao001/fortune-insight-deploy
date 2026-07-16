@@ -6,6 +6,18 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 
+export function registerFreeTarotPrettyPath(app: Express): void {
+  app.use((req, _res, next) => {
+    if (
+      (req.method === "GET" || req.method === "HEAD") &&
+      (req.path === "/free-tarot" || req.path === "/free-tarot/")
+    ) {
+      req.url = "/free-tarot.html";
+    }
+    next();
+  });
+}
+
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
     middlewareMode: true,
@@ -20,6 +32,7 @@ export async function setupVite(app: Express, server: Server) {
     appType: "custom",
   });
 
+  registerFreeTarotPrettyPath(app);
   app.use(vite.middlewares);
   // F0-1: after Vite middleware, never SPA-fallback missing /assets/* or static modules
   app.use("*", async (req, res, next) => {
@@ -189,6 +202,8 @@ export function serveStatic(app: Express) {
       `Could not find the build directory: ${distPath}, make sure to build the client first`
     );
   }
+
+  registerFreeTarotPrettyPath(app);
 
   // Performance and security headers for all responses
   app.use((_req, res, next) => {

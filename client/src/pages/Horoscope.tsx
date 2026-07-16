@@ -61,7 +61,7 @@ export default function Horoscope() {
 
   // Auto-save horoscope report when data is loaded
   useEffect(() => {
-    if (horoscope && selectedSign && isAuthenticated && savedSignRef.current !== selectedSign.nameKey) {
+    if (horoscope && !horoscope.degradation && selectedSign && isAuthenticated && savedSignRef.current !== selectedSign.nameKey) {
       savedSignRef.current = selectedSign.nameKey;
       const ttsText = `${horoscope.content || ""} ${horoscope.love.advice} ${horoscope.career.advice} ${horoscope.wealth.advice} ${horoscope.encouragement || ""}`;
       saveReportMutation.mutate({
@@ -176,7 +176,7 @@ export default function Horoscope() {
                         </div>
                       </div>
                       <div className="flex gap-2">
-                        {horoscope && (
+                        {horoscope && !horoscope.degradation && (
                           <ShareResultCard
                             type="horoscope"
                             title={`${selectedSign.name} ${language === "zh" ? "今日运势" : "Daily Horoscope"}`}
@@ -234,6 +234,13 @@ export default function Horoscope() {
                     </Button>
                   </div>
                 ) : horoscope ? (
+                  horoscope.degradation ? (
+                    <SoftPaywall
+                      featureType="horoscope"
+                      className="mt-4"
+                      reason="daily-limit"
+                    />
+                  ) : (
                   <>
                     <HoroscopeReport
                       data={horoscope}
@@ -298,6 +305,7 @@ export default function Horoscope() {
                       className="mt-4"
                     />
                   </>
+                  )
                 ) : null}
               </motion.div>
             )}

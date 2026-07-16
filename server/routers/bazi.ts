@@ -270,7 +270,6 @@ export const baziRouter = router({
         if (!usage.canUse) {
           throw new Error("FREE_LIMIT_REACHED");
         }
-        await consumeUsage(ctx.user.id, "bazi");
       }
 
       const { birthYear, birthMonth, birthDay, birthHour, birthMinute, gender, language } = input;
@@ -309,6 +308,7 @@ export const baziRouter = router({
         : `请基于以下计算得出的八字命盘，提供全面、专业、深入的八字命理分析报告。请严格按照12个维度逐一深入分析，每个维度至少200字。\n\n${structuredPrompt}${hourNote}`;
 
       const response = await invokeLLM({
+        language,
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt },
@@ -318,9 +318,13 @@ export const baziRouter = router({
       const readingContent = response.choices[0]?.message?.content;
       const reading = typeof readingContent === "string" ? readingContent : (isEn ? "Analysis generation failed, please try again" : "分析生成失败，请重试");
 
+      if (ctx.user?.id && !response.degradation) {
+        await consumeUsage(ctx.user.id, "bazi");
+      }
+
       // Save to database with structured chart data
       const db = await getDb();
-      if (db) {
+      if (db && !response.degradation) {
         const insertData: Record<string, unknown> = {
           sessionId: nanoid(),
           birthYear,
@@ -369,6 +373,8 @@ export const baziRouter = router({
       // Return structured response
       return {
         reading,
+        source: response.degradation ? "daily_limit" as const : "ai" as const,
+        degradation: response.degradation ?? null,
         chart: baziChart ? {
           yearPillar: baziChart.yearPillar,
           monthPillar: baziChart.monthPillar,
@@ -443,10 +449,12 @@ ${chartContext}
       }
       messages.push({ role: "user", content: message });
 
-      const response = await invokeLLM({ messages });
+      const response = await invokeLLM({ language, messages });
       const reply = response.choices[0]?.message?.content;
       return {
         reply: typeof reply === "string" ? reply : (isEn ? "Sorry, I cannot answer this question right now." : "抱歉，我暂时无法回答这个问题，请稍后再试。"),
+        source: response.degradation ? "daily_limit" as const : "ai" as const,
+        degradation: response.degradation ?? null,
       };
     }),
 

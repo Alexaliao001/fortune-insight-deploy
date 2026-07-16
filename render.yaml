@@ -4,7 +4,7 @@ services:
     runtime: node
     plan: free
     region: oregon
-    buildCommand: echo prebuilt-static+api
+    buildCommand: pnpm install --frozen-lockfile && pnpm build
     startCommand: NODE_ENV=production node dist/index.js
     healthCheckPath: /health
     envVars:
@@ -23,6 +23,16 @@ services:
       - key: STRIPE_WEBHOOK_SECRET
         sync: false
       - key: VITE_STRIPE_PUBLISHABLE_KEY
+        sync: false
+      - key: LLM_API_URL
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        sync: false
+      - key: SIGNUP_TRIAL_DAYS
+        sync: false
+      - key: LLM_DAILY_MAX_CALLS
         sync: false
       - key: BUILT_IN_FORGE_API_URL
         sync: false

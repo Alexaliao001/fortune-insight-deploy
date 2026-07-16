@@ -4,7 +4,7 @@ Public mirror / Render source for **https://fortunesite.one**.
 
 | Surface | Host |
 |---------|------|
-| Production app + SX3 `POST /api/tarot/preview` | Render Free `fortune-insight` (**Hobby domain**) |
+| Production app + full Express/tRPC API | Render Free `fortune-insight` (**Hobby domain**) |
 | Optional static GH | `gh-pages` (historical / fallback) |
 
 ## Source of truth
@@ -21,7 +21,7 @@ Sync:
 bash ~/quantradar/scripts/sync_fortune_deploy.sh
 ```
 
-This keeps deploy `package.json` / `render.yaml` as the **zero-dep host** (`server/host.mjs`), and copies SSOT product + SX3 files.
+This keeps deploy `package.json` / `render.yaml` as the **full-server build configuration**, and copies product sources from the SSOT. Nothing reaches Render until the deploy mirror is explicitly pushed.
 
 ## Rebuild / push (app)
 
@@ -39,7 +39,23 @@ Env: see `~/quantradar/docs/env/fortune-insight.env.example` and SSOT `.env.exam
 
 Do not use `rebuild_static.sh` for Fortune production — that helper is for MoYu / Portfolio / Drama GH statics.
 
-## Verify
+## Verify locally
+
+```bash
+pnpm install --frozen-lockfile
+pnpm check
+pnpm test
+pnpm build
+PORT=3000 HOST=127.0.0.1 NODE_ENV=production node dist/index.js
+```
+
+In another terminal:
+
+```bash
+curl -sS http://127.0.0.1:3000/health
+```
+
+## Verify live after an authorized deploy
 
 ```bash
 curl -sS https://fortunesite.one/health

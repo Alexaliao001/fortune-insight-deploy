@@ -5,6 +5,10 @@ export const ENV = {
   oAuthServerUrl: process.env.OAUTH_SERVER_URL ?? "",
   ownerOpenId: process.env.OWNER_OPEN_ID ?? "",
   isProduction: process.env.NODE_ENV === "production",
+  llmApiUrl: process.env.LLM_API_URL ?? "",
+  llmApiKey: process.env.LLM_API_KEY ?? "",
+  llmModel: process.env.LLM_MODEL ?? "",
+  llmDailyMaxCalls: process.env.LLM_DAILY_MAX_CALLS ?? "",
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
   stripeSecretKey: process.env.STRIPE_SECRET_KEY ?? "",
@@ -17,13 +21,15 @@ export const ENV = {
   ),
 };
 
-/** Soft warnings only — never crash boot (Manus injects secrets at runtime). */
+/** Soft warnings only — optional integrations degrade when unconfigured. */
 export function warnMissingEnv(): void {
   const missing: string[] = [];
   if (!ENV.cookieSecret) missing.push("JWT_SECRET");
   if (!ENV.databaseUrl) missing.push("DATABASE_URL");
   if (ENV.isProduction) {
-    if (!ENV.forgeApiKey) missing.push("BUILT_IN_FORGE_API_KEY");
+    if (!ENV.llmApiKey && !ENV.forgeApiKey) {
+      missing.push("LLM_API_KEY (or BUILT_IN_FORGE_API_KEY)");
+    }
     if (!ENV.stripeSecretKey) missing.push("STRIPE_SECRET_KEY");
   }
   if (missing.length > 0) {

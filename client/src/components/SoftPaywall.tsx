@@ -8,6 +8,7 @@ import { trialHookLong, trialHookShort } from "@/lib/trialCopy";
 interface SoftPaywallProps {
   featureType: "tarot" | "bazi" | "dream" | "horoscope" | "compatibility";
   className?: string;
+  reason?: "upgrade" | "daily-limit";
 }
 
 // Fake deep analysis preview content per feature type
@@ -74,7 +75,11 @@ const previewContent: Record<string, { zh: string[]; en: string[] }> = {
   },
 };
 
-export default function SoftPaywall({ featureType, className = "" }: SoftPaywallProps) {
+export default function SoftPaywall({
+  featureType,
+  className = "",
+  reason = "upgrade",
+}: SoftPaywallProps) {
   const { language } = useLanguage();
   const isZh = language === "zh";
   const [dismissed, setDismissed] = useState(false);
@@ -85,6 +90,41 @@ export default function SoftPaywall({ featureType, className = "" }: SoftPaywall
   }, [featureType, isZh]);
 
   if (dismissed) return null;
+
+  if (reason === "daily-limit") {
+    return (
+      <div
+        className={`mt-6 rounded-2xl border border-amber-400/30 bg-amber-400/10 p-5 ${className}`}
+        data-soft-paywall={featureType}
+        data-soft-paywall-reason="daily-limit"
+        role="status"
+      >
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex items-start gap-3">
+            <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" />
+            <div>
+              <h3 className="font-semibold text-amber-200">
+                {isZh ? "今日 AI 解读额度已用完" : "Today's AI quota has been reached"}
+              </h3>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                {isZh
+                  ? "基础计算结果仍可查看，请明日再来。本次不会消耗你的使用额度。"
+                  : "You can still view the basic calculated result. Please return tomorrow; this attempt does not consume your usage allowance."}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setDismissed(true)}
+            className="rounded-md p-1 text-muted-foreground hover:text-foreground"
+            aria-label={isZh ? "关闭" : "Dismiss"}
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`relative mt-6 ${className}`} data-soft-paywall={featureType}>

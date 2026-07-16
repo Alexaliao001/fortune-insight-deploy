@@ -111,7 +111,6 @@ export const tarotRouter = router({
         if (!usage.canUse) {
           throw new Error("FREE_LIMIT_REACHED");
         }
-        await consumeUsage(ctx.user.id, "tarot");
       }
 
       const { questionType, question, language } = input;
@@ -273,6 +272,7 @@ ${structuredPrompt}
 请基于以上牌面和牌位，提供专业、深入的塔罗解读。`;
 
       const response = await invokeLLM({
+        language,
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt },
@@ -281,6 +281,10 @@ ${structuredPrompt}
 
       const tarotContent = response.choices[0]?.message?.content;
       const reading = typeof tarotContent === "string" ? tarotContent : (isEn ? "Reading generation failed, please try again" : "解读生成失败，请重试");
+
+      if (ctx.user?.id && !response.degradation) {
+        await consumeUsage(ctx.user.id, "tarot");
+      }
 
       // Prepare structured card data for storage
       const cardData = resolvedDrawn.map(d => ({
@@ -301,7 +305,7 @@ ${structuredPrompt}
 
       // Save to database
       const db = await getDb();
-      if (db) {
+      if (db && !response.degradation) {
         const insertData: Record<string, unknown> = {
           sessionId: nanoid(),
           questionType,
@@ -316,6 +320,8 @@ ${structuredPrompt}
 
       return {
         reading,
+        source: response.degradation ? "daily_limit" as const : "ai" as const,
+        degradation: response.degradation ?? null,
         cards: cardData,
         spread: {
           id: spread.id,

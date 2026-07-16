@@ -107,6 +107,7 @@ export default function Dream() {
   
   // 结果状态
   const [interpretation, setInterpretation] = useState("");
+  const [llmDegraded, setLlmDegraded] = useState(false);
   const [symbolAnalysis, setSymbolAnalysis] = useState<any[]>([]);
   const [dreamTheme, setDreamTheme] = useState<any>(null);
   const [dreamProfile, setDreamProfile] = useState<any>(null);
@@ -303,11 +304,20 @@ export default function Dream() {
   // AI解梦mutation
   const interpretMutation = trpc.dream.interpret.useMutation({
     onSuccess: (data) => {
+      const degraded = Boolean(data.degradation);
+      setLlmDegraded(degraded);
       setInterpretation(data.interpretation);
       setSymbolAnalysis(data.symbolAnalysis || []);
       setDreamTheme(data.theme || null);
       setDreamProfile(data.dreamProfile || null);
       setStep("result");
+      if (degraded) {
+        toast.info(data.degradation?.message);
+        return;
+      }
+      if (!isAuthenticated) {
+        consumeGuestUsage("dream");
+      }
       incrementUsageCount();
       toast.success(language === "zh" ? "梦境解析完成！" : "Dream interpretation complete!");
       // Auto-save report
@@ -346,9 +356,9 @@ export default function Dream() {
         setShowUsageModal(true);
         return;
       }
-      consumeGuestUsage("dream");
     }
 
+    setLlmDegraded(false);
     setStep("analyzing");
     interpretMutation.mutate({
       title: title || undefined,
@@ -401,6 +411,7 @@ export default function Dream() {
     setClarity(3);
     setDreamDate("");
     setInterpretation("");
+    setLlmDegraded(false);
     setStep("input");
   };
 
@@ -714,33 +725,38 @@ export default function Dream() {
                   dreamContent={dreamContent}
                   emotions={selectedEmotions}
                   keyElements={selectedElements}
-                  isPaid={premiumStatus.showFullReport}
+                  isPaid={llmDegraded || premiumStatus.showFullReport}
                   onUnlock={() => setShowUsageModal(true)}
                   dreamProfile={dreamProfile}
                 />
 
                 {/* Premium upsell banner */}
-                {interpretation && !premiumStatus.showFullReport && (
+                {interpretation && !llmDegraded && !premiumStatus.showFullReport && (
                   <PaywallCTA featureType="dream" variant="banner" />
                 )}
                 {/* Deeper Insights comparison card */}
-                {interpretation && !premiumStatus.showFullReport && (
+                {interpretation && !llmDegraded && !premiumStatus.showFullReport && (
                   <DeeperInsightsCard featureType="dream" className="mt-6" />
                 )}
                 {/* Soft paywall - blurred deep analysis preview */}
-                {interpretation && !premiumStatus.showFullReport && (
-                  <SoftPaywall featureType="dream" />
+                {interpretation && (llmDegraded || !premiumStatus.showFullReport) && (
+                  <SoftPaywall
+                    featureType="dream"
+                    reason={llmDegraded ? "daily-limit" : "upgrade"}
+                  />
                 )}
 
                 {/* TTS */}
-                <div className="flex justify-center">
-                  <TextToSpeech
-                    text={interpretation}
-                    size="md"
-                    showLabel
-                    className="text-violet-400 hover:text-violet-300"
-                  />
-                </div>
+                {!llmDegraded && (
+                  <div className="flex justify-center">
+                    <TextToSpeech
+                      text={interpretation}
+                      size="md"
+                      showLabel
+                      className="text-violet-400 hover:text-violet-300"
+                    />
+                  </div>
+                )}
 
                 {/* 操作按钮 */}
                 <div className="flex flex-wrap gap-4">
@@ -756,7 +772,7 @@ export default function Dream() {
                     variant="outline" 
                     className="flex-1 min-w-[140px] border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10"
                     onClick={handleExportPDF}
-                    disabled={isExporting}
+                    disabled={isExporting || llmDegraded}
                   >
                     {isExporting ? (
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
@@ -765,24 +781,26 @@ export default function Dream() {
                     )}
                     {t.dream.export}
                   </Button>
-                  {isAuthenticated ? (
-                    <Button 
-                      className="flex-1 min-w-[140px] bg-gradient-to-r from-indigo-500 to-violet-500"
-                      onClick={() => toast.success(language === "zh" ? "梦境已保存到您的记录中" : "Dream saved to your records")}
-                    >
-                      <Heart className="w-4 h-4 mr-2" />
-                      {language === "zh" ? "已保存到记录" : "Saved"}
-                    </Button>
-                  ) : interpretation && (
-                    <Button
-                      onClick={() => window.location.href = getLoginUrl()}
-                      className="flex-1 min-w-[140px] gap-2 bg-cosmic-gold hover:bg-cosmic-gold/90 text-black font-semibold"
-                    >
-                      <Sparkles className="w-4 h-4" />
-                      {language === "zh" ? "免费注册 · 保存解梦" : "Sign Up Free · Save"}
-                    </Button>
+                  {!llmDegraded && (
+                    isAuthenticated ? (
+                      <Button
+                        className="flex-1 min-w-[140px] bg-gradient-to-r from-indigo-500 to-violet-500"
+                        onClick={() => toast.success(language === "zh" ? "梦境已保存到您的记录中" : "Dream saved to your records")}
+                      >
+                        <Heart className="w-4 h-4 mr-2" />
+                        {language === "zh" ? "已保存到记录" : "Saved"}
+                      </Button>
+                    ) : interpretation ? (
+                      <Button
+                        onClick={() => window.location.href = getLoginUrl()}
+                        className="flex-1 min-w-[140px] gap-2 bg-cosmic-gold hover:bg-cosmic-gold/90 text-black font-semibold"
+                      >
+                        <Sparkles className="w-4 h-4" />
+                        {language === "zh" ? "免费注册 · 保存解梦" : "Sign Up Free · Save"}
+                      </Button>
+                    ) : null
                   )}
-                  {interpretation && (
+                  {interpretation && !llmDegraded && (
                     <ShareResultCard
                       type="dream"
                       title={language === "zh" ? "AI解梦结果" : "Dream Interpretation"}
@@ -819,15 +837,19 @@ export default function Dream() {
                 </Card>
 
                 {/* Cross-sell: recommend other features */}
-                <CrossSellCard currentFeature="dream" className="mt-4" />
+                {!llmDegraded && (
+                  <CrossSellCard currentFeature="dream" className="mt-4" />
+                )}
 
                 {/* 用户反馈模块 */}
-                <FeedbackWidget
-                  sourceType="dream"
-                  sourceId={lastDreamId || undefined}
-                  sessionId={sessionId}
-                  className="mt-4"
-                />
+                {!llmDegraded && (
+                  <FeedbackWidget
+                    sourceType="dream"
+                    sourceId={lastDreamId || undefined}
+                    sessionId={sessionId}
+                    className="mt-4"
+                  />
+                )}
               </motion.div>
             )}
           </AnimatePresence>

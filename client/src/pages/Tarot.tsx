@@ -157,6 +157,7 @@ export default function Tarot() {
   const [cardReversals, setCardReversals] = useState<boolean[]>([]);
   const [spreadSize, setSpreadSize] = useState<SpreadSize>(3);
   const [reading, setReading] = useState("");
+  const [llmDegraded, setLlmDegraded] = useState(false);
   const [structuredCards, setStructuredCards] = useState<any[]>([]);
   const [spreadData, setSpreadData] = useState<any>(null);
   const [sessionId] = useState(() => `tarot_${Date.now()}_${Math.random().toString(36).slice(2)}`);
@@ -249,9 +250,18 @@ export default function Tarot() {
 
   const tarotMutation = trpc.tarot.getReading.useMutation({
     onSuccess: (data) => {
+      const degraded = Boolean(data.degradation);
+      setLlmDegraded(degraded);
       setReading(data.reading);
       if (data.cards) setStructuredCards(data.cards);
       if (data.spread) setSpreadData(data.spread);
+      if (degraded) {
+        toast.info(data.degradation?.message);
+        return;
+      }
+      if (!isAuthenticated) {
+        consumeGuestUsage("tarot");
+      }
       incrementUsageCount();
       // Auto-save report
       if (isAuthenticated) {
@@ -355,14 +365,13 @@ export default function Tarot() {
     if (drawnCards.length >= spreadSize) return;
     if (!isReadyToPick(drawingPhase)) return;
 
-    // Guest usage check on first card draw
+    // Guest usage check on first card draw; consume only after a real result.
     if (drawnCards.length === 0 && !isAuthenticated) {
       const guestCheck = canGuestUse("tarot");
       if (!guestCheck.canUse) {
         setShowUsageModal(true);
         return;
       }
-      consumeGuestUsage("tarot");
     }
     
     // T04: short haptic on pick (no-op if unsupported; never throws)
@@ -392,6 +401,7 @@ export default function Tarot() {
 
   // Explicit function to start the reading after cards are drawn
   const handleStartReading = () => {
+    setLlmDegraded(false);
     setStage("result");
     const spreadId = spreadSize === 1 ? "single" : undefined;
     tarotMutation.mutate({
@@ -416,6 +426,7 @@ export default function Tarot() {
     setFlipFlashSlot(null);
     setAwaitCtaPulse(false);
     setReading("");
+    setLlmDegraded(false);
     setStructuredCards([]);
     setSpreadData(null);
     let reduced = false;
@@ -448,6 +459,7 @@ export default function Tarot() {
     setFlipFlashSlot(null);
     setAwaitCtaPulse(false);
     setReading("");
+    setLlmDegraded(false);
     setStructuredCards([]);
     setSpreadData(null);
     setSpreadSize(3);
@@ -1020,7 +1032,7 @@ export default function Tarot() {
                     cards={structuredCards}
                     spread={spreadData}
                     reading={reading}
-                    isPaid={premiumStatus.showFullReport}
+                    isPaid={llmDegraded || premiumStatus.showFullReport}
                     onUnlock={() => setShowUsageModal(true)}
                     questionType={selectedType}
                     question={question}
@@ -1032,18 +1044,21 @@ export default function Tarot() {
                 ) : null}
 
                 {/* Premium upsell banner */}
-                {reading && !premiumStatus.showFullReport && (
+                {reading && !llmDegraded && !premiumStatus.showFullReport && (
                   <PaywallCTA featureType="tarot" variant="banner" />
                 )}
                 {/* Deeper Insights comparison card */}
-                {reading && !premiumStatus.showFullReport && (
+                {reading && !llmDegraded && !premiumStatus.showFullReport && (
                   <DeeperInsightsCard featureType="tarot" className="mt-6" />
                 )}
                 {/* Soft paywall - blurred deep analysis preview */}
-                {reading && !premiumStatus.showFullReport && (
-                  <SoftPaywall featureType="tarot" />
+                {reading && (llmDegraded || !premiumStatus.showFullReport) && (
+                  <SoftPaywall
+                    featureType="tarot"
+                    reason={llmDegraded ? "daily-limit" : "upgrade"}
+                  />
                 )}
-                {reading && (
+                {reading && !llmDegraded && (
                   <div
                     className="mt-4 rounded-xl border border-[#d4a843]/25 bg-[rgba(212,168,67,0.08)] px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
                     data-tarot-result-upgrade
@@ -1066,7 +1081,7 @@ export default function Tarot() {
                 </div>
 
                 {/* TTS for reading */}
-                {reading && (
+                {reading && !llmDegraded && (
                   <div className="flex justify-center">
                     <TextToSpeech
                       text={extractPullQuote(reading, 200) || reading}
@@ -1097,7 +1112,7 @@ export default function Tarot() {
                   >
                     {language === "zh" ? "换题型" : "Change topic"}
                   </Button>
-                  {reading && (
+                  {reading && !llmDegraded && (
                     <ShareResultCard
                       type="tarot"
                       title={
@@ -1131,7 +1146,7 @@ export default function Tarot() {
                       }}
                     />
                   )}
-                  {!isAuthenticated && reading && (
+                  {!isAuthenticated && reading && !llmDegraded && (
                     <div className="w-full max-w-md mx-auto mt-2">
                       <div className="rounded-2xl border border-cosmic-gold/30 bg-gradient-to-br from-cosmic-gold/10 to-transparent p-5 text-center space-y-3">
                         <Sparkles className="w-6 h-6 text-cosmic-gold mx-auto" />
@@ -1153,7 +1168,7 @@ export default function Tarot() {
                 </div>
 
                 {/* Cross-sell: recommend other features */}
-                {reading && (
+                {reading && !llmDegraded && (
                   <details className="mt-8 group" data-tarot-cross-sell="1">
                     <summary className="cursor-pointer text-sm text-muted-foreground hover:text-[#d4a843] list-none flex items-center justify-center gap-2 py-2">
                       {language === "zh" ? "探索更多功能" : "Explore more features"}

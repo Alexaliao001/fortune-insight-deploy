@@ -13,6 +13,7 @@ import { ogImageRouter } from "../og-image";
 import { ogMetaMiddleware } from "../og-meta";
 import { warnMissingEnv } from "./env";
 import { securityHeadersMiddleware, trpcPrefixGuard } from "./securityHeaders";
+import { registerFullServerRoutes } from "../fullServerRoutes";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -54,6 +55,10 @@ async function startServer() {
   // Security headers (prod XFO + CSP-RO) + wrong /trpc prefix JSON 404
   app.use(securityHeadersMiddleware);
   app.use(trpcPrefixGuard);
+
+  // Full-server liveness + the zero-cost SX3 rules preview.
+  // Preview owns its small raw body parser, so this must stay before express.json().
+  registerFullServerRoutes(app);
 
   // Stripe webhook - MUST be BEFORE express.json() for signature verification
   // The stripeRouter uses express.raw() internally for the webhook endpoint

@@ -283,7 +283,6 @@ export const dreamRouter = router({
         if (!usage.canUse) {
           throw new Error("FREE_LIMIT_REACHED");
         }
-        await consumeUsage(ctx.user.id, "dream");
       }
 
       const { title, dreamContent, emotions, keyElements, dreamType, clarity, dreamDate, language } = input;
@@ -340,6 +339,7 @@ ${profileContext}
 请基于梦境内容和上述分析引擎数据，提供全面的10维度深度梦境分析。每个维度必须充实且有洞察力。`;
 
       const response = await invokeLLM({
+        language,
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt },
@@ -349,6 +349,10 @@ ${profileContext}
       const rawContent: string = typeof response.choices[0]?.message?.content === "string"
         ? response.choices[0].message.content
         : (isEn ? "Dream interpretation failed, please try again" : "解梦失败，请重试");
+
+      if (ctx.user?.id && !response.degradation) {
+        await consumeUsage(ctx.user.id, "dream");
+      }
 
       // Prepare symbol analysis for storage
       const symbolAnalysisData = foundSymbols.map((s: DreamSymbol) => ({
@@ -363,7 +367,7 @@ ${profileContext}
 
       // Save to database with structured data
       const db = await getDb();
-      if (db) {
+      if (db && !response.degradation) {
         const insertData: Record<string, unknown> = {
           sessionId: nanoid(),
           title: title || null,
@@ -412,6 +416,8 @@ ${profileContext}
       return {
         interpretation: rawContent,
         deepAnalysis: rawContent,
+        source: response.degradation ? "daily_limit" as const : "ai" as const,
+        degradation: response.degradation ?? null,
         symbolAnalysis: symbolAnalysisData,
         theme: dreamTheme ? {
           name: dreamTheme.name,

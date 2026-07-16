@@ -66,7 +66,10 @@ export default function Compatibility() {
 
   // Full analysis mutation
   const analyzeMutation = trpc.compatibility.analyze.useMutation({
-    onSuccess: () => {
+    onSuccess: (data) => {
+      if (data.degradation) {
+        toast.info(data.degradation.message);
+      }
       setStep("result");
     },
     onError: (err) => {
@@ -336,17 +339,45 @@ export default function Compatibility() {
                     <RotateCcw className="w-4 h-4 mr-2" />
                     {isEn ? "New Analysis" : "重新分析"}
                   </Button>
-                  <TextToSpeech text={ttsText} />
+                  {!analyzeMutation.data.degradation && <TextToSpeech text={ttsText} />}
                 </div>
 
-                {/* Report */}
-                <CompatibilityReport
-                  data={analyzeMutation.data}
-                  person1Name={person1Name || (isEn ? "Person A" : "甲方")}
-                  person2Name={person2Name || (isEn ? "Person B" : "乙方")}
-                  isPaid={true}
-                  onUnlock={() => toast.info(isEn ? "Premium feature coming soon" : "会员功能即将上线")}
-                />
+                {analyzeMutation.data.degradation ? (
+                  <>
+                    <div className="glass-card rounded-2xl border-gradient p-6">
+                      <h2 className="text-lg font-semibold text-[#d4a843]">
+                        {isEn ? "Basic compatibility calculation" : "基础合盘计算"}
+                      </h2>
+                      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                        {[
+                          [isEn ? "Overall" : "综合", analyzeMutation.data.overallScore],
+                          [isEn ? "Elements" : "元素", analyzeMutation.data.elementCompat.score],
+                          [isEn ? "Modality" : "模式", analyzeMutation.data.modalityCompat.score],
+                          [isEn ? "Polarity" : "极性", analyzeMutation.data.polarityCompat.score],
+                        ].map(([label, score]) => (
+                          <div key={String(label)} className="rounded-xl bg-white/5 p-3 text-center">
+                            <div className="text-xs text-muted-foreground">{label}</div>
+                            <div className="mt-1 text-xl font-bold text-white">{score}/100</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <SoftPaywall
+                      featureType="compatibility"
+                      className="mt-4"
+                      reason="daily-limit"
+                    />
+                  </>
+                ) : (
+                  <>
+                    {/* Report */}
+                    <CompatibilityReport
+                      data={analyzeMutation.data}
+                      person1Name={person1Name || (isEn ? "Person A" : "甲方")}
+                      person2Name={person2Name || (isEn ? "Person B" : "乙方")}
+                      isPaid={true}
+                      onUnlock={() => toast.info(isEn ? "Premium feature coming soon" : "会员功能即将上线")}
+                    />
 
                 {/* Deeper Insights */}
                 <DeeperInsightsCard featureType="compatibility" />
@@ -374,8 +405,10 @@ export default function Compatibility() {
                 {/* Cross-sell */}
                 <CrossSellCard currentFeature="compatibility" />
 
-                {/* Feedback */}
-                <FeedbackWidget sourceType="horoscope" sessionId={`compat_${Date.now()}`} />
+                    {/* Feedback */}
+                    <FeedbackWidget sourceType="horoscope" sessionId={`compat_${Date.now()}`} />
+                  </>
+                )}
               </motion.div>
             )}
           </AnimatePresence>
