@@ -18,7 +18,7 @@ const rootCandidates = [
 const root = rootCandidates.find((p) => fs.existsSync(p)) || rootCandidates[0];
 const port = Number(process.env.PORT || 3000);
 const host = process.env.HOST || "0.0.0.0";
-const VERSION = "sx3-1.0";
+const VERSION = "sx3-1.1";
 const SERVICE = "fortune-insight";
 
 const types = {
