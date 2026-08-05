@@ -2,7 +2,7 @@
 
 > 任务源：`~/quantradar/GROK_GOAL_SITES_EXTREME.md` · SX3  
 > 日期：2026-07-13  
-> 部署：Render Free `fortune-insight` · 域 `fortunesite.one`（Hobby 已占位）
+> 部署：Nube VPS `fortune.service` · 域 `fortunesite.one`
 
 ## 产品切片（只做这些）
 

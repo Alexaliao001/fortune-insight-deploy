@@ -1,10 +1,10 @@
 # fortune-insight-deploy
 
-Public mirror / Render source for **https://fortunesite.one**.
+Historical public mirror for **https://fortunesite.one**. Production now runs on the Nube VPS.
 
 | Surface | Host |
 |---------|------|
-| Production app + full Express/tRPC API | Render Free `fortune-insight` (**Hobby domain**) |
+| Production app + full Express/tRPC API | Nube VPS `fortune.service` |
 | Optional static GH | `gh-pages` (historical / fallback) |
 
 ## Source of truth
@@ -12,25 +12,24 @@ Public mirror / Render source for **https://fortunesite.one**.
 | Role | Repo | Local |
 |------|------|-------|
 | **SSOT (edit here)** | private `Alexaliao001/fortune-insight` | `~/fortune-insight` |
-| **Deploy (Render)** | public `Alexaliao001/fortune-insight-deploy` | `~/fortune-insight-deploy` |
+| **Historical mirror** | public `Alexaliao001/fortune-insight-deploy` | `~/fortune-insight-deploy` |
 | Archive (do not edit) | private `Alexaliao001/fortune-insight-` (trailing `-`) | — |
 
-Sync:
+Production deploys are handled from the private SSOT with:
 
 ```bash
-bash ~/quantradar/scripts/sync_fortune_deploy.sh
+bash ~/fortune-insight/scripts/sync_fortune_deploy.sh
 ```
 
-This keeps deploy `package.json` / `render.yaml` as the **full-server build configuration**, and copies product sources from the SSOT. Nothing reaches Render until the deploy mirror is explicitly pushed.
+The script builds the frontend, backs up the current Nube static assets, replaces `dist/public`, and restarts `fortune.service`. It deliberately preserves the full API entrypoint already installed on Nube.
 
 ## Rebuild / push (app)
 
-Prefer SSOT + sync script above. Manual:
+Prefer SSOT + the Nube deploy script above. Manual:
 
 ```bash
 cd ~/fortune-insight   # edit / build full product
-bash ~/quantradar/scripts/sync_fortune_deploy.sh
-# Render auto-deploys from fortune-insight-deploy main
+bash ~/fortune-insight/scripts/sync_fortune_deploy.sh
 ```
 
 Env: see `~/quantradar/docs/env/fortune-insight.env.example` and SSOT `.env.example`.

@@ -1,7 +1,7 @@
 # Fortune Insight SSOT
 
 - **Private SSOT**: `Alexaliao001/fortune-insight` → `~/fortune-insight`
-- **Public deploy**: `Alexaliao001/fortune-insight-deploy` → Render Free → https://fortunesite.one
+- **Production deploy**: Nube VPS `nube-sin` → `/opt/nube-sites/apps/fortune` → https://fortunesite.one
 - **Manus archive** (do not develop here): `Alexaliao001/fortune-insight-` (trailing hyphen)
 
 Base: product tree from `fortune-insight-` @ `4761dc4` (2026-07-10).  
