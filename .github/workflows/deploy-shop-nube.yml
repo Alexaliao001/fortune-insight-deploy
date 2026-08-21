@@ -1,0 +1,58 @@
+name: Deploy shop to Nube
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "client/public/shop/**"
+      - "dist/public/shop/**"
+      - "scripts/deploy_shop_nube.sh"
+      - ".github/workflows/deploy-shop-nube.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy-shop-nube:
+    runs-on: ubuntu-latest
+    if: github.repository == 'Alexaliao001/fortune-insight-deploy'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ensure shop static exists
+        run: |
+          test -d dist/public/shop || test -d client/public/shop
+          if [ ! -d dist/public/shop ]; then
+            mkdir -p dist/public/shop
+            cp -a client/public/shop/. dist/public/shop/
+          fi
+          test -f dist/public/shop/index.html
+
+      - name: Rsync shop to Nube
+        env:
+          NUBE_HOST: ${{ secrets.NUBE_HOST }}
+          NUBE_USER: ${{ secrets.NUBE_USER }}
+          NUBE_APP_PATH: ${{ secrets.NUBE_APP_PATH }}
+          NUBE_SSH_KEY: /tmp/nube_key
+        run: |
+          if [ -z "${{ secrets.NUBE_SSH_PRIVATE_KEY }}" ]; then
+            echo "NUBE_SSH_PRIVATE_KEY secret not configured — skip Nube rsync"
+            exit 0
+          fi
+          printf '%s' "${{ secrets.NUBE_SSH_PRIVATE_KEY }}" > /tmp/nube_key
+          chmod 600 /tmp/nube_key
+          export NUBE_SSH_KEY=/tmp/nube_key
+          export NUBE_HOST="${NUBE_HOST:-64.118.142.148}"
+          export NUBE_USER="${NUBE_USER:-ubuntu}"
+          export NUBE_APP_PATH="${NUBE_APP_PATH:-/opt/nube-sites/apps/fortune}"
+          bash scripts/deploy_shop_nube.sh
+
+      - name: Verify fortunesite.one shop
+        run: |
+          sleep 5
+          body=$(curl -fsS https://fortunesite.one/shop/ || true)
+          if echo "$body" | grep -q '店头简报\|AppLocale'; then
+            echo "PASS: fortunesite.one/shop serves shop HTML"
+          else
+            echo "WARN: fortunesite.one/shop still not shop HTML (Nube code deploy may be needed)"
+            echo "$body" | head -c 200
+            exit 1
+          fi

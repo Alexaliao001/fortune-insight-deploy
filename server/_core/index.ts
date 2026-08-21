@@ -14,6 +14,7 @@ import { ogMetaMiddleware } from "../og-meta";
 import { warnMissingEnv } from "./env";
 import { securityHeadersMiddleware, trpcPrefixGuard } from "./securityHeaders";
 import { registerFullServerRoutes } from "../fullServerRoutes";
+import { registerShopStaticRoutes } from "../shopStatic";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -86,6 +87,9 @@ async function startServer() {
   
   // OG meta tag injection for social crawlers (must be before Vite/static)
   app.use(ogMetaMiddleware);
+
+  // Shop static (local files) or Render edge proxy — before SPA fallback
+  registerShopStaticRoutes(app);
 
   // development mode uses Vite, production mode uses static files
   if (process.env.NODE_ENV === "development") {
