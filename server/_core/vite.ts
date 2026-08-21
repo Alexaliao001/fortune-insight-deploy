@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
+import { isShopPath } from "../shopStatic";
 
 /** Pretty URLs for static HTML under client/public (no SPA). */
 const PUBLIC_HTML_PRETTY_PATHS: Record<string, string> = {
@@ -270,6 +271,12 @@ export function serveStatic(app: Express) {
   // HTML should have short cache to pick up new deployments quickly
   app.use((req, res) => {
     if (trySendAsset404(req, res)) return;
+
+    const pathname = getRequestPathname(req);
+    if (isShopPath(pathname)) {
+      res.status(404).type("text/plain").send("shop page not found");
+      return;
+    }
 
     res.set({
       "Cache-Control": "public, max-age=0, must-revalidate",

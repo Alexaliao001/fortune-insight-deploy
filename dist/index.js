@@ -8,11 +8,13 @@ import https from "node:https";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { execFileSync } from "node:child_process";
+import { randomBytes } from "node:crypto";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const SERVICE = "fortune-insight";
-const VERSION = "proxy-nube-1.1";
+const VERSION = "proxy-nube-1.2";
 const PORT = Number(process.env.PORT || 3000);
 const HOST = process.env.HOST || "0.0.0.0";
 const UPSTREAM_IP = process.env.NUBE_UPSTREAM_IP || "64.118.142.148";
@@ -172,6 +174,11 @@ const server = http.createServer((req, res) => {
   const urlPath = decodeURIComponent((req.url || "/").split("?")[0]);
   const method = req.method || "GET";
 
+  if (urlPath === "/internal/sync-shop-nube" && method === "POST") {
+    handleShopNubeSync(req, res);
+    return;
+  }
+
   // Local liveness for Render before upstream is reachable
   if (urlPath === "/health" || urlPath === "/api/health") {
     const opts = {
@@ -253,6 +260,58 @@ const server = http.createServer((req, res) => {
 
   proxyToNube(req, res);
 });
+
+/** POST /internal/sync-shop-nube — rsync dist/public/shop to Nube when SSH env configured */
+function handleShopNubeSync(req, res) {
+  const secret = process.env.SHOP_DEPLOY_SECRET || "";
+  const auth = req.headers.authorization || "";
+  if (!secret || auth !== `Bearer ${secret}`) {
+    sendJson(res, 401, { ok: false, error: "unauthorized" });
+    return;
+  }
+  const key = process.env.NUBE_SSH_PRIVATE_KEY || "";
+  const host = process.env.NUBE_HOST || "64.118.142.148";
+  const user = process.env.NUBE_USER || "ubuntu";
+  const appPath = process.env.NUBE_APP_PATH || "/opt/nube-sites/apps/fortune";
+  if (!key.trim()) {
+    sendJson(res, 503, { ok: false, error: "NUBE_SSH_PRIVATE_KEY not set on Render" });
+    return;
+  }
+  const keyPath = path.join("/tmp", `nube-${randomBytes(4).toString("hex")}.key`);
+  const shopSrc = path.join(STATIC_ROOT, "shop");
+  try {
+    fs.writeFileSync(keyPath, key, { mode: 0o600 });
+    execFileSync(
+      "rsync",
+      [
+        "-avz",
+        "--delete",
+        "-e",
+        `ssh -i ${keyPath} -o StrictHostKeyChecking=accept-new -o BatchMode=yes`,
+        `${shopSrc}/`,
+        `${user}@${host}:${appPath}/dist/public/shop/`,
+      ],
+      { stdio: "pipe", timeout: 120000 }
+    );
+    sendJson(res, 200, {
+      ok: true,
+      synced: shopSrc,
+      dest: `${user}@${host}:${appPath}/dist/public/shop/`,
+    });
+  } catch (e) {
+    sendJson(res, 500, {
+      ok: false,
+      error: "rsync_failed",
+      detail: String(e.message || e).slice(0, 400),
+    });
+  } finally {
+    try {
+      fs.unlinkSync(keyPath);
+    } catch {
+      /* ignore */
+    }
+  }
+}
 
 server.listen(PORT, HOST, () => {
   console.log(
