@@ -1,0 +1,269 @@
+:root {
+  --bg: #0e1114;
+  --panel: #161b20;
+  --border: rgba(212, 160, 23, 0.22);
+  --text: #e8eaed;
+  --muted: rgba(232, 234, 237, 0.62);
+  --gold: #d4a017;
+  --gold-hover: #e6b422;
+  --accent: rgba(212, 160, 23, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--gold-hover);
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 1.75rem 0 0.65rem;
+  color: var(--gold);
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0 0 1.5rem;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.panel p:last-child {
+  margin-bottom: 0;
+}
+
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+}
+
+.product-desc {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0 0 0.85rem;
+  line-height: 1.5;
+}
+
+.price {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.cta {
+  display: inline-block;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0e1114;
+  background: var(--gold);
+  border: none;
+  border-radius: 8px;
+  padding: 0.65rem 1.25rem;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.cta:hover {
+  background: var(--gold-hover);
+  text-decoration: none;
+  color: #0e1114;
+}
+
+.cta-block {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.links-row {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+}
+
+.issue {
+  border-left: 3px solid var(--gold);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+}
+
+.issue-meta {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+footer {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.sample-block {
+  margin: 1rem 0;
+}
+
+.sample-label {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.sample-text {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.9rem;
+  background: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.sample-text.before {
+  opacity: 0.85;
+}
+
+.sample-text.after {
+  border-color: rgba(212, 160, 23, 0.45);
+}
+
+ul, ol {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.92rem;
+  padding-left: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.45rem;
+}
+
+.bilingual {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .bilingual {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lang-tag {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.disclaimer {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 1.5rem;
+  line-height: 1.45;
+}
+
+.worksheet {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.85rem;
+  margin: 1rem 0;
+}
+
+.worksheet th,
+.worksheet td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.65rem;
+  text-align: left;
+}
+
+.worksheet th {
+  background: var(--accent);
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.worksheet td:last-child {
+  color: var(--muted);
+}
+
+.nav-back {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+  display: inline-block;
+}
