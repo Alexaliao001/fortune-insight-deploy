@@ -19,14 +19,13 @@ jobs:
 
       - name: Ensure shop static exists
         run: |
-          test -d dist/public/shop || test -d client/public/shop
-          if [ ! -d dist/public/shop ]; then
-            mkdir -p dist/public/shop
-            cp -a client/public/shop/. dist/public/shop/
-          fi
+          mkdir -p dist/public/shop
+          cp -a client/public/shop/. dist/public/shop/
           test -f dist/public/shop/index.html
+          ! grep -qE 'alexliao|mailto:' dist/public/shop/index.html
 
       - name: Rsync shop to Nube
+        id: rsync
         env:
           NUBE_HOST: ${{ secrets.NUBE_HOST }}
           NUBE_USER: ${{ secrets.NUBE_USER }}
@@ -35,6 +34,7 @@ jobs:
         run: |
           if [ -z "${{ secrets.NUBE_SSH_PRIVATE_KEY }}" ]; then
             echo "NUBE_SSH_PRIVATE_KEY secret not configured — skip Nube rsync"
+            echo "deployed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           printf '%s' "${{ secrets.NUBE_SSH_PRIVATE_KEY }}" > /tmp/nube_key
@@ -44,8 +44,10 @@ jobs:
           export NUBE_USER="${NUBE_USER:-ubuntu}"
           export NUBE_APP_PATH="${NUBE_APP_PATH:-/opt/nube-sites/apps/fortune}"
           bash scripts/deploy_shop_nube.sh
+          echo "deployed=true" >> "$GITHUB_OUTPUT"
 
       - name: Verify fortunesite.one shop
+        if: steps.rsync.outputs.deployed == 'true'
         run: |
           sleep 5
           body=$(curl -fsS https://fortunesite.one/shop/ || true)
