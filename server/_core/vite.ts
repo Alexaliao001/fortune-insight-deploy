@@ -6,13 +6,35 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 
+/** Pretty URLs for static HTML under client/public (no SPA). */
+const PUBLIC_HTML_PRETTY_PATHS: Record<string, string> = {
+  "/free-tarot": "/free-tarot.html",
+  "/free-tarot/": "/free-tarot.html",
+  "/shop": "/shop/index.html",
+  "/shop/": "/shop/index.html",
+  "/shop/listing-rewrite": "/shop/listing-rewrite.html",
+  "/shop/listing-rewrite/": "/shop/listing-rewrite.html",
+  "/shop/s/monday-mood": "/shop/s/monday-mood.html",
+  "/shop/s/monday-mood/": "/shop/s/monday-mood.html",
+  "/shop/s/focus-todo": "/shop/s/focus-todo.html",
+  "/shop/s/focus-todo/": "/shop/s/focus-todo.html",
+  "/shop/d/k7m2-ship": "/shop/d/k7m2-ship.html",
+  "/shop/d/k7m2-ship/": "/shop/d/k7m2-ship.html",
+};
+
 export function registerFreeTarotPrettyPath(app: Express): void {
+  registerPublicHtmlPrettyPaths(app);
+}
+
+export function registerPublicHtmlPrettyPaths(app: Express): void {
   app.use((req, _res, next) => {
-    if (
-      (req.method === "GET" || req.method === "HEAD") &&
-      (req.path === "/free-tarot" || req.path === "/free-tarot/")
-    ) {
-      req.url = "/free-tarot.html";
+    if (req.method !== "GET" && req.method !== "HEAD") {
+      next();
+      return;
+    }
+    const target = PUBLIC_HTML_PRETTY_PATHS[req.path];
+    if (target) {
+      req.url = target;
     }
     next();
   });
