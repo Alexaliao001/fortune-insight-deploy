@@ -30,6 +30,7 @@ const MIME: Record<string, string> = {
   ".json": "application/json; charset=utf-8",
   ".png": "image/png",
   ".svg": "image/svg+xml",
+  ".xml": "application/xml; charset=utf-8",
 };
 
 /** Public roots that may contain a shop/ subdirectory. */

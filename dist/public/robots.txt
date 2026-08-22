@@ -5,3 +5,4 @@ Disallow: /profile
 Disallow: /orders
 
 Sitemap: https://fortunesite.one/sitemap.xml
+Sitemap: https://fortune-insight.onrender.com/shop/sitemap.xml
