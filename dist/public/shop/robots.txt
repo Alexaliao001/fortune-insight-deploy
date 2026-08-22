@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /shop/
+Disallow: /shop/d/
+
+Sitemap: https://fortune-insight.onrender.com/shop/sitemap.xml
