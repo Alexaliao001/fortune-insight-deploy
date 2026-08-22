@@ -1,0 +1,28 @@
+# Fortune Insight shop
+
+> English + Chinese App Store listing rewrite, weekly indie-iOS store intel, and a Ship-from-Asia ops pack. Seller: Fortune Insight, LLC.
+
+The live shop is https://fortune-insight.onrender.com/shop/
+
+## Products
+
+- AppLocale: one-time $79 rewrite of one live App Store listing into English and Chinese (name, subtitle, keywords, promo, description, screenshot overlay lines, waste table). Paste into App Store Connect. No icon change. No ranking promise.
+- Storefront Brief: $12/month weekly Chinese briefing on indie App Store changes.
+- Ship from Asia pack: $29 one-time ops notes for shipping from Asia.
+
+## Key pages
+
+- [Shop](https://fortune-insight.onrender.com/shop/): all three offers
+- [AppLocale (EN)](https://fortune-insight.onrender.com/shop/listing-rewrite.html): English product page
+- [Monday Mood sample](https://fortune-insight.onrender.com/shop/s/monday-mood.html)
+- [Focus To-Do sample](https://fortune-insight.onrender.com/shop/s/focus-todo.html)
+- [Tide sample](https://fortune-insight.onrender.com/shop/s/tide.html)
+- [Sitemap](https://fortune-insight.onrender.com/shop/sitemap.xml)
+
+## Checkout
+
+- Storefront Brief $12/mo: https://buy.stripe.com/6oUcMZ17IbCk4X3dmle7m02
+- Ship from Asia $29: https://buy.stripe.com/8x25kx5nYeOw75b1DDe7m03
+- AppLocale $79: https://buy.stripe.com/eVq8wJ5nYgWE1KRgyxe7m04
+
+After payment, use the email on the Stripe receipt. Do not look for a personal inbox on these pages.
