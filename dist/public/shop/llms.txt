@@ -3,16 +3,18 @@
 > English + Chinese App Store listing rewrite, weekly indie-iOS store intel, and a Ship-from-Asia ops pack. Seller: Fortune Insight, LLC.
 
 The live shop is https://fortune-insight.onrender.com/shop/
+Free sample of Storefront Brief is also on Telegram: https://t.me/storefrontbrief
 
 ## Products
 
 - AppLocale: one-time $79 rewrite of one live App Store listing into English and Chinese (name, subtitle, keywords, promo, description, screenshot overlay lines, waste table). Paste into App Store Connect. No icon change. No ranking promise.
-- Storefront Brief: $12/month weekly Chinese briefing on indie App Store changes.
+- Storefront Brief: $12/month weekly Chinese briefing on indie App Store changes. Free sample: https://t.me/storefrontbrief
 - Ship from Asia pack: $29 one-time ops notes for shipping from Asia.
 
 ## Key pages
 
 - [Shop](https://fortune-insight.onrender.com/shop/): all three offers
+- [Storefront Brief on Telegram](https://t.me/storefrontbrief): free sample + weekly notes
 - [Storefront Brief issue 0 (ZH sample)](https://fortune-insight.onrender.com/shop/brief/issue-000.html)
 - [AppLocale (EN)](https://fortune-insight.onrender.com/shop/listing-rewrite.html): English product page
 - [AppLocale (ZH)](https://fortune-insight.onrender.com/shop/zh-listing.html): Chinese product page
