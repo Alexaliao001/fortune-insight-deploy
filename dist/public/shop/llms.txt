@@ -22,6 +22,7 @@ The live shop is https://fortune-insight.onrender.com/shop/
 - [Focus To-Do sample](https://fortune-insight.onrender.com/shop/s/focus-todo.html)
 - [Tide sample](https://fortune-insight.onrender.com/shop/s/tide.html)
 - [Sitemap](https://fortune-insight.onrender.com/shop/sitemap.xml)
+- [RSS feed](https://fortune-insight.onrender.com/shop/feed.xml)
 
 ## Checkout
 
