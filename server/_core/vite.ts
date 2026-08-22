@@ -23,6 +23,8 @@ const PUBLIC_HTML_PRETTY_PATHS: Record<string, string> = {
   "/shop/d/k7m2-ship/": "/shop/d/k7m2-ship.html",
   "/shop/d/applocale-thanks": "/shop/d/applocale-thanks.html",
   "/shop/d/applocale-thanks/": "/shop/d/applocale-thanks.html",
+  "/shop/d/brief-thanks": "/shop/d/brief-thanks.html",
+  "/shop/d/brief-thanks/": "/shop/d/brief-thanks.html",
 };
 
 export function registerFreeTarotPrettyPath(app: Express): void {
