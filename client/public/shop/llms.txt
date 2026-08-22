@@ -15,6 +15,7 @@ The live shop is https://fortune-insight.onrender.com/shop/
 - [Shop](https://fortune-insight.onrender.com/shop/): all three offers
 - [Storefront Brief issue 0 (ZH sample)](https://fortune-insight.onrender.com/shop/brief/issue-000.html)
 - [AppLocale (EN)](https://fortune-insight.onrender.com/shop/listing-rewrite.html): English product page
+- [AppLocale (ZH)](https://fortune-insight.onrender.com/shop/zh-listing.html): Chinese product page
 - [App Store listing guide (ZH)](https://fortune-insight.onrender.com/shop/p/app-store-listing-zh-en-2026.html)
 - [Ship from Asia](https://fortune-insight.onrender.com/shop/asia.html): product listing (Zearches-safe URL)
 - [Ship from Asia (EN)](https://fortune-insight.onrender.com/shop/ship-from-asia.html): English product page
