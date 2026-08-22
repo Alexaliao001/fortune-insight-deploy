@@ -267,3 +267,10 @@ li {
   margin-bottom: 1.25rem;
   display: inline-block;
 }
+
+.lang-switch {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
