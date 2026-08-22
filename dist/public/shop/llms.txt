@@ -14,6 +14,7 @@ The live shop is https://fortune-insight.onrender.com/shop/
 
 - [Shop](https://fortune-insight.onrender.com/shop/): all three offers
 - [AppLocale (EN)](https://fortune-insight.onrender.com/shop/listing-rewrite.html): English product page
+- [App Store listing guide (ZH)](https://fortune-insight.onrender.com/shop/p/app-store-listing-zh-en-2026.html)
 - [Ship from Asia](https://fortune-insight.onrender.com/shop/ship-from-asia.html)
 - [Asia → US App Store guide (ZH)](https://fortune-insight.onrender.com/shop/p/asia-us-app-store-2026.html)
 - [Ship iOS from Asia guide (EN)](https://fortune-insight.onrender.com/shop/p/ship-ios-from-asia-2026.html)
