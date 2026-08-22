@@ -124,7 +124,26 @@ export default function Footer() {
         </div>
 
         <div className="mt-6 text-center text-xs text-muted-foreground font-light">
-          <p>{t.footer.copyright}</p>
+          <p className="flex flex-wrap justify-center gap-x-2 gap-y-1 opacity-70">
+            <a
+              href="https://t.me/storefrontbrief"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#d4a843] transition-colors duration-300"
+            >
+              Storefront Brief — weekly App Store intel (Telegram)
+            </a>
+            <span className="opacity-40">·</span>
+            <a
+              href="https://buy.stripe.com/6oUcMZ17IbCk4X3dmle7m02"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#d4a843] transition-colors duration-300"
+            >
+              Full brief $12/mo
+            </a>
+          </p>
+          <p className="mt-3">{t.footer.copyright}</p>
           <p className="mt-1 opacity-60">
             {language === "zh"
               ? "本平台提供的命理分析仅供参考和娱乐，不构成任何专业建议。"
