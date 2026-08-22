@@ -61,6 +61,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://fortune-insight.onrender.com/shop/s/ticktick.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://fortune-insight.onrender.com/shop/llms.txt</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>weekly</changefreq>
