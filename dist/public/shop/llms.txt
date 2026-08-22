@@ -1,19 +1,21 @@
 # Fortune Insight shop
 
-> English + Chinese App Store listing rewrite, weekly indie-iOS store intel, and a Ship-from-Asia ops pack. Seller: Fortune Insight, LLC.
+> English-first shop for indie iOS teams: App Store listing rewrites, weekly Asia/China App Store notes, and a Ship-from-Asia ops pack. Seller: Fortune Insight, LLC.
 
-The live shop is https://fortune-insight.onrender.com/shop/
+The live shop is https://fortune-insight.onrender.com/shop/ (English homepage).
+Chinese storefront: https://fortune-insight.onrender.com/shop/zh.html
 Free sample of Storefront Brief is also on Telegram: https://t.me/storefrontbrief
 
 ## Products
 
-- AppLocale: one-time $79 rewrite of one live App Store listing into English and Chinese (name, subtitle, keywords, promo, description, screenshot overlay lines, waste table). Paste into App Store Connect. No icon change. No ranking promise.
-- Storefront Brief: $12/month weekly Chinese briefing on indie App Store changes. Free sample: https://t.me/storefrontbrief
-- Ship from Asia pack: $29 one-time ops notes for shipping from Asia.
+- AppLocale: one-time $79 rewrite of one live App Store listing into English and Chinese (title, subtitle, keywords, description). Paste into App Store Connect. No ranking promise. After checkout, reply from the Stripe receipt with App Store URL and existing copy.
+- Storefront Brief: $12/month weekly notes on Asia/China App Store changes for teams shipping iOS internationally. Operator intel — not trading signals. Free sample: https://t.me/storefrontbrief
+- Ship from Asia pack: $29 one-time operator pack for shipping iOS from Asia.
 
 ## Key pages
 
-- [Shop](https://fortune-insight.onrender.com/shop/): all three offers
+- [Shop (EN)](https://fortune-insight.onrender.com/shop/): English homepage — all three offers
+- [Shop (ZH)](https://fortune-insight.onrender.com/shop/zh.html): Chinese storefront
 - [Storefront Brief on Telegram](https://t.me/storefrontbrief): free sample + weekly notes
 - [Storefront Brief issue 0 (ZH sample)](https://fortune-insight.onrender.com/shop/brief/issue-000.html)
 - [AppLocale (EN)](https://fortune-insight.onrender.com/shop/listing-rewrite.html): English product page
@@ -32,8 +34,8 @@ Free sample of Storefront Brief is also on Telegram: https://t.me/storefrontbrie
 
 ## Checkout
 
+- AppLocale $79: https://buy.stripe.com/eVq8wJ5nYgWE1KRgyxe7m04
 - Storefront Brief $12/mo: https://buy.stripe.com/6oUcMZ17IbCk4X3dmle7m02
 - Ship from Asia $29: https://buy.stripe.com/8x25kx5nYeOw75b1DDe7m03
-- AppLocale $79: https://buy.stripe.com/eVq8wJ5nYgWE1KRgyxe7m04
 
 After payment, use the email on the Stripe receipt. Do not look for a personal inbox on these pages.
