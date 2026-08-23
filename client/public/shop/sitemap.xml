@@ -140,6 +140,12 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://fortune-insight.onrender.com/shop/brief/feed.xml</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://fortune-insight.onrender.com/shop/robots.txt</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
