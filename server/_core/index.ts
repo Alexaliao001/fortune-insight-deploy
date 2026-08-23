@@ -14,7 +14,10 @@ import { ogMetaMiddleware } from "../og-meta";
 import { warnMissingEnv } from "./env";
 import { securityHeadersMiddleware, trpcPrefixGuard } from "./securityHeaders";
 import { registerFullServerRoutes } from "../fullServerRoutes";
-import { registerShopStaticRoutes } from "../shopStatic";
+import {
+  registerShopBriefArchiveRoute,
+  registerShopStaticRoutes,
+} from "../shopStatic";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -89,6 +92,7 @@ async function startServer() {
   app.use(ogMetaMiddleware);
 
   // Shop static (local files) or Render edge proxy — before SPA fallback
+  registerShopBriefArchiveRoute(app);
   registerShopStaticRoutes(app);
 
   // development mode uses Vite, production mode uses static files

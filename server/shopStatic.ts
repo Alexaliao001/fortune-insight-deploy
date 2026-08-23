@@ -1,7 +1,7 @@
 import fs from "fs";
 import https from "https";
 import path from "path";
-import type { Express, Request, Response } from "express";
+import type { Express, NextFunction, Request, Response } from "express";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -36,12 +36,18 @@ const MIME: Record<string, string> = {
   ".txt": "text/plain; charset=utf-8",
 };
 
+const SHOP_BRIEF_ARCHIVE_PATHS = new Set(["/shop/brief", "/shop/brief/"]);
+const SHOP_BRIEF_ARCHIVE_FILE = "/shop/brief/index.html";
+
 /** Public roots that may contain a shop/ subdirectory. */
 function publicRoots(): string[] {
+  const cwd = process.cwd();
   return [
     path.resolve(__dirname, "public"),
     path.resolve(__dirname, "..", "dist", "public"),
     path.resolve(__dirname, "..", "client", "public"),
+    path.resolve(cwd, "dist", "public"),
+    path.resolve(cwd, "public"),
   ];
 }
 
@@ -100,6 +106,60 @@ function sendShopFile(res: Response, file: string): void {
     "X-Fortune-Shop": "local",
   });
   res.sendFile(file);
+}
+
+function resolveShopBriefArchiveFile(): string | null {
+  return (
+    resolveShopFile(SHOP_BRIEF_ARCHIVE_FILE) ??
+    resolveShopFile("/shop/brief/") ??
+    resolveShopFile("/shop/brief")
+  );
+}
+
+function sendShopBriefArchive(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void {
+  const method = req.method || "GET";
+  if (method !== "GET" && method !== "HEAD") {
+    next();
+    return;
+  }
+
+  const urlPath = decodeURIComponent((req.originalUrl || req.url || "/").split("?")[0]);
+  if (!SHOP_BRIEF_ARCHIVE_PATHS.has(urlPath)) {
+    next();
+    return;
+  }
+
+  const file = resolveShopBriefArchiveFile();
+  if (!file) {
+    next();
+    return;
+  }
+
+  if (method === "HEAD") {
+    res.set({
+      "Content-Type": MIME[".html"],
+      "X-Fortune-Shop": "local",
+    });
+    res.status(200).end();
+    return;
+  }
+
+  sendShopFile(res, file);
+}
+
+/**
+ * Dedicated handler for Storefront Brief English archive pretty URLs.
+ * Register before registerShopStaticRoutes and SPA fallback.
+ */
+export function registerShopBriefArchiveRoute(app: Express): void {
+  for (const routePath of SHOP_BRIEF_ARCHIVE_PATHS) {
+    app.get(routePath, sendShopBriefArchive);
+    app.head(routePath, sendShopBriefArchive);
+  }
 }
 
 function proxyShopFromRender(req: Request, res: Response): void {
