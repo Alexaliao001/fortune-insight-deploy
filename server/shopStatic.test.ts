@@ -32,6 +32,7 @@ describe("shopStatic", () => {
     expect(resolveShopRelative("/shop/listing-rewrite")).toBe(
       "/shop/listing-rewrite.html"
     );
+    expect(resolveShopRelative("/shop/brief/")).toBe("/shop/brief/index.html");
   });
 
   it("shop index file exists in repo", () => {
