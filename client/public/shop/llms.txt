@@ -16,7 +16,7 @@ Free sample of Storefront Brief is also on Telegram: https://t.me/storefrontbrie
 
 - [Shop (EN)](https://fortune-insight.onrender.com/shop/): English homepage — all three offers
 - [Shop (ZH)](https://fortune-insight.onrender.com/shop/zh.html): Chinese storefront
-- [Storefront Brief English archive](https://fortune-insight.onrender.com/shop/brief/): crawlable index of English issues
+- [Storefront Brief English archive](https://fortune-insight.onrender.com/shop/brief/index.html): crawlable index of English issues
 - [Storefront Brief on Telegram](https://t.me/storefrontbrief): free sample + weekly notes
 - [Storefront Brief issue 1 (EN sample)](https://fortune-insight.onrender.com/shop/brief/issue-001-en.html): Sonar ASO launch offer ends 31 Aug 2026
 - [Storefront Brief issue 0 (EN sample)](https://fortune-insight.onrender.com/shop/brief/issue-000-en.html)
