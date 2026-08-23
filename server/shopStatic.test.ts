@@ -1,7 +1,13 @@
 import { describe, it, expect } from "vitest";
+import express from "express";
+import request from "supertest";
 import fs from "fs";
-import path from "path";
-import { isShopPath, resolveShopFile, resolveShopRelative } from "./shopStatic";
+import {
+  isShopPath,
+  registerShopBriefArchiveRoute,
+  resolveShopFile,
+  resolveShopRelative,
+} from "./shopStatic";
 
 describe("shopStatic", () => {
   it("isShopPath matches /shop routes", () => {
@@ -37,5 +43,21 @@ describe("shopStatic", () => {
       const html = fs.readFileSync(file, "utf8");
       expect(html).toContain("Storefront Brief");
     }
+  });
+
+  it("registerShopBriefArchiveRoute serves pretty archive URLs", async () => {
+    const app = express();
+    registerShopBriefArchiveRoute(app);
+
+    for (const routePath of ["/shop/brief", "/shop/brief/"]) {
+      const response = await request(app).get(routePath);
+      expect(response.status).toBe(200);
+      expect(response.headers["content-type"]).toContain("text/html");
+      expect(response.text).toContain("English issues");
+      expect(response.headers["x-fortune-shop"]).toBe("local");
+    }
+
+    const head = await request(app).head("/shop/brief/");
+    expect(head.status).toBe(200);
   });
 });
