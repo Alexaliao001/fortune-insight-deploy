@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Storefront Brief</title>
+    <link>https://fortune-insight.onrender.com/shop/</link>
+    <description>Weekly App Store policy and fee notes for indie iOS teams shipping internationally. Seller: Fortune Insight, LLC.</description>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Aug 2026 04:07:08 +0000</lastBuildDate>
+    <item>
+      <title>Storefront Brief issue 1: Sonar ASO launch offer ends 31 Aug</title>
+      <link>https://fortune-insight.onrender.com/shop/brief/issue-001-en.html</link>
+      <guid isPermaLink="true">https://fortune-insight.onrender.com/shop/brief/issue-001-en.html</guid>
+      <description>English sample: Sonar ASO launch-offer clock — Indie annual $189/yr ($15.75/mo) vs $19/mo monthly, ends 31 Aug 2026. Operator intel, not an ASO review. Buy/Checkout: https://buy.stripe.com/6oUcMZ17IbCk4X3dmle7m02</description>
+      <pubDate>Sun, 23 Aug 2026 02:48:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Storefront Brief issue 0: Apple changes EU App Store fees on 1 Oct</title>
+      <link>https://fortune-insight.onrender.com/shop/brief/issue-000-en.html</link>
+      <guid isPermaLink="true">https://fortune-insight.onrender.com/shop/brief/issue-000-en.html</guid>
+      <description>English sample: Apple unified EU App Store terms take effect 2026-10-01. Fee worksheet for indie teams. Buy/Checkout: https://buy.stripe.com/6oUcMZ17IbCk4X3dmle7m02</description>
+      <pubDate>Sat, 22 Aug 2026 14:48:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
