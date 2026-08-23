@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
-import { isShopPath } from "../shopStatic";
+import { isShopPath, resolveShopFile } from "../shopStatic";
 
 /** Pretty URLs for static HTML under client/public (no SPA). */
 const PUBLIC_HTML_PRETTY_PATHS: Record<string, string> = {
@@ -280,6 +280,15 @@ export function serveStatic(app: Express) {
 
     const pathname = getRequestPathname(req);
     if (isShopPath(pathname)) {
+      const shopFile = resolveShopFile(pathname);
+      if (shopFile) {
+        res.set({
+          "Cache-Control": "public, max-age=3600",
+          "X-Content-Type-Options": "nosniff",
+        });
+        res.sendFile(shopFile);
+        return;
+      }
       res.status(404).type("text/plain").send("shop page not found");
       return;
     }
