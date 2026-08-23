@@ -23,6 +23,7 @@ Free sample of Storefront Brief is also on Telegram: https://t.me/storefrontbrie
 - [AppLocale (ZH)](https://fortune-insight.onrender.com/shop/zh-listing.html): Chinese product page
 - [App Store listing guide (ZH)](https://fortune-insight.onrender.com/shop/p/app-store-listing-zh-en-2026.html)
 - [App Store listing rewrite guide (EN)](https://fortune-insight.onrender.com/shop/p/app-store-listing-rewrite-en-zh.html)
+- [ASO for Chinese apps on US App Store (EN)](https://fortune-insight.onrender.com/shop/p/aso-chinese-english.html): title vs subtitle vs keyword field; Google Translate pitfalls
 - [Ship from Asia](https://fortune-insight.onrender.com/shop/asia.html): product listing (Zearches-safe URL)
 - [Ship from Asia (EN)](https://fortune-insight.onrender.com/shop/ship-from-asia.html): English product page
 - [Asia → US App Store guide (ZH)](https://fortune-insight.onrender.com/shop/p/asia-us-app-store-2026.html)
