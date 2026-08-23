@@ -40,8 +40,8 @@ const MIME: Record<string, string> = {
 function publicRoots(): string[] {
   return [
     path.resolve(__dirname, "public"),
-    path.resolve(__dirname, "..", "..", "dist", "public"),
-    path.resolve(__dirname, "..", "..", "client", "public"),
+    path.resolve(__dirname, "..", "dist", "public"),
+    path.resolve(__dirname, "..", "client", "public"),
   ];
 }
 
@@ -53,14 +53,42 @@ export function resolveShopRelative(urlPath: string): string {
   return SHOP_PRETTY[urlPath] ?? urlPath;
 }
 
-function resolveShopFile(urlPath: string): string | null {
-  const rel = resolveShopRelative(urlPath);
-  for (const root of publicRoots()) {
-    const file = path.normalize(path.join(root, rel.replace(/^\//, "")));
-    if (!file.startsWith(root)) continue;
-    if (fs.existsSync(file) && fs.statSync(file).isFile()) return file;
+function shopRelativeCandidates(urlPath: string): string[] {
+  const mapped = resolveShopRelative(urlPath);
+  const candidates = [mapped];
+  if (mapped === urlPath) {
+    if (urlPath.endsWith("/")) {
+      candidates.push(`${urlPath}index.html`);
+    } else if (!path.extname(urlPath)) {
+      candidates.push(`${urlPath}/index.html`);
+    }
+  }
+  return candidates;
+}
+
+export function resolveShopFile(urlPath: string): string | null {
+  for (const rel of shopRelativeCandidates(urlPath)) {
+    for (const root of publicRoots()) {
+      const file = path.normalize(path.join(root, rel.replace(/^\//, "")));
+      if (!file.startsWith(root)) continue;
+      if (fs.existsSync(file) && fs.statSync(file).isFile()) return file;
+    }
   }
   return null;
+}
+
+function shopEdgeOrigin(): string {
+  return process.env.SHOP_EDGE_URL?.replace(/\/$/, "") || "https://fortune-insight.onrender.com";
+}
+
+function isShopEdgeSameHost(req: Request): boolean {
+  const host = (req.headers.host || "").split(":")[0].toLowerCase();
+  if (!host) return false;
+  try {
+    return new URL(shopEdgeOrigin()).hostname.toLowerCase() === host;
+  } catch {
+    return false;
+  }
 }
 
 function sendShopFile(res: Response, file: string): void {
@@ -75,9 +103,7 @@ function sendShopFile(res: Response, file: string): void {
 }
 
 function proxyShopFromRender(req: Request, res: Response): void {
-  const edge =
-    process.env.SHOP_EDGE_URL?.replace(/\/$/, "") ||
-    "https://fortune-insight.onrender.com";
+  const edge = shopEdgeOrigin();
   const target = `${edge}${req.originalUrl || req.url || "/shop/"}`;
 
   https
@@ -131,6 +157,11 @@ export function registerShopStaticRoutes(app: Express): void {
 
     if (method === "HEAD") {
       res.status(404).end();
+      return;
+    }
+    // On Render (same host as SHOP_EDGE_URL), fall through to express.static pretty URLs.
+    if (isShopEdgeSameHost(req)) {
+      next();
       return;
     }
     proxyShopFromRender(req, res);
