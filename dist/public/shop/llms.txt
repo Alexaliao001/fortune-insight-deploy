@@ -27,11 +27,11 @@ Free sample of Storefront Brief is also on Telegram: https://t.me/storefrontbrie
 - [App Store listing guide (ZH)](https://fortune-insight.onrender.com/shop/p/app-store-listing-zh-en-2026.html)
 - [App Store listing translation (EN)](https://fortune-insight.onrender.com/shop/p/app-store-listing-translation.html): Chinese listing → faithful en-US store copy with US keyword packing; human rewrite, not machine dump; $79, 24-hour delivery
 - [App Store localization service (EN)](https://fortune-insight.onrender.com/shop/p/app-store-localization-service.html): commercial service page — en-US + zh-Hans listing rewrite, $79, 24-hour delivery
-- [iOS App Store localization for China (EN)](https://fortune-insight.onrender.com/shop/p/ios-app-store-localization-china.html): US/EU teams entering China storefront — zh-Hans subtitle, keyword field, description; $79, 24-hour delivery
 - [App Store listing rewrite guide (EN)](https://fortune-insight.onrender.com/shop/p/app-store-listing-rewrite-en-zh.html)
 - [ASO for Chinese apps on US App Store (EN)](https://fortune-insight.onrender.com/shop/p/aso-chinese-english.html): title vs subtitle vs keyword field; Google Translate pitfalls
 - [Screenshot overlays and promotional text (EN)](https://fortune-insight.onrender.com/shop/p/screenshot-overlay-en-zh.html): overlay copy vs title/subtitle/keywords; 170-char promo text; Google Translate on screenshots
 - [App Store Connect localization (EN)](https://fortune-insight.onrender.com/shop/p/app-store-connect-localization-en.html): add en-US localization vs switching primary locale; per-locale title, subtitle, keywords, description, screenshots
+- [Localize an iOS listing for China (EN)](https://fortune-insight.onrender.com/shop/p/ios-app-store-localization-china.html): zh-Hans subtitle, keywords, and description for the China storefront; paste-ready Connect fields; $79 AppLocale, 24-hour delivery
 - [Ship from Asia](https://fortune-insight.onrender.com/shop/asia.html): product listing (Zearches-safe URL)
 - [Ship from Asia (EN)](https://fortune-insight.onrender.com/shop/ship-from-asia.html): English product page with FAQ
 - [Asia → US App Store guide (ZH)](https://fortune-insight.onrender.com/shop/p/asia-us-app-store-2026.html)
