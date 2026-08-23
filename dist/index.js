@@ -33,6 +33,12 @@ const SHOP_PRETTY = {
   "/shop/s/focus-todo/": "/shop/s/focus-todo.html",
   "/shop/d/k7m2-ship": "/shop/d/k7m2-ship.html",
   "/shop/d/k7m2-ship/": "/shop/d/k7m2-ship.html",
+  "/shop/d/applocale-thanks": "/shop/d/applocale-thanks.html",
+  "/shop/d/applocale-thanks/": "/shop/d/applocale-thanks.html",
+  "/shop/d/brief-thanks": "/shop/d/brief-thanks.html",
+  "/shop/d/brief-thanks/": "/shop/d/brief-thanks.html",
+  "/shop/brief": "/shop/brief/index.html",
+  "/shop/brief/": "/shop/brief/index.html",
 };
 
 const MIME = {
@@ -96,12 +102,30 @@ function isShopPath(urlPath) {
   return urlPath === "/shop" || urlPath.startsWith("/shop/");
 }
 
-function resolveShopFile(urlPath) {
+function shopRelativeCandidates(urlPath) {
   const mapped = SHOP_PRETTY[urlPath];
-  const rel = mapped || urlPath;
-  const file = path.normalize(path.join(STATIC_ROOT, rel));
-  if (!file.startsWith(STATIC_ROOT)) return null;
-  return file;
+  const candidates = mapped ? [mapped] : [urlPath];
+  if (!mapped) {
+    if (urlPath.endsWith("/")) {
+      candidates.push(`${urlPath}index.html`);
+    } else if (!path.extname(urlPath)) {
+      candidates.push(`${urlPath}/index.html`);
+    }
+  }
+  return candidates;
+}
+
+function resolveShopFile(urlPath) {
+  for (const rel of shopRelativeCandidates(urlPath)) {
+    const file = path.normalize(path.join(STATIC_ROOT, rel.replace(/^\//, "")));
+    if (!file.startsWith(STATIC_ROOT)) continue;
+    try {
+      if (fs.statSync(file).isFile()) return file;
+    } catch {
+      /* try next candidate */
+    }
+  }
+  return null;
 }
 
 function serveShopStatic(req, res, urlPath) {
@@ -243,7 +267,7 @@ const server = http.createServer((req, res) => {
   if ((method === "GET" || method === "HEAD") && isShopPath(urlPath)) {
     if (method === "HEAD") {
       const file = resolveShopFile(urlPath);
-      if (!file || !fs.existsSync(file)) {
+      if (!file) {
         res.writeHead(404);
         res.end();
         return;
