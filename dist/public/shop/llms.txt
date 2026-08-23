@@ -28,7 +28,7 @@ Free sample of Storefront Brief is also on Telegram: https://t.me/storefrontbrie
 - [Screenshot overlays and promotional text (EN)](https://fortune-insight.onrender.com/shop/p/screenshot-overlay-en-zh.html): overlay copy vs title/subtitle/keywords; 170-char promo text; Google Translate on screenshots
 - [App Store Connect localization (EN)](https://fortune-insight.onrender.com/shop/p/app-store-connect-localization-en.html): add en-US localization vs switching primary locale; per-locale title, subtitle, keywords, description, screenshots
 - [Ship from Asia](https://fortune-insight.onrender.com/shop/asia.html): product listing (Zearches-safe URL)
-- [Ship from Asia (EN)](https://fortune-insight.onrender.com/shop/ship-from-asia.html): English product page
+- [Ship from Asia (EN)](https://fortune-insight.onrender.com/shop/ship-from-asia.html): English product page with FAQ
 - [Asia → US App Store guide (ZH)](https://fortune-insight.onrender.com/shop/p/asia-us-app-store-2026.html)
 - [Ship iOS from Asia guide (EN)](https://fortune-insight.onrender.com/shop/p/ship-ios-from-asia-2026.html)
 - [Monday Mood sample](https://fortune-insight.onrender.com/shop/s/monday-mood.html)
