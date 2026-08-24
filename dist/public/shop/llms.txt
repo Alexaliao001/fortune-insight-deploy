@@ -55,6 +55,7 @@ Free sample of Storefront Brief is also on Telegram: https://t.me/storefrontbrie
 - [Ship iOS from Asia guide (EN)](https://fortune-insight.onrender.com/shop/p/ship-ios-from-asia-2026.html)
 - [Submit iOS app to US App Store from Asia (EN)](https://fortune-insight.onrender.com/shop/p/submit-ios-app-us-from-asia.html): honest checklist — Developer account, en-US listing, tax/banking overview; $29 Ship from Asia ops pack
 - [Apple Developer Program from Asia (EN)](https://fortune-insight.onrender.com/shop/p/apple-developer-program-from-asia.html): enrollment blockers for US/EU-facing indie apps built in Asia — individual vs organization, D-U-N-S, entity country, Paid Apps Agreement and tax orientation; $29 Ship from Asia ops pack, 24-hour delivery; not US company formation or AppLocale listing work
+- [iOS App Store policy brief (EN)](https://fortune-insight.onrender.com/shop/p/ios-app-store-policy-brief.html): weekly Storefront Brief landing page for US/EU indie iOS developers — EU DMA alternative distribution, storefront fee changes, Connect reminders; $12/month; free samples issue-003-en and issue-002-en; not legal advice, not AppLocale listing rewrite, not Ship from Asia enrollment
 - [Monday Mood sample](https://fortune-insight.onrender.com/shop/s/monday-mood.html)
 - [Focus To-Do sample](https://fortune-insight.onrender.com/shop/s/focus-todo.html)
 - [Tide sample](https://fortune-insight.onrender.com/shop/s/tide.html)
