@@ -55,6 +55,7 @@ Free sample of Storefront Brief is also on Telegram: https://t.me/storefrontbrie
 - [Tide sample](https://fortune-insight.onrender.com/shop/s/tide.html)
 - [TickTick sample](https://fortune-insight.onrender.com/shop/s/ticktick.html)
 - [Sitemap](https://fortune-insight.onrender.com/shop/sitemap.xml)
+- [Storefront Brief RSS](https://fortune-insight.onrender.com/shop/brief/feed.xml): dedicated RSS 2.0 for the English weekly; not the mixed shop feed
 - [RSS feed](https://fortune-insight.onrender.com/shop/feed.xml)
 
 ## Checkout
