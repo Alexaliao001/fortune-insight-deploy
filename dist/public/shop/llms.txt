@@ -9,7 +9,7 @@ Free sample of Storefront Brief is also on Telegram: https://t.me/storefrontbrie
 ## Products
 
 - AppLocale: one-time $79 rewrite of one live App Store listing into English and Chinese (title, subtitle, keywords, description). Paste into App Store Connect. No ranking promise. After checkout, reply from the Stripe receipt with App Store URL and existing copy.
-- Storefront Brief: $12/month weekly App Store policy and fee notes for indie iOS teams shipping internationally (EU, US, Asia). Operator intel — not trading signals. Free English samples: https://fortune-insight.onrender.com/shop/brief/issue-002-en.html · https://fortune-insight.onrender.com/shop/brief/issue-001-en.html · https://fortune-insight.onrender.com/shop/brief/issue-000-en.html · Telegram: https://t.me/storefrontbrief
+- Storefront Brief: $12/month weekly App Store policy and fee notes for indie iOS teams shipping internationally (EU, US, Asia). Operator intel — not trading signals. Free samples: https://fortune-insight.onrender.com/shop/brief/issue-003.html (ZH) · https://fortune-insight.onrender.com/shop/brief/issue-002-en.html · https://fortune-insight.onrender.com/shop/brief/issue-001-en.html · https://fortune-insight.onrender.com/shop/brief/issue-000-en.html · https://fortune-insight.onrender.com/shop/brief/issue-000.html · Telegram: https://t.me/storefrontbrief
 - Ship from Asia pack: $29 one-time operator pack for shipping iOS from Asia.
 
 ## Key pages
@@ -18,6 +18,7 @@ Free sample of Storefront Brief is also on Telegram: https://t.me/storefrontbrie
 - [Shop (ZH)](https://fortune-insight.onrender.com/shop/zh.html): Chinese storefront
 - [Storefront Brief English archive](https://fortune-insight.onrender.com/shop/brief/index.html): crawlable index of English issues
 - [Storefront Brief on Telegram](https://t.me/storefrontbrief): free sample + weekly notes
+- [Storefront Brief issue 3 (ZH)](https://fortune-insight.onrender.com/shop/brief/issue-003.html): Brazil CADE Monday deadline — Epic 9-step install vs EU 6 steps; Apple Brazil 5% CTC on off-store digital goods
 - [Storefront Brief issue 2 (EN)](https://fortune-insight.onrender.com/shop/brief/issue-002-en.html): Apple US link-out court proposal — 15% is Apple's ask, not a published rate
 - [Storefront Brief issue 1 (EN sample)](https://fortune-insight.onrender.com/shop/brief/issue-001-en.html): Sonar ASO launch offer ends 31 Aug 2026
 - [Storefront Brief issue 0 (EN sample)](https://fortune-insight.onrender.com/shop/brief/issue-000-en.html)
