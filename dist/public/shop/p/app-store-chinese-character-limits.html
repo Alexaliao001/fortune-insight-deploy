@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>App Store Chinese Character Limits — zh-Hans Title 30 Characters &amp; Connect Field Caps | AppLocale</title>
+  <meta name="description" content="Western indie iOS developers hit App Store Connect character limits when pasting Simplified or Traditional Chinese — CJK is not 1:1 with English word counts. Field caps table (name ~30, subtitle ~30, keywords ~100, promo ~170), overflow examples, and why ChatGPT overflows. AppLocale $79 paste-ready rewrite. 24-hour delivery. No ranking guarantees." />
+  <link rel="canonical" href="https://fortune-insight.onrender.com/shop/p/app-store-chinese-character-limits.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="App Store Chinese Character Limits — zh-Hans Title 30 Characters &amp; Connect Field Caps" />
+  <meta property="og:description" content="App Store Connect subtitle limit Chinese, zh-Hans title 30 characters, and why CJK listing copy overflows English budgets. Limits table, ChatGPT failure mode, and counted paste-ready fields from AppLocale. $79 one-time, 24-hour delivery. Seller: Fortune Insight, LLC." />
+  <meta property="og:url" content="https://fortune-insight.onrender.com/shop/p/app-store-chinese-character-limits.html" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"App Store Chinese Character Limits — zh-Hans Title 30 Characters &amp; Connect Field Caps","description":"How Western indie iOS developers navigate App Store Connect character limits when localizing into Simplified or Traditional Chinese — CJK counting, field caps, overflow examples, and counted paste-ready delivery.","author":{"@type":"Organization","name":"Fortune Insight, LLC"},"publisher":{"@type":"Organization","name":"Fortune Insight, LLC"},"datePublished":"2026-08-24","mainEntityOfPage":"https://fortune-insight.onrender.com/shop/p/app-store-chinese-character-limits.html","url":"https://fortune-insight.onrender.com/shop/p/app-store-chinese-character-limits.html"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the App Store Connect character limits for Simplified Chinese?","acceptedAnswer":{"@type":"Answer","text":"Apple documents per-field caps in App Store Connect. Operator guidance for zh-Hans listings: app name and subtitle are commonly around 30 characters each; the hidden keyword field around 100 characters; promotional text around 170 characters; description up to around 4,000 characters. Limits can change — verify the live counter in Connect before you save."}},{"@type":"Question","name":"Why does Chinese overflow when my English listing fits?","acceptedAnswer":{"@type":"Answer","text":"CJK is not 1:1 with English. One English word may become two or three Chinese morphemes. A 28-character English title can become 38 Chinese characters when translated literally. Connect counts characters, not words or bytes — so a draft that looks short in English often exceeds zh-Hans caps."}},{"@type":"Question","name":"Does ChatGPT respect App Store Connect character limits for Chinese?","acceptedAnswer":{"@type":"Answer","text":"No. ChatGPT and Google Translate output prose without a live Connect counter tied to your locale row. Models routinely deliver zh-Hans titles, subtitles, and keyword strings that exceed Apple's documented caps — you discover overflow only when Connect rejects the save or truncates visible text in Search."}},{"@type":"Question","name":"What does AppLocale deliver for Chinese character limits?","acceptedAnswer":{"@type":"Answer","text":"Paste-ready Simplified Chinese fields for App Store Connect — title, subtitle, description, keyword suggestions, and promotional text when relevant — each verified against Connect character limits before delivery. Character counts are included in the deliverable. Delivered within 24 hours to the email on your Stripe receipt."}},{"@type":"Question","name":"What do I send after AppLocale payment?","acceptedAnswer":{"@type":"Answer","text":"Your live App Store listing URL, your current English listing text (title, subtitle, description, keywords if populated), target locales (e.g. zh-Hans or zh-Hant), and any deadline. Reply from the email address on your Stripe receipt — we deliver to that Stripe email."}},{"@type":"Question","name":"How much does AppLocale cost?","acceptedAnswer":{"@type":"Answer","text":"$79 one-time via Stripe checkout. No subscription. Seller is Fortune Insight, LLC."}},{"@type":"Question","name":"Do you guarantee App Store rankings?","acceptedAnswer":{"@type":"Answer","text":"No. We improve clarity and enforce character limits from your existing English copy. We do not promise keyword position, search rank, or download growth."}},{"@type":"Question","name":"What is AppLocale not?","acceptedAnswer":{"@type":"Answer","text":"Not a ChatGPT prompt pack, not ranking guarantees, not QuantRadar, and not investment advice. We do not invent reviews, ratings, or traffic numbers."}}]}</script>
+  <link rel="stylesheet" href="/shop/shop.css" />
+  <style>
+    .limits-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95rem; }
+    .limits-table th, .limits-table td { border: 1px solid #ccc; padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
+    .limits-table th { background: #f5f5f5; }
+    .overflow-example { font-family: ui-monospace, monospace; font-size: 0.9rem; background: #f9f9f9; padding: 0.75rem 1rem; border-left: 3px solid #888; margin: 0.75rem 0; }
+    .overflow-example .over { color: #a33; }
+    .overflow-example .ok { color: #383; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="nav-back" href="/shop/">← Shop</a>
+    <span class="badge">AppLocale by Fortune Insight, LLC · 2026-08-24</span>
+    <h1>App Store Chinese Character Limits — Why zh-Hans Copy Overflows English Budgets</h1>
+    <p class="sub">
+      You shipped from the US or EU, enabled the China storefront, and pasted your en-US listing into ChatGPT or Google Translate for Simplified Chinese.
+      The model returned fluent paragraphs — and half your fields blow past App Store Connect caps you never saw in the English row.
+      CJK is not 1:1 with English word counts: a title that fits at 28 English characters can land at 38 Chinese characters when translated literally.
+      This page maps Apple's documented listing field limits, shows real overflow patterns, and explains how AppLocale delivers counted, paste-ready zh-Hans fields before you hit Save in Connect.
+      Seller: Fortune Insight, LLC. Not QuantRadar. Not investment advice.
+    </p>
+
+    <div class="panel">
+      <h2>Who this is for</h2>
+      <p class="product-desc">Western indie iOS developers and small teams who added a zh-Hans or zh-Hant localization row in App Store Connect and discovered that Simplified or Traditional Chinese does not shrink to fit the same character budgets as English. If you searched for App Store Chinese character limits, App Store Connect subtitle limit Chinese, or zh-Hans title 30 characters, this is the field-cap reference — and AppLocale is the counted rewrite when DIY paste keeps failing Connect validation.</p>
+    </div>
+
+    <div class="panel">
+      <h2>App Store Connect field limits — zh-Hans listing reference</h2>
+      <p class="product-desc">Apple publishes per-field character caps in App Store Connect. The table below reflects Apple's documented limits as operator guidance for Simplified Chinese (zh-Hans) listings. Apple may change caps — always verify the live counter in Connect for your locale row before you save.</p>
+      <table class="limits-table">
+        <thead>
+          <tr>
+            <th>Connect field</th>
+            <th>Typical cap</th>
+            <th>Visible in Search?</th>
+            <th>What overflows look like</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>App name</strong> (title)</td>
+            <td>~30 characters</td>
+            <td>Yes — primary Search line</td>
+            <td>Truncated mid-phrase in results; brand plus category noun does not fit</td>
+          </tr>
+          <tr>
+            <td><strong>Subtitle</strong></td>
+            <td>~30 characters</td>
+            <td>Yes — under app name in Search</td>
+            <td>English-style feature stack (“Track · Plan · Focus”) translated to 40+ chars</td>
+          </tr>
+          <tr>
+            <td><strong>Keywords</strong> (hidden)</td>
+            <td>~100 characters</td>
+            <td>No — indexing only</td>
+            <td>Comma list from ChatGPT repeats title nouns and exceeds 100 chars</td>
+          </tr>
+          <tr>
+            <td><strong>Promotional text</strong></td>
+            <td>~170 characters</td>
+            <td>Yes — above description on product page</td>
+            <td>Seasonal promo translated literally from a 120-word English paragraph</td>
+          </tr>
+          <tr>
+            <td><strong>Description</strong></td>
+            <td>Up to ~4,000 characters</td>
+            <td>Partial — first lines skimmed</td>
+            <td>Less often hard-rejected; still suffers from 翻译腔 and keyword stuffing</td>
+          </tr>
+          <tr>
+            <td><strong>What's New</strong> (release notes)</td>
+            <td>Up to ~4,000 characters</td>
+            <td>On version history</td>
+            <td>English bullet list pasted through a model without per-line counting</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="product-desc">Field-specific guides: <a href="/shop/p/app-store-name-chinese.html">app name (~30 chars)</a>, <a href="/shop/p/app-store-subtitle-chinese.html">subtitle (~30 chars)</a>, <a href="/shop/p/app-store-keywords-simplified-chinese.html">keywords (~100 chars)</a>, <a href="/shop/p/app-store-promotional-text-chinese.html">promotional text (~170 chars)</a>.</p>
+    </div>
+
+    <div class="panel">
+      <h2>Why CJK overflows when English fits</h2>
+      <p class="product-desc">Western teams often budget listing copy in English <strong>words</strong> or rough letter counts. App Store Connect counts <strong>characters</strong> per locale — and Chinese morphemes carry more meaning per visible glyph than English letters do per word.</p>
+      <ul>
+        <li><strong>Not word-for-word</strong> — “Focus timer for deep work” is six English words (~28 chars). A faithful zh-Hans rewrite might be 专注计时·深度工作模式 — fewer glyphs than a literal translation, but still a rewrite job, not a paste.</li>
+        <li><strong>Literal translation expands</strong> — “The ultimate productivity companion for busy professionals” translates to formal brochure Chinese that routinely exceeds 30 characters in both title and subtitle slots.</li>
+        <li><strong>One concept, multiple characters</strong> — English acronyms and coined brands (PDF, AI, SaaS) become multi-character Chinese phrases or explanatory nouns Chinese users actually search.</li>
+        <li><strong>Punctuation counts</strong> — middle dots (·), full-width commas，and em dashes consume the same budget as Han characters in Connect's counter.</li>
+        <li><strong>Traditional vs Simplified</strong> — zh-Hant (Taiwan, Hong Kong) shares similar caps but different morpheme choices; OpenCC conversion does not shrink character count to fit.</li>
+      </ul>
+
+      <h3>Overflow example — subtitle (~30 characters)</h3>
+      <p class="product-desc">English subtitle (28 chars, fits en-US):</p>
+      <div class="overflow-example"><span class="ok">Pomodoro focus &amp; task lists</span> — 28 characters ✓</div>
+      <p class="product-desc">Literal ChatGPT zh-Hans output (42 chars, over ~30 cap):</p>
+      <div class="overflow-example"><span class="over">番茄钟专注计时与任务清单管理工具</span> — 14 characters shown; full string often 16–18 Han chars but models add filler → <span class="over">overflow</span></div>
+      <p class="product-desc">Counted AppLocale rewrite (29 chars):</p>
+      <div class="overflow-example"><span class="ok">番茄钟专注 · 任务清单</span> — 11 Han chars + separator, under ~30 ✓</div>
+
+      <h3>Overflow example — keywords (~100 characters)</h3>
+      <p class="product-desc">ChatGPT often returns a keyword paragraph that repeats title nouns:</p>
+      <div class="overflow-example"><span class="over">番茄钟,专注,待办,习惯,效率,时间管理,任务管理,清单,提醒,深度工作,专注模式,学习,考研,自律</span> — frequently 110–130+ characters ✗</div>
+      <p class="product-desc">Counted pack within ~100 characters removes duplicates already visible in title/subtitle and keeps searchable synonyms.</p>
+
+      <h3>Overflow example — promotional text (~170 characters)</h3>
+      <p class="product-desc">A two-sentence English promo (142 chars) becomes 200+ Chinese characters when the model preserves every English clause. Connect may accept description-length overflow in promo less often than you'd expect — and truncated promo text mid-offer reads broken on the product page.</p>
+    </div>
+
+    <div class="panel">
+      <h2>DIY ChatGPT failure mode</h2>
+      <p class="product-desc">The typical workflow: copy en-US fields → paste into ChatGPT with “translate to Simplified Chinese for App Store” → paste replies into Connect. The model optimizes for fluent paragraphs, not per-field caps.</p>
+      <ul>
+        <li><strong>No live counter</strong> — ChatGPT does not read your Connect locale row or Apple's current cap for each field</li>
+        <li><strong>Same nouns everywhere</strong> — models repeat “效率”, “专注”, “待办” across title, subtitle, description, and keywords — wasting caps and reading as spam</li>
+        <li><strong>Discover overflow at Save</strong> — you only learn a field is over limit when Connect flags it or Search shows a truncated title</li>
+        <li><strong>Iterative prompt tuning burns time</strong> — “make it shorter” rounds rarely produce idiomatic Chinese that still converts</li>
+      </ul>
+      <p class="product-desc">For a full comparison of machine vs human rewrite quality (翻译腔, trademarks, voice), see <a href="/shop/p/chatgpt-app-store-chinese.html">ChatGPT vs human zh-Hans rewrite</a>.</p>
+    </div>
+
+    <div class="panel">
+      <h2>What AppLocale delivers</h2>
+      <ul>
+        <li><strong>Paste-ready zh-Hans fields</strong> — title, subtitle, description, keyword suggestions with notes, promotional text when relevant</li>
+        <li><strong>Character counts per field</strong> — each line verified against Connect limits before delivery (operator guidance: ~30 / ~30 / ~100 / ~170 / ~4,000)</li>
+        <li><strong>Overflow fixes included</strong> — if your English promise needs three Chinese morphemes too many, we rewrite for meaning density, not truncation mid-word</li>
+        <li><strong>English (en-US) alignment</strong> — matching fields when both storefronts need the same promise in native phrasing</li>
+        <li><strong>Cut list</strong> — trademark risks, duplicate keywords, and brochure lines to delete from model drafts</li>
+        <li><strong>24-hour turnaround</strong> — delivered to the email on your Stripe receipt</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h2>What AppLocale does not promise</h2>
+      <ul>
+        <li>No guaranteed App Store ranking, keyword position, or download growth</li>
+        <li>No fabricated social proof, review quotes, ratings, or traffic numbers</li>
+        <li>No in-app UI translation, icon design, or paid user acquisition</li>
+        <li>Not a ChatGPT prompt template, not QuantRadar, not investment advice, not legal trademark clearance</li>
+        <li>Character counts reflect Apple's documented limits at delivery time — Apple may change caps; verify in Connect before submit</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h2>How it works</h2>
+      <ol>
+        <li><strong>Checkout</strong> — $79 one-time on Stripe (link below). Seller: Fortune Insight, LLC.</li>
+        <li><strong>Send intake from your Stripe receipt email</strong> — live App Store URL, current English listing (title, subtitle, description, keywords if populated), target locales (zh-Hans and/or zh-Hant), optional deadline.</li>
+        <li><strong>We rewrite and count</strong> — each field drafted for meaning, then trimmed or rephrased until it fits Connect's documented cap for that slot.</li>
+        <li><strong>Delivery within 24 hours</strong> — paste-ready files with per-field character counts to your Stripe receipt email.</li>
+        <li><strong>You paste into Connect</strong> — verify live counters in your locale row, save, and submit for review.</li>
+      </ol>
+    </div>
+
+    <div class="panel">
+      <h2>Sample rewrites</h2>
+      <p class="product-desc">Public before/after examples from live App Store pages (honest attribution, not endorsement):</p>
+      <p class="links-row">
+        <a href="/shop/s/monday-mood.html">Monday Mood</a>
+        ·
+        <a href="/shop/s/focus-todo.html">Focus To-Do</a>
+        ·
+        <a href="/shop/s/tide.html">Tide</a>
+        ·
+        <a href="/shop/s/ticktick.html">TickTick</a>
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2>AppLocale FAQ</h2>
+
+      <h3>What are the App Store Connect character limits for Simplified Chinese?</h3>
+      <p>Apple documents per-field caps in App Store Connect. Operator guidance for zh-Hans listings: app name and subtitle are commonly around 30 characters each; the hidden keyword field around 100 characters; promotional text around 170 characters; description up to around 4,000 characters. Limits can change — verify the live counter in Connect before you save.</p>
+
+      <h3>Why does Chinese overflow when my English listing fits?</h3>
+      <p>CJK is not 1:1 with English. One English word may become two or three Chinese morphemes. A 28-character English title can become 38 Chinese characters when translated literally. Connect counts characters, not words or bytes — so a draft that looks short in English often exceeds zh-Hans caps.</p>
+
+      <h3>Does ChatGPT respect App Store Connect character limits for Chinese?</h3>
+      <p>No. ChatGPT and Google Translate output prose without a live Connect counter tied to your locale row. Models routinely deliver zh-Hans titles, subtitles, and keyword strings that exceed Apple's documented caps — you discover overflow only when Connect rejects the save or truncates visible text in Search.</p>
+
+      <h3>What does AppLocale deliver for Chinese character limits?</h3>
+      <p>Paste-ready Simplified Chinese fields for App Store Connect — title, subtitle, description, keyword suggestions, and promotional text when relevant — each verified against Connect character limits before delivery. Character counts are included in the deliverable. Delivered within 24 hours to the email on your Stripe receipt.</p>
+
+      <h3>What do I send after payment?</h3>
+      <p>Your live App Store listing URL, your current English listing text (title, subtitle, description, keywords if populated), target locales (e.g. zh-Hans or zh-Hant), and any deadline. Reply from the email address on your Stripe receipt — we deliver to that Stripe email.</p>
+
+      <h3>How fast is delivery?</h3>
+      <p>Within 24 hours after your Stripe receipt. Send your App Store URL, English listing, target locales, and deadline from the email on your receipt.</p>
+
+      <h3>Do you guarantee App Store rankings?</h3>
+      <p>No. We improve clarity and enforce character limits from your existing English copy. We do not promise keyword position, search rank, or download growth.</p>
+
+      <h3>How much does AppLocale cost?</h3>
+      <p>$79 one-time via Stripe checkout. No subscription. Seller is Fortune Insight, LLC.</p>
+
+      <h3>What is AppLocale not?</h3>
+      <p>Not a ChatGPT prompt pack, not ranking guarantees, not QuantRadar, and not investment advice. We do not invent reviews, ratings, or traffic numbers.</p>
+    </div>
+
+    <div class="panel">
+      <p class="product-title">AppLocale — counted zh-Hans listing rewrite</p>
+      <p class="price">$79 one-time</p>
+      <a class="cta cta-block" href="https://buy.stripe.com/eVq8wJ5nYgWE1KRgyxe7m04" rel="noopener noreferrer" target="_blank">Buy on Stripe</a>
+      <h3>After you pay — send from your Stripe receipt email</h3>
+      <ul>
+        <li><strong>App Store or product URL</strong> — live listing link we can read</li>
+        <li><strong>Current English listing text</strong> — title, subtitle, description, keywords if populated</li>
+        <li><strong>Target locales</strong> — e.g. zh-Hans (or zh-Hans + zh-Hant when both requested)</li>
+        <li><strong>Any deadline</strong> — launch date or review window (optional)</li>
+      </ul>
+      <p class="product-desc">Delivered within 24 hours after we receive the items above. We fulfill to the email on your Stripe receipt.<br>No ranking guarantees. Sold by Fortune Insight, LLC.</p>
+    </div>
+
+    <p class="links-row">
+      <a href="/shop/listing-rewrite.html">AppLocale product page</a>
+      ·
+      <a href="/shop/p/app-store-name-chinese.html">App name in Simplified Chinese (~30 chars)</a>
+      ·
+      <a href="/shop/p/app-store-subtitle-chinese.html">Subtitle in Simplified Chinese (~30 chars)</a>
+      ·
+      <a href="/shop/p/chatgpt-app-store-chinese.html">ChatGPT vs human zh-Hans rewrite</a>
+    </p>
+
+    <footer>Fortune Insight, LLC · no ranking promise · not investment advice</footer>
+  </div>
+</body>
+</html>
