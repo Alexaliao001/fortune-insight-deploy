@@ -5,7 +5,14 @@
     <link>https://fortune-insight.onrender.com/shop/</link>
     <description>Digital products for indie App Store teams. Seller: Fortune Insight, LLC.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 24 Aug 2026 23:30:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 23:45:00 +0000</lastBuildDate>
+    <item>
+      <title>China App Store still shows English — empty zh-Hans fallback after enabling storefront</title>
+      <link>https://fortune-insight.onrender.com/shop/p/china-app-store-shows-english.html</link>
+      <guid isPermaLink="true">https://fortune-insight.onrender.com/shop/p/china-app-store-shows-english.html</guid>
+      <description>Western indie iOS developers enabled China under Pricing and Availability but the App Store China listing still shows English — storefront availability is not a language row, and empty Simplified Chinese (zh-Hans) falls back to en-US. How to verify in App Store Connect and fill the row with AppLocale one-time $79. Human rewrite — not machine dump. 24-hour delivery to Stripe receipt email. No ranking guarantee. Seller: Fortune Insight, LLC. Buy/Checkout: https://buy.stripe.com/eVq8wJ5nYgWE1KRgyxe7m04</description>
+      <pubDate>Mon, 24 Aug 2026 23:45:00 +0000</pubDate>
+    </item>
     <item>
       <title>App Store China vs Taiwan vs Hong Kong — zh-Hans vs zh-Hant Connect localization</title>
       <link>https://fortune-insight.onrender.com/shop/p/app-store-china-taiwan-hong-kong.html</link>
