@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>China App Store Still Shows English — Empty zh-Hans Fallback | AppLocale</title>
+  <meta name="description" content="Western indie iOS developers enabled the China storefront in Pricing and Availability but the App Store China listing still shows English. Storefront availability is not a language row — empty Simplified Chinese (zh-Hans) falls back to en-US. How to verify in App Store Connect and fill the row with AppLocale $79 · 24-hour delivery. No ranking guarantees." />
+  <link rel="canonical" href="https://fortune-insight.onrender.com/shop/p/china-app-store-shows-english.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="China App Store Still Shows English — Empty zh-Hans Fallback" />
+  <meta property="og:description" content="You checked China under Pricing and Availability — but buyers on the China App Store still see your en-US listing. Diagnose storefront vs locale row, verify zh-Hans in Connect, and paste Chinese copy with AppLocale one-time $79. Seller: Fortune Insight, LLC." />
+  <meta property="og:url" content="https://fortune-insight.onrender.com/shop/p/china-app-store-shows-english.html" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"China App Store Still Shows English — Empty zh-Hans Fallback","description":"Diagnostic guide for Western indie iOS developers who enabled the China storefront but the App Store China product page still shows English — storefront availability vs zh-Hans localization row, and how to verify in App Store Connect.","author":{"@type":"Organization","name":"Fortune Insight, LLC"},"publisher":{"@type":"Organization","name":"Fortune Insight, LLC"},"datePublished":"2026-08-24","mainEntityOfPage":"https://fortune-insight.onrender.com/shop/p/china-app-store-shows-english.html","url":"https://fortune-insight.onrender.com/shop/p/china-app-store-shows-english.html"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does my China App Store listing still show English after I enabled China?","acceptedAnswer":{"@type":"Answer","text":"Enabling China under Pricing and Availability makes the app downloadable there — it does not create Chinese copy. Apple shows the zh-Hans localization row when it is filled; if zh-Hans title, subtitle, or description are empty, the product page falls back to en-US or shows a mixed English page."}},{"@type":"Question","name":"How do I check whether zh-Hans is empty in App Store Connect?","acceptedAnswer":{"@type":"Answer","text":"Open your app in App Store Connect, go to the App Store tab, select the Simplified Chinese (zh-Hans) localization from the language dropdown, and inspect whether name, subtitle, keywords, and description have saved text. An added row with blank fields means the China storefront still serves English fallback."}},{"@type":"Question","name":"What does AppLocale deliver for an English-only China listing?","acceptedAnswer":{"@type":"Answer","text":"Paste-ready Simplified Chinese (zh-Hans) fields for App Store Connect: title, subtitle, keywords, description, promotional text drafts, and screenshot overlay lines — plus English alignment when you need both storefronts on the same meaning. Delivered to the email on your Stripe receipt within 24 hours."}},{"@type":"Question","name":"How much does AppLocale cost?","acceptedAnswer":{"@type":"Answer","text":"$79 one-time via Stripe checkout. No subscription. Seller is Fortune Insight, LLC."}},{"@type":"Question","name":"Do you guarantee App Store rankings in China?","acceptedAnswer":{"@type":"Answer","text":"No. We improve clarity and search intent from your existing copy. We do not promise keyword position, search rank, or download growth on the China storefront or any other market."}},{"@type":"Question","name":"What is AppLocale not?","acceptedAnswer":{"@type":"Answer","text":"Not a machine translation dump, not an icon redesign, not paid ads, not ranking guarantees, not QuantRadar, and not investment or legal advice. We do not invent reviews, ratings, or traffic numbers."}}]}</script>
+  <link rel="stylesheet" href="/shop/shop.css" />
+</head>
+<body>
+  <div class="wrap">
+    <a class="nav-back" href="/shop/">← Shop</a>
+    <span class="badge">Fortune Insight, LLC · 2026-08-24</span>
+    <h1>China App Store Still Shows English — Empty zh-Hans Fallback</h1>
+    <p class="sub">
+      You checked <strong>China</strong> under Pricing and Availability, opened the App Store on a China storefront account, and your product page is still English — title, subtitle, description, maybe even screenshots.
+      That usually means the storefront is on but the <strong>Simplified Chinese (zh-Hans)</strong> localization row is empty or never added.
+      This page diagnoses why English still shows, how to verify in App Store Connect, and how AppLocale fills the row.
+      Operator guidance only — no ranking guarantee, not legal advice, and not investment advice. Seller: Fortune Insight, LLC.
+    </p>
+
+    <p class="links-row">
+      <a href="/shop/p/chinese-app-store-listing-for-indie-developers.html">Chinese listing for indie developers</a>
+      ·
+      <a href="/shop/p/china-app-store-localization-checklist.html">China localization checklist</a>
+      ·
+      <a href="/shop/p/ios-app-store-localization-china.html">China storefront field guide</a>
+    </p>
+
+    <div class="panel">
+      <h2>Who this is for</h2>
+      <p class="product-desc">Western indie iOS developers — US, EU, UK, Canada, Australia — who:</p>
+      <ul>
+        <li>Shipped with an <strong>en-US</strong> listing as the only filled localization</li>
+        <li>Enabled the <strong>China</strong> storefront under Pricing and Availability and assumed that was enough</li>
+        <li>Opened the China App Store (or a China-region device) and still see English on the product page</li>
+        <li>Are not sure whether they added a zh-Hans row, or added one but left fields blank</li>
+      </ul>
+      <p class="product-desc">If you never intended to sell in China and only want US English copy, this page is not your workflow — see <a href="/shop/p/app-store-connect-localization-en.html">App Store Connect localization</a> for adding en-US instead.</p>
+    </div>
+
+    <div class="panel">
+      <h2>Why the China App Store listing still shows English</h2>
+      <p class="product-desc">App Store Connect treats two settings as separate jobs:</p>
+      <ul>
+        <li><strong>Pricing and Availability → storefronts</strong> — which countries and regions can download your app. Checking China here makes the app <em>available</em> on the China App Store.</li>
+        <li><strong>App Store tab → localizations</strong> — separate language rows (en-US, zh-Hans, zh-Hant, etc.) each with their own title, subtitle, keywords, description, screenshots, and release notes.</li>
+      </ul>
+      <p class="product-desc">Enabling the China storefront does <strong>not</strong> auto-create Chinese copy. When a buyer on the China App Store opens your product page, Apple looks for a filled <strong>zh-Hans</strong> row. If that row is missing or empty, Apple falls back to <strong>en-US</strong> — or shows a mixed page (English text above Chinese screenshots, or vice versa). Neither reads as a finished listing to China buyers.</p>
+      <p class="product-desc">Common triggers we see from indie teams:</p>
+      <ul>
+        <li>China checked under Pricing and Availability, but no <strong>Chinese (Simplified)</strong> localization was ever added</li>
+        <li>zh-Hans row exists but <strong>name, subtitle, or description</strong> were never saved — Connect shows the locale in the sidebar with blank fields</li>
+        <li>Metadata was drafted but the version with zh-Hans changes was <strong>never submitted for review</strong></li>
+        <li>Screenshots are still the en-US set — even with Chinese text, English gallery art signals an unfinished localization</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h2>How to verify in App Store Connect</h2>
+      <p class="product-desc">Walk through these checks before you assume Apple is “stuck” or caching wrong language:</p>
+
+      <h3>Step 1 — Confirm China is available</h3>
+      <p class="product-desc">App Store Connect → your app → <strong>Pricing and Availability</strong> → verify <strong>China</strong> appears under available storefronts. If China is off, no amount of zh-Hans copy will surface there.</p>
+
+      <h3>Step 2 — Open the zh-Hans localization row</h3>
+      <p class="product-desc">App Store Connect → your app → <strong>App Store</strong> tab → use the language dropdown (often top-left of the version editor). Look for <strong>Chinese (Simplified)</strong> or <strong>zh-Hans</strong>.</p>
+      <ul>
+        <li>If zh-Hans is <strong>not in the list</strong> → click add localization and choose Simplified Chinese. You still need to fill fields.</li>
+        <li>If zh-Hans is listed but fields are <strong>empty or placeholder</strong> → the China storefront will fall back to en-US until you save Chinese text.</li>
+      </ul>
+
+      <h3>Step 3 — Inspect the four core text fields</h3>
+      <p class="product-desc">With zh-Hans selected, confirm saved text in:</p>
+      <ul>
+        <li><strong>Name</strong> (title field)</li>
+        <li><strong>Subtitle</strong></li>
+        <li><strong>Keywords</strong> (hidden from buyers, but part of the row)</li>
+        <li><strong>Description</strong></li>
+      </ul>
+      <p class="product-desc">If any of these are blank, treat the localization as incomplete — not “done because the row exists.”</p>
+
+      <h3>Step 4 — Check screenshots per localization</h3>
+      <p class="product-desc">Screenshot sets are usually managed <strong>per localization</strong>. Open the zh-Hans screenshot slot for each required device size. If zh-Hans galleries are empty, Apple may show en-US art even when Chinese text fields are filled.</p>
+
+      <h3>Step 5 — Confirm the version with zh-Hans was submitted</h3>
+      <p class="product-desc">Metadata-only changes on live apps still go through App Review. If you filled zh-Hans locally but never submitted the version, the live China App Store page may still serve the last approved metadata — often English-only.</p>
+
+      <h3>Step 6 — Spot-check on device</h3>
+      <p class="product-desc">After approval, open your app’s product page on an iPhone signed into a China storefront account (or use Apple’s storefront preview tools). Compare what you see to the zh-Hans row in Connect — they should match. Mismatch usually means fallback or an unsubmitted version.</p>
+    </div>
+
+    <div class="panel">
+      <h2>What AppLocale delivers</h2>
+      <p class="product-desc">Once you confirm zh-Hans is the gap, AppLocale gives you paste-ready copy instead of staring at blank Connect fields:</p>
+      <ul>
+        <li><strong>Simplified Chinese (zh-Hans)</strong> — title, subtitle, description, keyword suggestions with rationale</li>
+        <li><strong>English (en-US)</strong> — matching fields when you need both storefronts aligned on meaning</li>
+        <li><strong>Promotional text drafts</strong> and <strong>screenshot overlay lines</strong> for Chinese galleries</li>
+        <li><strong>Paste-ready files</strong> — formatted for App Store Connect localization rows</li>
+        <li><strong>24-hour turnaround</strong> — delivered to the email on your Stripe receipt after checkout</li>
+      </ul>
+      <p class="product-desc">Human rewrite from your live listing — not a machine translation dump. We improve clarity and search intent from your existing copy.</p>
+    </div>
+
+    <div class="panel">
+      <h2>What AppLocale does not do</h2>
+      <ul>
+        <li>Does not toggle storefront availability — you still check China under Pricing and Availability</li>
+        <li>Does not click Save or Submit in App Store Connect on your behalf</li>
+        <li>Does not guarantee App Store ranking, keyword position, or download growth in China</li>
+        <li>Does not redesign icons, produce screenshot art, or edit App Preview video files</li>
+        <li>Does not localize in-app UI strings, StoreKit code, or IAP product IDs — IAP display names are a separate Connect screen</li>
+        <li>Is not QuantRadar, not paid ads, and not investment or legal advice</li>
+        <li>Does not invent reviews, ratings, or traffic numbers</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h2>How it works</h2>
+      <ol>
+        <li><strong>Diagnose</strong> — use the Connect checks above to confirm zh-Hans is missing or empty (not a storefront toggle issue)</li>
+        <li><strong>Checkout</strong> — pay $79 one-time on Stripe (link below). Seller: Fortune Insight, LLC.</li>
+        <li><strong>Send intake</strong> — reply from the email on your Stripe receipt with your live App Store listing URL, current English copy, and target locale (zh-Hans)</li>
+        <li><strong>Receive files</strong> — within 24 hours after we receive the items above, paste-ready zh-Hans fields arrive at your Stripe receipt email</li>
+        <li><strong>Paste and submit</strong> — add or fill the zh-Hans row in Connect, upload zh-Hans screenshots if needed, and submit the version for review</li>
+      </ol>
+      <p class="product-desc">Need the full field order after you paste copy? See the <a href="/shop/p/china-app-store-localization-checklist.html">China App Store localization checklist</a>.</p>
+    </div>
+
+    <div class="panel">
+      <h2>FAQ</h2>
+
+      <h3>Why does my China App Store listing still show English after I enabled China?</h3>
+      <p>Enabling China under Pricing and Availability makes the app downloadable there — it does not create Chinese copy. Apple shows the zh-Hans localization row when it is filled; if zh-Hans title, subtitle, or description are empty, the product page falls back to en-US or shows a mixed English page.</p>
+
+      <h3>How do I check whether zh-Hans is empty in App Store Connect?</h3>
+      <p>Open your app in App Store Connect, go to the App Store tab, select the Simplified Chinese (zh-Hans) localization from the language dropdown, and inspect whether name, subtitle, keywords, and description have saved text. An added row with blank fields means the China storefront still serves English fallback.</p>
+
+      <h3>Does adding zh-Hans automatically translate my en-US listing?</h3>
+      <p>No. Adding the localization row creates empty fields. You paste or type Chinese copy into each field independently. en-US and zh-Hans do not sync automatically.</p>
+
+      <h3>What do I send after AppLocale payment?</h3>
+      <p>Your live App Store listing URL, your current English listing (title, subtitle, description, keywords if populated), target locale (zh-Hans), and any deadline. Reply from the email address on your Stripe receipt — we deliver to that Stripe email within 24 hours.</p>
+
+      <h3>How much does AppLocale cost?</h3>
+      <p>$79 one-time via Stripe checkout. No subscription. Seller is Fortune Insight, LLC.</p>
+
+      <h3>Do you guarantee App Store rankings in China?</h3>
+      <p>No. We improve clarity and search intent from your existing copy. We do not promise keyword position, search rank, or download growth on the China storefront or any other market.</p>
+
+      <h3>What is AppLocale not?</h3>
+      <p>Not a machine translation dump, not an icon redesign, not paid ads, not ranking guarantees, not QuantRadar, and not investment or legal advice. We do not invent reviews, ratings, or traffic numbers.</p>
+    </div>
+
+    <div class="panel">
+      <p class="product-title">AppLocale — fill the empty zh-Hans row</p>
+      <p class="price">$79 one-time</p>
+      <a class="cta cta-block" href="https://buy.stripe.com/eVq8wJ5nYgWE1KRgyxe7m04" rel="noopener noreferrer" target="_blank">Buy AppLocale on Stripe</a>
+      <p class="product-desc">Delivered within 24 hours after Stripe payment. After checkout, reply from your Stripe receipt email with your App Store URL and existing listing copy.<br>No ranking guarantees. Sold by Fortune Insight, LLC.</p>
+      <p class="links-row"><a href="/shop/listing-rewrite.html">AppLocale product page</a></p>
+    </div>
+
+    <p class="links-row">
+      <a href="/shop/listing-rewrite.html">AppLocale product page</a>
+      ·
+      <a href="/shop/p/chinese-app-store-listing-for-indie-developers.html">Chinese listing for indie developers</a>
+      ·
+      <a href="/shop/p/china-app-store-localization-checklist.html">China localization checklist</a>
+      ·
+      <a href="/shop/p/ios-app-store-localization-china.html">Localize an iOS listing for China</a>
+      ·
+      <a href="/shop/">Back to shop</a>
+    </p>
+
+    <footer>Fortune Insight, LLC · no ranking promise · not investment advice</footer>
+  </div>
+</body>
+</html>
