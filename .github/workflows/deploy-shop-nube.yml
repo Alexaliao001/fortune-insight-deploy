@@ -19,8 +19,7 @@ jobs:
 
       - name: Ensure shop static exists
         run: |
-          mkdir -p dist/public/shop
-          cp -a client/public/shop/. dist/public/shop/
+          bash scripts/sync_shop_dist.sh
           test -f dist/public/shop/index.html
           ! grep -qE 'alexliao|mailto:' dist/public/shop/index.html
 
