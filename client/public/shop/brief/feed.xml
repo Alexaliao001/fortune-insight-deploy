@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Storefront Brief</title>
     <link>https://fortune-insight.onrender.com/shop/brief/index.html</link>
     <description>Weekly App Store policy and fee notes for indie iOS teams shipping internationally. Seller: Fortune Insight, LLC.</description>
     <language>en</language>
+    <atom:link rel="self" href="https://fortune-insight.onrender.com/shop/brief/feed.xml" />
+    <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/" />
     <lastBuildDate>Mon, 24 Aug 2026 16:00:00 +0000</lastBuildDate>
     <item>
       <title>Storefront Brief issue 3: Brazil CADE deadline Monday, Epic says alt distribution is 9 steps</title>
