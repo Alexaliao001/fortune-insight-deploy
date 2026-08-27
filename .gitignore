@@ -105,8 +105,6 @@ temp/
 *.db
 *.sqlite
 *.sqlite3
-<<<<<<< Updated upstream
-
 # Manus local DB query dumps (may contain host/user/db metadata)
 .manus/
 
@@ -117,6 +115,4 @@ stats.html
 # Local env examples kept; never commit real secrets
 .env.*
 !.env.example
-=======
 .project-config.json
->>>>>>> Stashed changes
