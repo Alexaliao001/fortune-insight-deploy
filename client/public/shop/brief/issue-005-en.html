@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Storefront Brief · Issue 5: Custom Product Pages and screenshot localization — pack ASA creative before Creative Assets land</title>
+  <meta name="description" content="Storefront Brief Issue 5: Custom Product Pages (up to 35 per app) let indie iOS teams ship localized screenshot sets and unique URLs for Apple Search Ads — separate from Product Page Optimization. Connect keyword analytics from Issue 4 help pick which CPP to build first. Creative Assets 4+ ceiling from Issue 4 applies to CPP screenshots too. Not a fee change. Fortune Insight, LLC." />
+  <link rel="canonical" href="https://fortune-insight.onrender.com/shop/brief/issue-005-en.html" />
+  <link rel="alternate" type="application/rss+xml" title="Storefront Brief" href="https://fortune-insight.onrender.com/shop/brief/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Fortune Insight shop" href="https://fortune-insight.onrender.com/shop/feed.xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Storefront Brief · Issue 5: Custom Product Pages and screenshot localization — pack ASA creative before Creative Assets land" />
+  <meta property="og:description" content="CPP gives indie teams up to 35 alternate product pages with localized screenshots and ASA deep links. Use Connect keyword analytics to pick your first variant. Same 4+ Creative Assets ceiling applies. Not a fee change." />
+  <meta property="og:url" content="https://fortune-insight.onrender.com/shop/brief/issue-005-en.html" />
+  <meta name="twitter:card" content="summary" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Storefront Brief · Issue 5: Custom Product Pages and screenshot localization — pack ASA creative before Creative Assets land","description":"Storefront Brief Issue 5: Custom Product Pages (up to 35 per app) let indie iOS teams ship localized screenshot sets and unique URLs for Apple Search Ads — separate from Product Page Optimization. Connect keyword analytics from Issue 4 help pick which CPP to build first. Creative Assets 4+ ceiling from Issue 4 applies to CPP screenshots too. Not a fee change. Fortune Insight, LLC.","url":"https://fortune-insight.onrender.com/shop/brief/issue-005-en.html","mainEntityOfPage":"https://fortune-insight.onrender.com/shop/brief/issue-005-en.html","datePublished":"2026-08-27","author":{"@type":"Organization","name":"Fortune Insight, LLC"},"publisher":{"@type":"Organization","name":"Fortune Insight, LLC"},"isPartOf":{"@type":"WebSite","name":"Storefront Brief","url":"https://fortune-insight.onrender.com/shop/brief/","publisher":{"@type":"Organization","name":"Fortune Insight, LLC"}},"offers":{"@type":"Offer","name":"Storefront Brief","description":"Weekly English App Store policy and fee notes for indie iOS teams. $12/month.","price":"12.00","priceCurrency":"USD","url":"https://buy.stripe.com/6oUcMZ17IbCk4X3dmle7m02","seller":{"@type":"Organization","name":"Fortune Insight, LLC"}},"sameAs":"https://fortune-insight.onrender.com/shop/brief/feed.xml"}</script>
+  <link rel="stylesheet" href="/shop/shop.css" />
+</head>
+<body>
+  <div class="wrap">
+    <a class="nav-back" href="/shop/">Shop</a>
+    <span class="badge">Storefront Brief · Issue 5</span>
+    <h1>Custom Product Pages are your ASA landing-page kit. Screenshot localization is the work most indie teams skip.</h1>
+    <p class="sub">2026-08-27 · Fortune Insight, LLC · Operator intel for indie iOS teams. This page covers <strong>Custom Product Pages (CPP)</strong>, screenshot localization in App Store Connect, and Apple Search Ads creative packing — not a commission or IAP rate change. If you only track fee worksheets, Connect rules <strong>did not change</strong> because of this note.</p>
+
+    <h2>What happened</h2>
+    <p>Apple's fall Creative Assets rollout (<a href="/shop/brief/issue-004-en.html">Issue 4</a>) adds new header and search-result surfaces on top of your existing product page. But most indie teams still send Apple Search Ads traffic to the <strong>default listing</strong> — one screenshot set, one subtitle, one promotional text block — even when Connect keyword analytics show different search intents converting at different rates.</p>
+    <p><strong>Custom Product Pages</strong> have been live since 2021 and remain the primary operator tool for matching ad creative to landing-page creative <strong>before</strong> Creative Assets arrive. Each CPP gets its own App Store URL, its own screenshot set (per device class), and optional subtitle and promotional text overrides. You can publish up to <strong>35 CPPs per app</strong> and link each one to a specific Apple Search Ads ad group or campaign.</p>
+    <p>This issue is a practical packing guide: how CPP differs from Product Page Optimization (PPO), how screenshot localization fits in Connect, and how to use the keyword analytics Apple turned on in July to decide which CPP to ship first.</p>
+
+    <h2>CPP vs PPO vs default listing — operator map</h2>
+    <p class="product-desc">Three different Connect tools. Mixing them up is the most common indie mistake after enabling China or adding a second locale.</p>
+    <table class="worksheet">
+      <thead>
+        <tr>
+          <th>Surface</th>
+          <th>What it is</th>
+          <th>Who sees it</th>
+          <th>Typical indie use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Default product page</td>
+          <td>Your primary listing — name, subtitle, description, screenshots, app previews</td>
+          <td>Organic search, browse, and ASA taps when no CPP is assigned</td>
+          <td>Baseline storefront. Keep this stable; do not A/B chaos here.</td>
+        </tr>
+        <tr>
+          <td>Custom Product Page (CPP)</td>
+          <td>Alternate product page with unique URL (<code>apps.apple.com/app/id…?ppid=…</code>)</td>
+          <td>ASA ad groups you explicitly link; shareable campaign URLs</td>
+          <td>Keyword-specific screenshot sets — e.g. "budget tracker" vs "expense report" — each with matching overlay copy</td>
+        </tr>
+        <tr>
+          <td>Product Page Optimization (PPO)</td>
+          <td>Connect-run A/B test on subtitle, promotional text, or screenshots against the default page</td>
+          <td>Random sample of organic traffic only — not ASA-assigned CPP traffic</td>
+          <td>Test one hypothesis on organic visitors; wait for statistical significance before promoting a winner</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Rule of thumb: use <strong>CPP for paid traffic you control</strong> (ASA, influencer links, email campaigns). Use <strong>PPO for organic experiments</strong> you want Connect to split automatically. Do not run a PPO screenshot test and a CPP screenshot set on the same keyword intent at the same time — you will not know which surface moved conversion.</p>
+
+    <h2>Screenshot localization in Connect — what "localized" actually means</h2>
+    <p>Screenshot localization is <strong>not</strong> automatic when you add a language row. Each locale in App Store Connect has its own screenshot matrix per device class (iPhone 6.7", 6.5", iPad, etc.). A CPP inherits the locale of the storefront the buyer is on — if your zh-Hans row has English screenshot overlays, the CPP shows English overlays too.</p>
+    <p class="product-desc">Operator checklist for one CPP + one locale:</p>
+    <ul>
+      <li><strong>Default listing row complete first.</strong> CPP cannot fix a missing zh-Hans name or empty keyword field — it only overrides subtitle, promotional text, and screenshots within an existing locale.</li>
+      <li><strong>Per-device screenshot sets.</strong> Upload screenshots for every device class your CPP will serve. An iPad buyer on a CPP with iPhone-only assets sees the fallback set — often your English default.</li>
+      <li><strong>Overlay copy is part of the image.</strong> Connect does not localize text baked into PNGs. If overlays say "Track expenses" in English, translate and re-export before uploading to the zh-Hans CPP variant.</li>
+      <li><strong>App Preview captions are separate.</strong> Each preview localization has its own caption track. A localized screenshot set with English preview captions still looks half-localized on the storefront.</li>
+      <li><strong>4+ ceiling applies.</strong> CPP screenshots and any Creative Assets you attach later must meet the <strong>4+</strong> rating ceiling published in <a href="/shop/brief/issue-004-en.html">Issue 4</a> — even when the app itself is 12+ or 17+.</li>
+    </ul>
+
+    <h2>Packing Apple Search Ads creative to a CPP</h2>
+    <p>Apple Search Ads lets you assign a CPP URL at the ad-group level. When a user taps your ad, they land on the CPP screenshot set — not the default page. This is the highest-leverage pairing most indie teams underuse.</p>
+    <table class="worksheet">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>Connect / ASA action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 · Pick intent from keyword analytics</td>
+          <td>Connect → Analytics → App Store search → sort keywords by impressions × conversion rate (<a href="/shop/brief/issue-004-en.html">Issue 4</a>). Pick the top term where conversion is below your app median — that is your first CPP candidate.</td>
+        </tr>
+        <tr>
+          <td>2 · Build one CPP per intent</td>
+          <td>Connect → your app → Custom Product Pages → Create. Name it internally (e.g. <code>asa-budget-keywords</code>). Upload screenshot set with overlay copy matching that search intent.</td>
+        </tr>
+        <tr>
+          <td>3 · Copy the CPP URL</td>
+          <td>After App Review approves the CPP, copy the <code>?ppid=</code> link from Connect. Test it on device in the target storefront locale before spending.</td>
+        </tr>
+        <tr>
+          <td>4 · Assign in ASA</td>
+          <td>Apple Search Ads → Ad Group → Ad Settings → Custom Product Page → select your CPP. Search Match and broad campaigns should stay on default; exact and brand ad groups get CPP assignments.</td>
+        </tr>
+        <tr>
+          <td>5 · Match ad creative to landing screenshots</td>
+          <td>Your ASA custom product page ad creative (if enabled) and CPP screenshots should show the same value prop. Mismatch — ad says "invoice scanner," landing shows "habit tracker" — kills tap-through conversion even when the keyword is cheap.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="product-desc">Operator catches: CPP review is separate from app version review but still goes through App Review — budget 24–48 hours. CPP analytics appear in Connect under the CPP name, not merged into default page metrics. You cannot assign a CPP to Search Match automatically; each ad group is manual.</p>
+
+    <h2>Using Issue 4 keyword data to prioritize CPP work</h2>
+    <p>Connect keyword analytics (live since <strong>2026-07-01</strong>) give you per-keyword impressions, tap-through rate, conversion rate, and retention cohorts for your own app. Use them to rank CPP candidates before you design new screenshot sets:</p>
+    <ul>
+      <li><strong>High impressions, low conversion:</strong> screenshot/message mismatch — build a CPP with overlays addressing that keyword's intent.</li>
+      <li><strong>High conversion, low impressions:</strong> discovery problem — ASA or metadata work, not a CPP priority.</li>
+      <li><strong>High impressions, high conversion:</strong> protect with a CPP anyway if you run ASA on that term — prevents a competitor's ad from sending traffic to your generic page.</li>
+      <li><strong>Retention drop at 7 days on a keyword:</strong> CPP will not fix product-market fit; do not build landing pages for terms that attract churny installs.</li>
+    </ul>
+    <p>Export the top 10 keywords weekly. If fewer than three terms have enough impressions to judge, your sample size is too small for CPP splits — stick to one default CPP for your highest-spend ASA ad group instead.</p>
+
+    <h2>What this is not</h2>
+    <ul>
+      <li><strong>Not</strong> a new US or EU commission rate. EU unified terms still land <strong>2026-10-01</strong> — see <a href="/shop/brief/issue-000-en.html">Issue 0</a>.</li>
+      <li><strong>Not</strong> a Creative Assets submission guide — headers and search slots arrive with iOS 27 this fall; see <a href="/shop/brief/issue-004-en.html">Issue 4</a>.</li>
+      <li><strong>Not</strong> a guarantee that CPP will improve ASA ROAS. Better landing-page match helps; bid strategy and keyword relevance still dominate spend efficiency.</li>
+      <li><strong>Not</strong> App Store Connect API automation for CPP — API support exists, but most indie teams should ship manually before scripting uploads.</li>
+      <li>If you only sell US IAP inside the App Store and do not run ASA: no need to build CPPs this week unless you plan paid acquisition next quarter.</li>
+    </ul>
+
+    <h2>Launch pricing snapshot (GetAppNiche prepaid median vs new apps)</h2>
+    <p class="product-desc">GetAppNiche published a prepaid-app pricing <strong>median estimate</strong> of about <strong>$2.99</strong> on <strong>2026-07-16</strong>. The table below is observed listing prices this week — snapshots, not revenue or download promises.</p>
+    <table class="worksheet">
+      <thead>
+        <tr>
+          <th>App</th>
+          <th>Observed price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CloudGear</td>
+          <td>$1.99/mo · $14.99/yr · $39.99 (lifetime tier)</td>
+        </tr>
+        <tr>
+          <td>Frankensketch</td>
+          <td>IAP ~<strong>$2.99</strong> (estimate)</td>
+        </tr>
+        <tr>
+          <td>Optic Illusion</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td>Stonegate</td>
+          <td>$7.99 unlock</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>The median is a reference line, not a guarantee that you should price at $2.99. CPP and ASA spend decisions are independent of IAP tier — do not reprice because of this table.</p>
+
+    <h2>Calendar recap (already covered — not new this issue)</h2>
+    <p class="product-desc">These items appeared in prior issues or Apple announcements. Listed here for cross-check only — <strong>not</strong> new scoops.</p>
+    <ul>
+      <li><strong>Creative Assets fall launch:</strong> headers, search slots, Asset Library — <a href="/shop/brief/issue-004-en.html">Issue 4</a> · <a href="https://developer.apple.com/app-store/asset-best-practices/" rel="noopener noreferrer" target="_blank">Apple · App Store asset best practices</a></li>
+      <li><strong>Connect keyword analytics:</strong> live since <strong>2026-07-01</strong> — <a href="/shop/brief/issue-004-en.html">Issue 4</a></li>
+      <li><strong>EU 2026-10-01:</strong> Unified EU terms — <a href="/shop/brief/issue-000-en.html">Issue 0</a></li>
+      <li><strong>US link-out 15% proposal:</strong> Epic court filing — <a href="/shop/brief/issue-002-en.html">Issue 2</a></li>
+      <li><strong>Brazil CADE response (2026-08-24):</strong> alternative distribution step-count — <a href="/shop/brief/issue-003-en.html">Issue 3</a></li>
+      <li><strong>Sonar launch offer:</strong> through <strong>31 Aug</strong> — <a href="/shop/brief/issue-001-en.html">Issue 1</a></li>
+    </ul>
+
+    <h2>What an indie can do this week</h2>
+    <ul>
+      <li>Export your top 10 Connect keywords by impressions. Mark any term where conversion rate is more than 20% below your app average — that is CPP candidate #1.</li>
+      <li>Create one CPP with a screenshot set whose overlay copy matches that keyword intent. Keep overlays inside the <strong>4+</strong> ceiling — no price callouts, no unverifiable badges.</li>
+      <li>If you run ASA: assign the approved CPP to your highest-spend exact-match ad group. Leave Search Match on the default page until you have baseline CPP data.</li>
+      <li>If you localize for zh-Hans or other storefronts: verify the CPP screenshot matrix is filled for every device class in that locale — not just iPhone 6.7".</li>
+      <li>Do not rebuild checkout or reprice IAP because of CPP or ASA packing — this is a marketing-surface workflow, not a commission update.</li>
+    </ul>
+
+    <p class="issue-meta">
+      Sources:
+      <a href="https://developer.apple.com/app-store/custom-product-pages/" rel="noopener noreferrer" target="_blank">Apple · Custom Product Pages</a>
+      ·
+      <a href="https://developer.apple.com/app-store/product-page-optimization/" rel="noopener noreferrer" target="_blank">Apple · Product Page Optimization</a>
+      ·
+      <a href="https://developer.apple.com/app-store/search/" rel="noopener noreferrer" target="_blank">Apple · App Store search</a>
+      ·
+      <a href="https://developer.apple.com/app-store/asset-best-practices/" rel="noopener noreferrer" target="_blank">Apple · App Store asset best practices</a>
+      ·
+      <a href="https://searchads.apple.com/help/campaigns/0022-use-custom-product-pages" rel="noopener noreferrer" target="_blank">Apple Search Ads · Use Custom Product Pages</a>
+    </p>
+
+    <div class="panel">
+      <h2>Subscribe to Storefront Brief</h2>
+      <p class="product-desc">$12/month. One English note a week on App Store and indie storefront changes. Not trading signals. Not legal advice. No ranking guarantees.</p>
+      <p class="price">$12 / mo</p>
+      <a class="cta cta-block" href="https://buy.stripe.com/6oUcMZ17IbCk4X3dmle7m02" rel="noopener noreferrer" target="_blank">Subscribe Storefront Brief</a>
+      <p class="links-row"><a href="https://t.me/storefrontbrief" rel="noopener noreferrer" target="_blank">Free sample also on Telegram</a></p>
+      <p class="links-row">
+        <a href="/shop/brief/issue-004-en.html">Issue 4</a>
+        ·
+        <a href="/shop/brief/issue-003-en.html">Issue 3</a>
+        ·
+        <a href="/shop/brief/issue-002-en.html">Issue 2</a>
+        ·
+        <a href="/shop/brief/issue-001-en.html">Issue 1</a>
+        ·
+        <a href="/shop/brief/issue-000-en.html">Issue 0 sample</a>
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2>AppLocale listing rewrite</h2>
+      <p class="product-desc">Optional: one-time $79 rewrite of one live App Store listing into English and Simplified Chinese. Delivered within 24 hours to your Stripe receipt email. No ranking promises.</p>
+      <p class="price">$79 one-time</p>
+      <a class="cta cta-block" href="https://buy.stripe.com/eVq8wJ5nYgWE1KRgyxe7m04" rel="noopener noreferrer" target="_blank">Buy AppLocale on Stripe</a>
+      <p class="links-row"><a href="/shop/listing-rewrite.html">Product page</a></p>
+    </div>
+
+    <footer>Fortune Insight, LLC · operator note · not legal advice · not investment advice · RSS directory: <a href="https://iheartrss.com/" rel="noopener noreferrer" target="_blank">I ♥ RSS</a></footer>
+  </div>
+</body>
+</html>
