@@ -206,6 +206,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/tvos-app-store-chinese.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-in-app-events-chinese.html</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -256,6 +262,12 @@
   <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-preview-captions-chinese.html</loc>
     <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-preorder-chinese.html</loc>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -375,13 +387,13 @@
   </url>
   <url>
     <loc>https://fortune-insight.onrender.com/shop/llms.txt</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://fortune-insight.onrender.com/shop/feed.xml</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
