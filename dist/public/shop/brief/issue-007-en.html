@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Storefront Brief · Issue 7: Product Page Optimization in App Store Connect — organic A/B tests on the default page</title>
+  <meta name="description" content="Storefront Brief Issue 7: Product Page Optimization (PPO) lets indie iOS teams run Connect-managed A/B tests on app icons, screenshots, and app preview videos against the default product page — treatment vs control, traffic split, conversion metric, 90-day cap, per-locale treatments. Organic experiment layer separate from Custom Product Pages (Issue 5) and In-App Events (Issue 6). Not a fee change. Fortune Insight, LLC." />
+  <link rel="canonical" href="https://fortune-insight.onrender.com/shop/brief/issue-007-en.html" />
+  <link rel="alternate" type="application/rss+xml" title="Storefront Brief" href="https://fortune-insight.onrender.com/shop/brief/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Fortune Insight shop" href="https://fortune-insight.onrender.com/shop/feed.xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Storefront Brief · Issue 7: Product Page Optimization in App Store Connect — organic A/B tests on the default page" />
+  <meta property="og:description" content="PPO is Connect's organic experiment layer: treatment vs control, traffic split, conversion metric, 90-day cap. Test icons, screenshots, or app previews on the default page — not while a CPP or In-App Event is live." />
+  <meta property="og:url" content="https://fortune-insight.onrender.com/shop/brief/issue-007-en.html" />
+  <meta name="twitter:card" content="summary" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Storefront Brief · Issue 7: Product Page Optimization in App Store Connect — organic A/B tests on the default page","description":"Storefront Brief Issue 7: Product Page Optimization (PPO) lets indie iOS teams run Connect-managed A/B tests on app icons, screenshots, and app preview videos against the default product page — treatment vs control, traffic split, conversion metric, 90-day cap, per-locale treatments. Organic experiment layer separate from Custom Product Pages (Issue 5) and In-App Events (Issue 6). Not a fee change. Fortune Insight, LLC.","url":"https://fortune-insight.onrender.com/shop/brief/issue-007-en.html","mainEntityOfPage":"https://fortune-insight.onrender.com/shop/brief/issue-007-en.html","datePublished":"2026-08-27","author":{"@type":"Organization","name":"Fortune Insight, LLC"},"publisher":{"@type":"Organization","name":"Fortune Insight, LLC"},"isPartOf":{"@type":"WebSite","name":"Storefront Brief","url":"https://fortune-insight.onrender.com/shop/brief/","publisher":{"@type":"Organization","name":"Fortune Insight, LLC"}},"offers":{"@type":"Offer","name":"Storefront Brief","description":"Weekly English App Store policy and fee notes for indie iOS teams. $12/month.","price":"12.00","priceCurrency":"USD","url":"https://buy.stripe.com/6oUcMZ17IbCk4X3dmle7m02","seller":{"@type":"Organization","name":"Fortune Insight, LLC"}},"sameAs":"https://fortune-insight.onrender.com/shop/brief/feed.xml"}</script>
+  <link rel="stylesheet" href="/shop/shop.css" />
+</head>
+<body>
+  <div class="wrap">
+    <a class="nav-back" href="/shop/">Shop</a>
+    <span class="badge">Storefront Brief · Issue 7</span>
+    <h1>Product Page Optimization is Connect's organic experiment layer. Run one screenshot test on the default page — not while an In-App Event is live.</h1>
+    <p class="sub">2026-08-27 · Fortune Insight, LLC · Operator intel for indie iOS teams. This page covers <strong>Product Page Optimization (PPO)</strong> in App Store Connect — treatment vs control, traffic split, conversion metrics, localization, and how PPO differs from CPP and In-App Events — not a commission or IAP rate change. If you only track fee worksheets, Connect rules <strong>did not change</strong> because of this note.</p>
+
+    <h2>What happened / why this follows Issues 5 and 6</h2>
+    <p><a href="/shop/brief/issue-005-en.html">Issue 5</a> treated <strong>Custom Product Pages (CPP)</strong> as the always-on landing surface for paid traffic: keyword-specific screenshot sets, unique <code>?ppid=</code> URLs, and ASA ad-group assignments.</p>
+    <p><a href="/shop/brief/issue-006-en.html">Issue 6</a> treated <strong>In-App Events</strong> as the time-boxed campaign layer: event cards, event details pages, and App Review gates that sit on top of your default listing and discovery surfaces.</p>
+    <p><strong>Product Page Optimization</strong> has been live since 2021 and fills the third slot in the storefront-surface thread: a <strong>Connect-managed A/B test</strong> on your <strong>default product page</strong> only. Apple randomly assigns a slice of organic App Store visitors to a treatment — alternate app icons, screenshots, or app preview videos — and compares conversion against your control (the original page). You cannot assign PPO traffic from ASA or CPP links; Connect handles the split.</p>
+    <p>This issue is the PPO chapter: if you shipped one CPP and one In-App Event from Issues 5–6, do <strong>not</strong> start a second CPP or a conflicting event yet. Wait until any live In-App Event ends, then run one PPO test with a single clear hypothesis on screenshots — e.g. "overlay copy matching CPP #1 intent converts better than generic screenshots on organic traffic."</p>
+
+    <h2>Default listing vs CPP vs PPO vs In-App Event — operator map</h2>
+    <p class="product-desc">Four different Connect tools. Mixing them up is the most common indie mistake after enabling a second locale.</p>
+    <table class="worksheet">
+      <thead>
+        <tr>
+          <th>Surface</th>
+          <th>What it is</th>
+          <th>Who sees it</th>
+          <th>Typical indie use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Default product page</td>
+          <td>Your primary listing — name, subtitle, description, screenshots, app previews</td>
+          <td>Organic search, browse, and ASA taps when no CPP is assigned</td>
+          <td>Baseline storefront. PPO tests variants of this page only.</td>
+        </tr>
+        <tr>
+          <td>Custom Product Page (CPP)</td>
+          <td>Alternate product page with unique URL (<code>apps.apple.com/app/id…?ppid=…</code>)</td>
+          <td>ASA ad groups you explicitly link; shareable campaign URLs</td>
+          <td>Keyword-specific screenshot sets — always-on landing for paid traffic (<a href="/shop/brief/issue-005-en.html">Issue 5</a>)</td>
+        </tr>
+        <tr>
+          <td>Product Page Optimization (PPO)</td>
+          <td>Connect-run A/B test on app icons, screenshots, or app preview videos against the default page</td>
+          <td>Random sample of organic App Store traffic on iOS and iPadOS 15+ — not ASA-assigned CPP traffic</td>
+          <td>Test one hypothesis on organic visitors; wait for ≥90% confidence before applying a winner</td>
+        </tr>
+        <tr>
+          <td>In-App Event page</td>
+          <td>Time-boxed event card + event details page with localized name, short/long description, and event media</td>
+          <td>Product page visitors, search (event card or direct event search), Today/Games/Apps editorial surfaces</td>
+          <td>Limited-time campaign — challenge, premiere, major update — with deep link into the matching in-app moment (<a href="/shop/brief/issue-006-en.html">Issue 6</a>)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Rule of thumb: <strong>CPP = always-on paid landing</strong>. <strong>In-App Event = time-boxed campaign layer</strong>. <strong>PPO = organic experiment</strong> on the default page. Do not run a PPO screenshot test and an In-App Event promoting conflicting copy in the same window — you will not know which surface moved conversion.</p>
+
+    <h2>How PPO works — treatment, control, metric, traffic split</h2>
+    <p>Apple's PPO framework is explicit about what you can test and how Connect splits traffic:</p>
+    <ul>
+      <li><strong>Control (baseline):</strong> your original product page — current app icon, screenshots, and app previews. This is the default comparison point in App Analytics unless you change the baseline.</li>
+      <li><strong>Treatments:</strong> up to <strong>three</strong> alternate versions. Each treatment can swap app icons, screenshots, and/or app preview videos — but change one element class per test so you know what moved the needle.</li>
+      <li><strong>Primary metric:</strong> <strong>conversion rate</strong> — impressions on the product page to new downloads. App Analytics also shows percent improvement and confidence level vs the baseline.</li>
+      <li><strong>Traffic proportion:</strong> you choose what percentage of App Store visitors enter the test. Example from Apple: if you allocate <strong>40%</strong> of traffic with <strong>two treatments</strong>, each treatment receives <strong>20%</strong> and your control receives the remaining <strong>60%</strong>. Visitors see the same variant for the entire test duration.</li>
+      <li><strong>Duration:</strong> one active test at a time, running up to <strong>90 days</strong> or until you stop it manually. Connect estimates duration based on your desired conversion-rate improvement and existing impression volume — aim for ≥90% confidence before applying a winner.</li>
+      <li><strong>Cannot edit after start:</strong> once published, test configuration is locked. Plan treatment assets and locale scope before submission.</li>
+    </ul>
+    <p class="product-desc">Operator catches: alternate app icons in a treatment must already exist in your published app binary — PPO cannot introduce icons the binary does not ship. Tests without alternate icons can go through App Review without a new app version. Applying a winning treatment while the test is still running <strong>ends the test</strong> immediately.</p>
+
+    <h2>Localization constraints in PPO</h2>
+    <p>Each treatment can be localized independently — but localization scope affects how fast you reach significance:</p>
+    <ul>
+      <li><strong>Per-locale treatments.</strong> You can localize treatments in all languages your app supports, or only the locales you select. A zh-Hans treatment with localized screenshot overlays is separate metadata from your en-US control — not automatic when you add a language row.</li>
+      <li><strong>Overlay copy is part of the image.</strong> Same lesson as <a href="/shop/brief/issue-005-en.html">Issue 5</a>: text baked into PNGs does not auto-translate. If you run a PPO test in zh-Hans, re-export screenshot overlays for that locale in each treatment.</li>
+      <li><strong>Fewer locales = faster results.</strong> Apple notes that limiting localization scope can speed time-to-significance because impressions pool per locale. Indie teams with low China traffic should not expect a zh-Hans-only PPO test to finish in two weeks.</li>
+      <li><strong>4+ ceiling applies.</strong> Treatment screenshots and any Creative Assets you attach later must meet the <strong>4+</strong> rating ceiling from <a href="/shop/brief/issue-004-en.html">Issue 4</a> — even when the app itself is 12+ or 17+.</li>
+      <li><strong>App Review reviews new treatment metadata.</strong> Budget 24–48 hours. Incomplete localizations or price claims in treatment screenshots get rejected like default-page assets.</li>
+    </ul>
+
+    <h2>Packing one PPO test after CPP and In-App Events</h2>
+    <p>If Issues 5–6 left you with one CPP aimed at a specific keyword intent and one In-App Event reinforcing that same message, your first PPO test should validate whether that intent also wins on <strong>organic</strong> default-page traffic — not introduce a third unrelated creative angle.</p>
+    <table class="worksheet">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>Connect action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 · Wait for conflicting surfaces to end</td>
+          <td>Do not start PPO while an In-App Event is live (<a href="/shop/brief/issue-006-en.html">Issue 6</a>). End or let the event expire before creating a PPO test — otherwise organic traffic sees competing creative.</td>
+        </tr>
+        <tr>
+          <td>2 · Write one hypothesis</td>
+          <td>Example: "Screenshot set with CPP #1 overlay copy converts better than current default screenshots on organic traffic." One changed element — screenshots only, not icons and previews simultaneously.</td>
+        </tr>
+        <tr>
+          <td>3 · Create the test in Connect</td>
+          <td>Connect → your app → Product Page Optimization → Create Test. Reference name up to 64 characters — e.g. <code>organic-screenshot-cpp1-intent-aug26</code>.</td>
+        </tr>
+        <tr>
+          <td>4 · Set traffic proportion</td>
+          <td>Indie default: <strong>50%</strong> to test with <strong>one treatment</strong> = 50% treatment, 50% control. Higher allocation reaches significance faster but exposes more visitors to an unproven variant.</td>
+        </tr>
+        <tr>
+          <td>5 · Localize treatments deliberately</td>
+          <td>Start with your highest-impression locale from Connect keyword analytics (<a href="/shop/brief/issue-004-en.html">Issue 4</a>). Add zh-Hans only if you have enough daily impressions to pool data — otherwise run en-US first.</td>
+        </tr>
+        <tr>
+          <td>6 · Submit for review and monitor</td>
+          <td>Connect → App Analytics → Product Page Optimization. Watch impressions, conversion rate, percent improvement, and confidence level. Wait for ≥90% confidence before applying a winner.</td>
+        </tr>
+        <tr>
+          <td>7 · Apply or discard</td>
+          <td>Apply the winning treatment to your default product page for everyone — or stop the test and keep control. If the winner includes an alternate app icon, ship a binary that includes that icon variant before the icon displays on device.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="product-desc">Operator catches: CPP traffic never enters PPO — ASA-assigned <code>?ppid=</code> visitors see the CPP, not a PPO treatment. PPO results do not tell you whether your CPP would win on paid traffic; compare CPP analytics separately in Connect. You can run only one PPO test at a time — queue the next hypothesis after the first completes.</p>
+
+    <h2>What this is not</h2>
+    <ul>
+      <li><strong>Not</strong> a new US or EU commission rate. EU unified terms still land <strong>2026-10-01</strong> — see <a href="/shop/brief/issue-000-en.html">Issue 0</a>.</li>
+      <li><strong>Not</strong> a CPP or ASA tool. PPO never replaces keyword-specific landing pages — paid traffic still needs CPP assignments from <a href="/shop/brief/issue-005-en.html">Issue 5</a>.</li>
+      <li><strong>Not</strong> an In-App Event substitute. Events are time-boxed campaign cards with their own App Review gate — see <a href="/shop/brief/issue-006-en.html">Issue 6</a>.</li>
+      <li><strong>Not</strong> a subtitle or promotional-text A/B test. Apple's PPO scope is app icons, screenshots, and app preview videos only — not the text metadata fields in Connect.</li>
+      <li><strong>Not</strong> a guarantee of conversion lift. Simply Piano's published PPO story showed their control outperformed a treatment they expected to win — negative results are valid data.</li>
+      <li>If you only sell US IAP inside the App Store, do not run ASA, and your default listing gets fewer than ~200 product-page impressions per day: your sample size is probably too small for PPO this month — stick to one CPP or metadata work instead.</li>
+    </ul>
+
+    <h2>Launch pricing snapshot (GetAppNiche prepaid median vs new apps)</h2>
+    <p class="product-desc">GetAppNiche published a prepaid-app pricing <strong>median estimate</strong> of about <strong>$2.99</strong> on <strong>2026-07-16</strong>. The table below is observed listing prices this week — snapshots, not revenue or download promises.</p>
+    <table class="worksheet">
+      <thead>
+        <tr>
+          <th>App</th>
+          <th>Observed price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CloudGear</td>
+          <td>$1.99/mo · $14.99/yr · $39.99 (lifetime tier)</td>
+        </tr>
+        <tr>
+          <td>Frankensketch</td>
+          <td>IAP ~<strong>$2.99</strong> (estimate)</td>
+        </tr>
+        <tr>
+          <td>Optic Illusion</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td>Stonegate</td>
+          <td>$7.99 unlock</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>The median is a reference line, not a guarantee that you should price at $2.99. PPO and storefront experiment decisions are independent of IAP tier — do not reprice because of this table.</p>
+
+    <h2>Calendar recap (already covered — not new this issue)</h2>
+    <p class="product-desc">These items appeared in prior issues or Apple announcements. Listed here for cross-check only — <strong>not</strong> new scoops.</p>
+    <ul>
+      <li><strong>In-App Events + campaign surface:</strong> time-boxed event cards after CPP — <a href="/shop/brief/issue-006-en.html">Issue 6</a></li>
+      <li><strong>Custom Product Pages + ASA packing:</strong> keyword-specific landing pages — <a href="/shop/brief/issue-005-en.html">Issue 5</a></li>
+      <li><strong>Creative Assets fall launch:</strong> headers, search slots, Asset Library — <a href="/shop/brief/issue-004-en.html">Issue 4</a> · <a href="https://developer.apple.com/app-store/asset-best-practices/" rel="noopener noreferrer" target="_blank">Apple · App Store asset best practices</a></li>
+      <li><strong>Connect keyword analytics:</strong> live since <strong>2026-07-01</strong> — <a href="/shop/brief/issue-004-en.html">Issue 4</a></li>
+      <li><strong>EU 2026-10-01:</strong> Unified EU terms — <a href="/shop/brief/issue-000-en.html">Issue 0</a></li>
+      <li><strong>US link-out 15% proposal:</strong> Epic court filing — <a href="/shop/brief/issue-002-en.html">Issue 2</a></li>
+      <li><strong>Brazil CADE response (2026-08-24):</strong> alternative distribution step-count — <a href="/shop/brief/issue-003-en.html">Issue 3</a></li>
+      <li><strong>Sonar launch offer:</strong> through <strong>31 Aug</strong> — <a href="/shop/brief/issue-001-en.html">Issue 1</a></li>
+    </ul>
+
+    <h2>What an indie can do this week</h2>
+    <ul>
+      <li>Confirm no In-App Event is live (<a href="/shop/brief/issue-006-en.html">Issue 6</a>). If one is running, wait for it to end before starting PPO.</li>
+      <li>Open Connect → Analytics → App Store → Impressions. If daily product-page impressions are below ~200, defer PPO and focus on metadata or one CPP instead.</li>
+      <li>Write one hypothesis tied to your CPP #1 keyword intent (<a href="/shop/brief/issue-005-en.html">Issue 5</a>). Create one treatment with a screenshot set whose overlays echo that intent — change screenshots only.</li>
+      <li>Set traffic proportion to 50% with one treatment. Localize in your highest-impression locale first; add zh-Hans only if impression volume supports it.</li>
+      <li>Submit for App Review, then monitor in Connect → App Analytics → Product Page Optimization. Do not apply a winner until confidence reaches ≥90%.</li>
+    </ul>
+
+    <p class="issue-meta">
+      Sources:
+      <a href="https://developer.apple.com/app-store/product-page-optimization/" rel="noopener noreferrer" target="_blank">Apple · Product Page Optimization</a>
+      ·
+      <a href="https://developer.apple.com/help/app-store-connect/create-product-page-optimization-tests/create-a-product-page-optimization-test/" rel="noopener noreferrer" target="_blank">Apple · Create a product page optimization test (Connect Help)</a>
+      ·
+      <a href="https://developer.apple.com/help/app-store-connect/view-product-page-optimization-results/view-product-page-optimization-test-results/" rel="noopener noreferrer" target="_blank">Apple · View PPO test results</a>
+      ·
+      <a href="https://developer.apple.com/help/app-store-connect/create-product-page-optimization-tests/apply-a-treatment-to-your-product-page/" rel="noopener noreferrer" target="_blank">Apple · Apply a treatment to your product page</a>
+      ·
+      <a href="https://developer.apple.com/app-store/custom-product-pages/" rel="noopener noreferrer" target="_blank">Apple · Custom Product Pages</a>
+    </p>
+
+    <div class="panel">
+      <h2>Subscribe to Storefront Brief</h2>
+      <p class="product-desc">$12/month. One English note a week on App Store and indie storefront changes. Not trading signals. Not legal advice. No ranking guarantees.</p>
+      <p class="price">$12 / mo</p>
+      <a class="cta cta-block" href="https://buy.stripe.com/6oUcMZ17IbCk4X3dmle7m02" rel="noopener noreferrer" target="_blank">Subscribe Storefront Brief</a>
+      <p class="links-row"><a href="https://t.me/storefrontbrief" rel="noopener noreferrer" target="_blank">Free sample also on Telegram</a></p>
+      <p class="links-row">
+        <a href="/shop/brief/issue-006-en.html">Issue 6</a>
+        ·
+        <a href="/shop/brief/issue-005-en.html">Issue 5</a>
+        ·
+        <a href="/shop/brief/issue-004-en.html">Issue 4</a>
+        ·
+        <a href="/shop/brief/issue-003-en.html">Issue 3</a>
+        ·
+        <a href="/shop/brief/issue-002-en.html">Issue 2</a>
+        ·
+        <a href="/shop/brief/issue-001-en.html">Issue 1</a>
+        ·
+        <a href="/shop/brief/issue-000-en.html">Issue 0 sample</a>
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2>AppLocale listing rewrite</h2>
+      <p class="product-desc">Optional: one-time $79 rewrite of one live App Store listing into English and Simplified Chinese. Delivered within 24 hours to your Stripe receipt email. No ranking promises.</p>
+      <p class="price">$79 one-time</p>
+      <a class="cta cta-block" href="https://buy.stripe.com/eVq8wJ5nYgWE1KRgyxe7m04" rel="noopener noreferrer" target="_blank">Buy AppLocale on Stripe</a>
+      <p class="links-row"><a href="/shop/listing-rewrite.html">Product page</a></p>
+    </div>
+
+    <footer>Fortune Insight, LLC · operator note · not legal advice · not investment advice · RSS directory: <a href="https://iheartrss.com/" rel="noopener noreferrer" target="_blank">I ♥ RSS</a></footer>
+  </div>
+</body>
+</html>
