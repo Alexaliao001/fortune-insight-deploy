@@ -7,7 +7,14 @@
     <language>en</language>
     <atom:link rel="self" href="https://fortune-insight.onrender.com/shop/brief/feed.xml" />
     <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/" />
-    <lastBuildDate>Thu, 27 Aug 2026 06:42:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 11:30:00 +0000</lastBuildDate>
+    <item>
+      <title>Storefront Brief issue 7: Product Page Optimization in App Store Connect — organic A/B tests on the default page</title>
+      <link>https://fortune-insight.onrender.com/shop/brief/issue-007-en.html</link>
+      <guid isPermaLink="true">https://fortune-insight.onrender.com/shop/brief/issue-007-en.html</guid>
+      <description>English issue: Product Page Optimization (PPO) lets indie iOS teams run Connect-managed A/B tests on app icons, screenshots, and app preview videos against the default product page — treatment vs control, traffic split, conversion metric, 90-day cap, per-locale treatments. Organic experiment layer separate from Custom Product Pages (Issue 5) and In-App Events (Issue 6). Wait for any live event to end before starting PPO. Not a fee change. Operator intel, not legal advice. Buy/Checkout: https://buy.stripe.com/6oUcMZ17IbCk4X3dmle7m02</description>
+      <pubDate>Thu, 27 Aug 2026 11:30:00 +0000</pubDate>
+    </item>
     <item>
       <title>Storefront Brief issue 6: In-App Event pages in App Store Connect — time-boxed campaign surface after your first CPP</title>
       <link>https://fortune-insight.onrender.com/shop/brief/issue-006-en.html</link>
