@@ -5,7 +5,14 @@
     <link>https://fortune-insight.onrender.com/shop/</link>
     <description>Digital products for indie App Store teams. Seller: Fortune Insight, LLC.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 27 Aug 2026 02:10:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 02:30:00 +0000</lastBuildDate>
+    <item>
+      <title>CarPlay App Store listing in Simplified Chinese — zh-Hans in-car product page &amp; screenshot captions</title>
+      <link>https://fortune-insight.onrender.com/shop/p/app-store-carplay-chinese.html</link>
+      <guid isPermaLink="true">https://fortune-insight.onrender.com/shop/p/app-store-carplay-chinese.html</guid>
+      <description>Western indie developers shipping a CarPlay app (navigation, audio, parking, EV, dash-adjacent) to the China App Store whose US listing and CarPlay entitlement may be approved but the CarPlay product page still shows English name, subtitle, keywords, description, and in-car screenshot captions — CarPlay, Drive, road-name overlays, audio now-playing lines. App Store Connect stores CarPlay listing metadata in a separate CarPlay matrix on the zh-Hans row. AppLocale writes paste-ready zh-Hans CarPlay listing fields. Not CarPlay entitlement applications, not CarPlay UI engineering, not map data, not in-car screenshot design, not binary localization, no ranking guarantee. $79 one-time, 24-hour delivery to Stripe receipt email. Seller: Fortune Insight, LLC. Buy/Checkout: https://buy.stripe.com/eVq8wJ5nYgWE1KRgyxe7m04</description>
+      <pubDate>Thu, 27 Aug 2026 02:30:00 +0000</pubDate>
+    </item>
     <item>
       <title>Unlisted &amp; Custom App Store listing in Simplified Chinese — ABM / ASM product page copy</title>
       <link>https://fortune-insight.onrender.com/shop/p/app-store-unlisted-custom-b2b-chinese.html</link>
