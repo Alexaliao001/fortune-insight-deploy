@@ -236,6 +236,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-messages-chinese.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-math-notes-chinese.html</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -405,6 +411,12 @@
   </url>
   <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-camera-control-chinese.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-check-in-chinese.html</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -776,8 +788,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-photos-chinese.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-photos-picker-chinese.html</loc>
     <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-podcasts-chinese.html</loc>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -856,6 +880,12 @@
   <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-voiceover-chinese.html</loc>
     <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-wallet-chinese.html</loc>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -974,6 +1004,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-fitness-chinese.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-genmoji-chinese.html</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -1000,6 +1036,12 @@
   <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-handoff-chinese.html</loc>
     <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-health-chinese.html</loc>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
