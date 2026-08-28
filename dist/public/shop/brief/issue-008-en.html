@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Storefront Brief · Issue 8: Apple Search Ads Custom Product Pages — route paid traffic to the right CPP</title>
+  <meta name="description" content="Storefront Brief Issue 8: Apple Search Ads ad variations let indie iOS teams route paid taps to Custom Product Pages — campaign and ad-group product-page choice, ad→landing creative congruence, geo and language constraints, and when to use CPP vs default vs PPO. Paid routing layer after Issues 5–7. Not a fee change. Fortune Insight, LLC." />
+  <link rel="canonical" href="https://fortune-insight.onrender.com/shop/brief/issue-008-en.html" />
+  <link rel="alternate" type="application/rss+xml" title="Storefront Brief" href="https://fortune-insight.onrender.com/shop/brief/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Fortune Insight shop" href="https://fortune-insight.onrender.com/shop/feed.xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Storefront Brief · Issue 8: Apple Search Ads Custom Product Pages — route paid traffic to the right CPP" />
+  <meta property="og:description" content="ASA ad variations attach approved Custom Product Pages to search-results ad groups. Match ad creative to CPP screenshots, localize per storefront, and keep PPO and In-App Events on their own layers — not a fee change." />
+  <meta property="og:url" content="https://fortune-insight.onrender.com/shop/brief/issue-008-en.html" />
+  <meta name="twitter:card" content="summary" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Storefront Brief · Issue 8: Apple Search Ads Custom Product Pages — route paid traffic to the right CPP","description":"Storefront Brief Issue 8: Apple Search Ads ad variations let indie iOS teams route paid taps to Custom Product Pages — campaign and ad-group product-page choice, ad→landing creative congruence, geo and language constraints, and when to use CPP vs default vs PPO. Paid routing layer after Issues 5–7. Not a fee change. Fortune Insight, LLC.","url":"https://fortune-insight.onrender.com/shop/brief/issue-008-en.html","mainEntityOfPage":"https://fortune-insight.onrender.com/shop/brief/issue-008-en.html","datePublished":"2026-08-28","author":{"@type":"Organization","name":"Fortune Insight, LLC"},"publisher":{"@type":"Organization","name":"Fortune Insight, LLC"},"isPartOf":{"@type":"WebSite","name":"Storefront Brief","url":"https://fortune-insight.onrender.com/shop/brief/","publisher":{"@type":"Organization","name":"Fortune Insight, LLC"}},"offers":{"@type":"Offer","name":"Storefront Brief","description":"Weekly English App Store policy and fee notes for indie iOS teams. $12/month.","price":"12.00","priceCurrency":"USD","url":"https://buy.stripe.com/6oUcMZ17IbCk4X3dmle7m02","seller":{"@type":"Organization","name":"Fortune Insight, LLC"}},"sameAs":"https://fortune-insight.onrender.com/shop/brief/feed.xml"}</script>
+  <link rel="stylesheet" href="/shop/shop.css" />
+</head>
+<body>
+  <div class="wrap">
+    <a class="nav-back" href="/shop/">Shop</a>
+    <span class="badge">Storefront Brief · Issue 8</span>
+    <h1>Apple Search Ads is your paid routing layer. Assign the right Custom Product Page before you scale spend.</h1>
+    <p class="sub">2026-08-28 · Fortune Insight, LLC · Operator intel for indie iOS teams. This page covers <strong>Apple Search Ads (ASA) → Custom Product Page (CPP)</strong> routing — ad variations, campaign and ad-group product-page choice, ad→landing creative congruence, geo and language constraints, and how paid routing differs from PPO and In-App Events — not a commission or IAP rate change. If you only track fee worksheets, Connect rules <strong>did not change</strong> because of this note.</p>
+
+    <h2>What happened / why this follows Issues 5–7</h2>
+    <p><a href="/shop/brief/issue-005-en.html">Issue 5</a> showed how to <strong>build</strong> Custom Product Pages and localize screenshot sets in Connect. <a href="/shop/brief/issue-006-en.html">Issue 6</a> added the time-boxed <strong>In-App Event</strong> campaign layer. <a href="/shop/brief/issue-007-en.html">Issue 7</a> covered <strong>Product Page Optimization (PPO)</strong> as Connect's organic A/B test on the default page only.</p>
+    <p>This issue is the <strong>paid-traffic chapter</strong>: once a CPP exists and is App Review–approved, Apple Search Ads lets you create <strong>ad variations</strong> that pull creative from that CPP and send taps to the same page. The ad screenshot the buyer sees in search should match the CPP screenshot set they land on — not your generic default listing.</p>
+    <p>Operator framing: Issues 5–7 gave you storefront surfaces. Issue 8 wires <strong>which surface ASA clicks hit</strong>. If you shipped one CPP from Issue 5 and run ASA without an ad variation, you are still paying to send most taps to the default page.</p>
+
+    <h2>Paid routing map — default vs CPP vs PPO vs In-App Event</h2>
+    <p class="product-desc">Four Connect/ASA tools. ASA only controls the first tap — what happens after depends on which product page you assigned.</p>
+    <table class="worksheet">
+      <thead>
+        <tr>
+          <th>Surface</th>
+          <th>What ASA can route to it</th>
+          <th>Who sees it</th>
+          <th>Paid-traffic rule</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Default product page</td>
+          <td>Yes — default ad when no ad variation is active</td>
+          <td>Organic search, browse, and ASA taps with no CPP ad variation</td>
+          <td>Keep for brand ad groups, Search Match discovery, and low-spend tests. PPO may be running experiments here — ASA traffic does <strong>not</strong> enter PPO splits.</td>
+        </tr>
+        <tr>
+          <td>Custom Product Page (CPP)</td>
+          <td>Yes — via ASA ad variations linked to an approved CPP</td>
+          <td>ASA taps on ad groups where you created a custom ad from that CPP; shareable <code>?ppid=</code> URLs for non-ASA campaigns</td>
+          <td><strong>Primary paid landing.</strong> One CPP per keyword intent or audience theme — exact-match and high-spend ad groups first (<a href="/shop/brief/issue-005-en.html">Issue 5</a>).</td>
+        </tr>
+        <tr>
+          <td>Product Page Optimization (PPO)</td>
+          <td>No — Connect assigns organic traffic only</td>
+          <td>Random sample of organic App Store visitors on the default page</td>
+          <td>Do not expect PPO treatments on ASA-assigned CPP traffic. Run PPO after paid routing is stable (<a href="/shop/brief/issue-007-en.html">Issue 7</a>).</td>
+        </tr>
+        <tr>
+          <td>In-App Event page</td>
+          <td>No direct ASA assignment — event card sits on the product page the buyer already opened</td>
+          <td>Product page visitors, search event cards, editorial surfaces during the event window</td>
+          <td>Time-boxed layer on top of default or CPP. If an event is live, ASA taps still land on your assigned CPP or default — the event card appears on that page (<a href="/shop/brief/issue-006-en.html">Issue 6</a>).</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Rule of thumb: <strong>ASA ad variation = paid router</strong>. <strong>CPP = landing page</strong>. <strong>PPO = organic experiment</strong> on default only. <strong>In-App Event = timed campaign card</strong> layered on whichever page the visitor opened.</p>
+
+    <h2>How ASA attaches to a CPP — campaigns, ad groups, ad variations</h2>
+    <p>Apple Search Ads integrates with Connect-approved Custom Product Pages through <strong>ad variations</strong> (replacing the deprecated Creative Sets workflow for iOS 15.2+). When you create an ad variation, ASA uses the CPP's app preview videos and screenshots as the search ad creative, and the tap opens that same CPP — not the default listing.</p>
+    <ul>
+      <li><strong>Prerequisite:</strong> CPP must exist in App Store Connect, pass App Review, and show <code>VALID</code> state in ASA before you can select it. Deleted or unapproved CPPs do not appear in the ad-creation picker.</li>
+      <li><strong>Where you assign:</strong> Apple Search Ads → Campaign → Ad Group → Ads dashboard → Create Ad → select the Custom Product Page. Each ad variation name is internal; the buyer sees CPP assets in the ad slot.</li>
+      <li><strong>Ad group granularity:</strong> Assignment is per ad group, not per keyword. Structure campaigns so each ad group has one keyword theme — then one CPP ad variation per theme.</li>
+      <li><strong>Default ad fallback:</strong> Ad groups without a custom ad variation serve the default product page creative. Search Match and broad discovery ad groups often stay on default until you have CPP data.</li>
+      <li><strong>Deep links:</strong> CPPs can include deep links that open a specific in-app screen. Deep-link ad variations require devices on iOS/iPadOS 18+. Match the deep link to the keyword promise — e.g. "invoice scanner" keywords should not deep-link to settings.</li>
+      <li><strong>Change anytime:</strong> You can reassign or pause ad variations without a new app binary. CPP asset edits in Connect require re-review and may pause the ad variation until assets are compatible with the ad group's countries and devices.</li>
+    </ul>
+    <p class="product-desc">Operator catches: up to <strong>70 ad variations per ad group</strong> in ASA, but most indie teams need one custom ad per ad group — not seventy. CPP analytics in Connect are separate from default-page metrics; compare ASA tap-through and CPP conversion in both dashboards.</p>
+
+    <h2>When to route ASA to CPP vs default vs PPO</h2>
+    <table class="worksheet">
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Route ASA to</th>
+          <th>Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Exact-match ad group on a high-intent keyword ("budget tracker", "habit journal")</td>
+          <td>CPP with screenshot overlays matching that intent</td>
+          <td>Ad creative and landing screenshots echo the search term — highest conversion lift per Apple's published case studies</td>
+        </tr>
+        <tr>
+          <td>Brand ad group (your app name)</td>
+          <td>Default page or a brand CPP with core value prop</td>
+          <td>Brand searchers often convert on default; a CPP is optional protection against competitor ads sending traffic to a generic page</td>
+        </tr>
+        <tr>
+          <td>Search Match or broad discovery</td>
+          <td>Default page</td>
+          <td>Keyword intent is unknown — a mismatched CPP hurts tap-through. Add CPP routing after you promote terms to exact-match ad groups</td>
+        </tr>
+        <tr>
+          <td>Active PPO test on default screenshots</td>
+          <td>CPP on paid ad groups; leave PPO on organic default</td>
+          <td>PPO never affects CPP-assigned ASA traffic — paid and organic experiments stay independent (<a href="/shop/brief/issue-007-en.html">Issue 7</a>)</td>
+        </tr>
+        <tr>
+          <td>Live In-App Event promoting a limited-time offer</td>
+          <td>CPP aligned with event copy, or default if event card carries the message</td>
+          <td>Event card appears on whichever page ASA opens — do not assign a CPP whose screenshots contradict the event card (<a href="/shop/brief/issue-006-en.html">Issue 6</a>)</td>
+        </tr>
+        <tr>
+          <td>zh-Hans or other localized storefront ASA campaign</td>
+          <td>CPP with localized screenshot matrix for that locale</td>
+          <td>ASA serves assets from the CPP locale matching the buyer's storefront — English overlays on a China campaign kill congruence (<a href="/shop/brief/issue-005-en.html">Issue 5</a>)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Creative and asset constraints — ad→page match</h2>
+    <p>ASA ad variations inherit CPP assets. You cannot upload separate ad-only screenshots — the search ad <strong>is</strong> the CPP preview. That makes creative congruence a Connect asset job, not an ASA upload job.</p>
+    <ul>
+      <li><strong>Same screenshots in ad and landing.</strong> Apple's ad-variation flow previews the CPP assets buyers will see after the tap. If overlay copy says "Track expenses" in the ad, frame 1 on the CPP must say the same — not a different feature.</li>
+      <li><strong>Per-device asset completeness.</strong> CPP missing iPad screenshots falls back to iPhone assets or English default on iPad ASA impressions — check every device class your campaign targets.</li>
+      <li><strong>4+ ceiling applies.</strong> CPP screenshots used in ASA ad variations must meet the <strong>4+</strong> Creative Assets rating ceiling from <a href="/shop/brief/issue-004-en.html">Issue 4</a> — no unverifiable "#1" badges, price callouts, or competitor comparisons in ad frames.</li>
+      <li><strong>App icon in ad preview.</strong> If your CPP or default page tests alternate app icons via PPO, the icon shown in the ASA preview may differ from the control — ASA pulls live CPP assets, not PPO treatments.</li>
+      <li><strong>Country and device compatibility holds.</strong> An ad variation goes on hold if CPP assets are incompatible with the ad group's targeted countries, regions, or devices. Fix assets in Connect, then reactivate the ad in ASA.</li>
+      <li><strong>Mainland China creative authorization.</strong> ASA ad variations targeting the App Store in mainland China may require creative authorization documentation. Rejected docs leave the ad on hold until approved.</li>
+    </ul>
+
+    <h2>Geo and language routing checklist</h2>
+    <table class="worksheet">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>ASA / Connect action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 · Match campaign storefront to CPP locale</td>
+          <td>China ASA campaign → CPP with complete zh-Hans screenshot matrix. US campaign → en-US CPP or default with en-US assets. Do not route China spend to an English-only CPP.</td>
+        </tr>
+        <tr>
+          <td>2 · Verify CPP state in Connect</td>
+          <td>Connect → your app → Custom Product Pages → confirm status is approved and not disabled. ASA will not list deleted or pending CPPs.</td>
+        </tr>
+        <tr>
+          <td>3 · Create ad variation in ASA</td>
+          <td>Ad Group → Ads → Create Ad → name internally (e.g. <code>asa-budget-cpp1</code>) → select CPP → preview on iPhone and iPad → Save.</td>
+        </tr>
+        <tr>
+          <td>4 · Test the <code>?ppid=</code> URL on device</td>
+          <td>Open the CPP link in the target storefront locale before scaling bids. Confirm subtitle, promotional text, and screenshots match the ad preview.</td>
+        </tr>
+        <tr>
+          <td>5 · Leave Search Match on default</td>
+          <td>Discovery traffic with unknown intent stays on default until you promote winning keywords to exact-match ad groups with dedicated CPPs.</td>
+        </tr>
+        <tr>
+          <td>6 · Monitor ASA and Connect separately</td>
+          <td>ASA: impressions, taps, CPT, conversion. Connect → Analytics → filter by CPP name for product-page impressions and downloads attributed to that page.</td>
+        </tr>
+        <tr>
+          <td>7 · Pause before conflicting surface changes</td>
+          <td>Do not swap CPP screenshots mid-flight while an In-App Event or PPO test promotes conflicting copy on the same intent — pause the ad variation, finish the other surface, then reactivate.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="product-desc">Operator catches: duplicating an ad group or campaign to a new country does not automatically carry compatible ad variations — localized CPP assets may be required for the destination storefront. ASA API exposes CPP creatives as type <code>CUSTOM_PRODUCT_PAGE</code> with a <code>productPageId</code> if you automate later; most indie teams should wire manually first.</p>
+
+    <h2>What this is not</h2>
+    <ul>
+      <li><strong>Not</strong> a new US or EU commission rate. EU unified terms still land <strong>2026-10-01</strong> — see <a href="/shop/brief/issue-000-en.html">Issue 0</a>.</li>
+      <li><strong>Not</strong> a CPP build guide — screenshot localization and Connect setup are in <a href="/shop/brief/issue-005-en.html">Issue 5</a>.</li>
+      <li><strong>Not</strong> an In-App Event or PPO workflow — those are separate layers in <a href="/shop/brief/issue-006-en.html">Issue 6</a> and <a href="/shop/brief/issue-007-en.html">Issue 7</a>.</li>
+      <li><strong>Not</strong> a guarantee of lower CPI or higher ROAS. Better ad→page match helps; keyword relevance, bid strategy, and product-market fit still dominate.</li>
+      <li><strong>Not</strong> Meta or Google UAC routing — ASA only serves App Store search (and select Apple surfaces). Off-store landing pages are out of scope.</li>
+      <li>If you do not run Apple Search Ads and have no paid acquisition plan this quarter: no ASA routing work needed — skip to organic PPO or metadata from Issue 7 instead.</li>
+    </ul>
+
+    <h2>Launch pricing snapshot (GetAppNiche prepaid median vs new apps)</h2>
+    <p class="product-desc">GetAppNiche published a prepaid-app pricing <strong>median estimate</strong> of about <strong>$2.99</strong> on <strong>2026-07-16</strong>. The table below is observed listing prices this week — snapshots, not revenue or download promises.</p>
+    <table class="worksheet">
+      <thead>
+        <tr>
+          <th>App</th>
+          <th>Observed price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CloudGear</td>
+          <td>$1.99/mo · $14.99/yr · $39.99 (lifetime tier)</td>
+        </tr>
+        <tr>
+          <td>Frankensketch</td>
+          <td>IAP ~<strong>$2.99</strong> (estimate)</td>
+        </tr>
+        <tr>
+          <td>Optic Illusion</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td>Stonegate</td>
+          <td>$7.99 unlock</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>The median is a reference line, not a guarantee that you should price at $2.99. ASA and CPP routing decisions are independent of IAP tier — do not reprice because of this table.</p>
+
+    <h2>Calendar recap (already covered — not new this issue)</h2>
+    <p class="product-desc">These items appeared in prior issues or Apple announcements. Listed here for cross-check only — <strong>not</strong> new scoops.</p>
+    <ul>
+      <li><strong>PPO organic experiment layer:</strong> treatment vs control on default page — <a href="/shop/brief/issue-007-en.html">Issue 7</a></li>
+      <li><strong>In-App Events + campaign surface:</strong> time-boxed event cards after CPP — <a href="/shop/brief/issue-006-en.html">Issue 6</a></li>
+      <li><strong>Custom Product Pages + screenshot localization:</strong> Connect build guide — <a href="/shop/brief/issue-005-en.html">Issue 5</a></li>
+      <li><strong>Creative Assets fall launch:</strong> headers, search slots, Asset Library — <a href="/shop/brief/issue-004-en.html">Issue 4</a> · <a href="https://developer.apple.com/app-store/asset-best-practices/" rel="noopener noreferrer" target="_blank">Apple · App Store asset best practices</a></li>
+      <li><strong>Connect keyword analytics:</strong> live since <strong>2026-07-01</strong> — <a href="/shop/brief/issue-004-en.html">Issue 4</a></li>
+      <li><strong>EU 2026-10-01:</strong> Unified EU terms — <a href="/shop/brief/issue-000-en.html">Issue 0</a></li>
+      <li><strong>US link-out 15% proposal:</strong> Epic court filing — <a href="/shop/brief/issue-002-en.html">Issue 2</a></li>
+      <li><strong>Brazil CADE response (2026-08-24):</strong> alternative distribution step-count — <a href="/shop/brief/issue-003-en.html">Issue 3</a></li>
+      <li><strong>Sonar launch offer:</strong> through <strong>31 Aug</strong> — <a href="/shop/brief/issue-001-en.html">Issue 1</a></li>
+    </ul>
+
+    <h2>What an indie can do this week</h2>
+    <ul>
+      <li>Confirm your Issue 5 CPP is approved in Connect. If not, finish App Review before creating ASA ad variations.</li>
+      <li>Open Apple Search Ads → highest-spend exact-match ad group → Ads → Create Ad → select that CPP. Preview on iPhone and iPad; verify overlay copy matches the keyword theme.</li>
+      <li>Leave Search Match on the default page until you have at least two weeks of CPP vs default conversion data in Connect analytics.</li>
+      <li>If you run ASA toward China or another localized storefront: confirm the CPP zh-Hans (or target locale) screenshot matrix is complete for every device class — not just iPhone 6.7".</li>
+      <li>Do not start a PPO screenshot test and swap CPP assets on the same keyword intent in the same window — pick one experiment layer (<a href="/shop/brief/issue-007-en.html">Issue 7</a>).</li>
+      <li>Do not reprice IAP or rebuild checkout because of ASA routing — this is a paid landing-page workflow, not a commission update.</li>
+    </ul>
+
+    <p class="issue-meta">
+      Sources:
+      <a href="https://searchads.apple.com/help/ads/0077-create-ad-variations" rel="noopener noreferrer" target="_blank">Apple Search Ads · Create ad variations</a>
+      ·
+      <a href="https://searchads.apple.com/help/ads/0079-ad-variations-troubleshooting" rel="noopener noreferrer" target="_blank">Apple Search Ads · Ad variations troubleshooting</a>
+      ·
+      <a href="https://developer.apple.com/app-store/custom-product-pages/" rel="noopener noreferrer" target="_blank">Apple · Custom Product Pages</a>
+      ·
+      <a href="https://developer.apple.com/documentation/apple_ads/find-creatives" rel="noopener noreferrer" target="_blank">Apple · Find Creatives (ASA API)</a>
+      ·
+      <a href="https://developer.apple.com/videos/play/tech-talks/110361/" rel="noopener noreferrer" target="_blank">Apple · Make the most of custom product pages (Tech Talk)</a>
+    </p>
+
+    <div class="panel">
+      <h2>Subscribe to Storefront Brief</h2>
+      <p class="product-desc">$12/month. One English note a week on App Store and indie storefront changes. Not trading signals. Not legal advice. No ranking guarantees.</p>
+      <p class="price">$12 / mo</p>
+      <a class="cta cta-block" href="https://buy.stripe.com/6oUcMZ17IbCk4X3dmle7m02" rel="noopener noreferrer" target="_blank">Subscribe Storefront Brief</a>
+      <p class="links-row"><a href="https://t.me/storefrontbrief" rel="noopener noreferrer" target="_blank">Free sample also on Telegram</a></p>
+      <p class="links-row">
+        <a href="/shop/brief/issue-007-en.html">Issue 7</a>
+        ·
+        <a href="/shop/brief/issue-006-en.html">Issue 6</a>
+        ·
+        <a href="/shop/brief/issue-005-en.html">Issue 5</a>
+        ·
+        <a href="/shop/brief/issue-004-en.html">Issue 4</a>
+        ·
+        <a href="/shop/brief/issue-003-en.html">Issue 3</a>
+        ·
+        <a href="/shop/brief/issue-002-en.html">Issue 2</a>
+        ·
+        <a href="/shop/brief/issue-001-en.html">Issue 1</a>
+        ·
+        <a href="/shop/brief/issue-000-en.html">Issue 0 sample</a>
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2>AppLocale listing rewrite</h2>
+      <p class="product-desc">Optional: one-time $79 rewrite of one live App Store listing into English and Simplified Chinese. Delivered within 24 hours to your Stripe receipt email. No ranking promises.</p>
+      <p class="price">$79 one-time</p>
+      <a class="cta cta-block" href="https://buy.stripe.com/eVq8wJ5nYgWE1KRgyxe7m04" rel="noopener noreferrer" target="_blank">Buy AppLocale on Stripe</a>
+      <p class="links-row"><a href="/shop/listing-rewrite.html">Product page</a></p>
+    </div>
+
+    <footer>Fortune Insight, LLC · operator note · not legal advice · not investment advice · RSS directory: <a href="https://iheartrss.com/" rel="noopener noreferrer" target="_blank">I ♥ RSS</a></footer>
+  </div>
+</body>
+</html>
