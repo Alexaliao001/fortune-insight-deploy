@@ -92,7 +92,7 @@
       <p class="product-desc">Apple lets Apple ID accounts register <strong>physical FIDO2 security keys</strong> as a second factor for sign-in. Under Settings → [your name] → Sign-In &amp; Security → Two-Factor Authentication → Security Keys, buyers add at least two keys — then on a new device they can tap or insert a registered key instead of entering a six-digit verification code or approving from a trusted device. Third-party apps may complement this by educating buyers, documenting compatible key brands, or aligning security UX with hardware second-factor workflows. AppLocale rewrites listing copy from what <em>your</em> US page already claims:</p>
       <ul>
         <li><strong>If your app educates about Security Keys</strong> — zh-Hans copy can describe why buyers should register 安全密钥, what 添加安全密钥 means, or how two registered keys protect account recovery — without claiming your app registers keys on behalf of buyers.</li>
-        <li><strong>If your app aligns with hardware-key workflows</strong> — description and screenshot overlays should name the security benefits you deliver (FIDO 安全密钥, YubiKey 兼容, 硬件二次验证) in commerce-idiomatic Chinese, not generic "100% unhackable" overclaims.</li>
+        <li><strong>If your app aligns with hardware-key workflows</strong> — description and screenshot overlays should name the security benefits you deliver (FIDO 安全密钥, YubiKey 兼容, 添加安全密钥) in commerce-idiomatic Chinese, not generic "100% unhackable" overclaims.</li>
         <li><strong>Separate Security Keys from Passkeys in copy</strong> — passkeys are passwordless iCloud Keychain credentials; Security Keys are physical hardware for Apple ID 2FA. Listing vocabulary must follow your English lead feature and gallery frames.</li>
         <li><strong>If your US page overclaims</strong> — AppLocale aligns zh-Hans strings to your English source; we do not invent broader Security Key scope than your screenshots and description support.</li>
       </ul>
@@ -117,8 +117,11 @@
       <h2>Security Key–specific vocabulary — what translates differently in zh-Hans</h2>
       <p class="product-desc">Hardware-key marketing on App Store pages uses vocabulary general localization guides rarely cover. zh-Hans copy should reflect how Chinese App Store readers evaluate Apple ID Security Keys — not a literal paste of US marketing:</p>
 
+      <h3>设置 → [你的姓名] → 登录与安全性 → 双重认证 → 安全密钥 (添加安全密钥)</h3>
+      <p class="product-desc">Apple's Chinese Settings path is <strong>设置 → [你的姓名] → 登录与安全性 → 双重认证 → 安全密钥</strong>, with the registration action labeled <strong>添加安全密钥</strong>. Screenshot walkthroughs and caption lines should mirror that path — not English "Sign-In &amp; Security" badges alone, not 面容 ID 与密码 (Stolen Device Protection), and not iCloud (Advanced Data Protection). AppLocale uses the labels buyers see on a zh-Hans iPhone when your English gallery shows the Security Keys toggle or Add Security Key sheet.</p>
+
       <h3>安全密钥 vs 安全金钥</h3>
-      <p class="product-desc">Apple's Chinese system UI uses <strong>安全密钥</strong> for the Settings toggle under 登录与安全性 → 双重认证 → 安全密钥. Some security marketing also uses <strong>安全金钥</strong> when emphasizing hardware key devices. AppLocale picks the term buyers recognize on each screenshot — a Settings walkthrough needs 安全密钥-friendly phrasing; a YubiKey product headline may use 安全金钥 when accurate to your English source.</p>
+      <p class="product-desc">Apple's system UI uses <strong>安全密钥</strong> for the feature name under 双重认证. Some security marketing also uses <strong>安全金钥</strong> when emphasizing physical key hardware. AppLocale picks the term buyers recognize on each screenshot — a Settings walkthrough needs 安全密钥-friendly phrasing; a YubiKey product headline may use 安全金钥 when accurate to your English source.</p>
 
       <h3>添加安全密钥 (Add Security Key)</h3>
       <p class="product-desc">US pages use "Add Security Key" or "Register your FIDO key." China storefront copy uses <strong>添加安全密钥</strong> on frames that walk buyers through the registration sheet. Do not substitute 创建通行密钥 (Create a passkey) — that is Passkey vocabulary, not Security Key registration.</p>
@@ -126,17 +129,14 @@
       <h3>Apple ID 安全密钥 (Apple ID Security Keys)</h3>
       <p class="product-desc">When your English subtitle or description says "Apple ID Security Keys" as a product category, zh-Hans buyers search <strong>Apple ID 安全密钥</strong> or <strong>FIDO 安全密钥</strong>. AppLocale aligns phrasing with your actual scope — hardware second factor for Apple ID sign-in, not app-level WebAuthn login unless your English source genuinely markets both separately.</p>
 
-      <h3>硬件二次验证 vs 验证码 (hardware second factor vs verification code)</h3>
-      <p class="product-desc">Security Keys replace the six-digit verification code or trusted-device prompt with a physical key tap. zh-Hans marketing may contrast <strong>硬件二次验证</strong> or <strong>硬件因素认证</strong> with <strong>六位验证码</strong> or <strong>受信任设备</strong> approval — accurate to Apple's new-device sign-in story, not inventing capabilities your app does not support.</p>
-
-      <h3>Settings path in Chinese</h3>
-      <p class="product-desc">Security Keys live under Settings → <strong>[your name]</strong> → <strong>登录与安全性</strong> → <strong>双重认证</strong> → <strong>安全密钥</strong> on Chinese iPhones — not under 面容 ID 与密码 like Stolen Device Protection, and not under iCloud like Advanced Data Protection. Screenshot captions that walk buyers to the toggle should use the Chinese settings path buyers see on device.</p>
+      <h3>安全密钥 vs 六位验证码 (Security Key vs six-digit code)</h3>
+      <p class="product-desc">Security Keys replace the six-digit verification code or trusted-device prompt with a physical key tap on new-device Apple ID sign-in. zh-Hans marketing may contrast <strong>安全密钥</strong> or <strong>添加安全密钥</strong> with <strong>六位验证码</strong> or <strong>受信任设备</strong> approval — accurate to Apple's hardware-key story, not the SMS or trusted-device 2FA flow as your lead claim, and not Passkey (通行密钥) vocabulary.</p>
 
       <h3>Subtitle and keyword packing</h3>
       <p class="product-desc">The 30-character subtitle and 100-character keyword field need hardware-key search terms Chinese buyers type — see <a href="/shop/p/app-store-keywords-simplified-chinese.html">Simplified Chinese keywords &amp; subtitle</a> for field mechanics. Terms like 安全密钥, FIDO, YubiKey, and Apple ID 安全密钥 each signal different intent from 通行密钥 (Passkeys) or generic 双重认证 keywords.</p>
 
       <h3>Caption lines vs burned-in badges</h3>
-      <p class="product-desc">Marketing screenshot overlays you control — "Add Security Key" headlines on gallery frames showing Sign-In &amp; Security → Security Keys — are separate caption fields or burned-in PNG text. See <a href="/shop/p/app-store-screenshot-captions-chinese.html">Screenshot captions in Simplified Chinese</a> for caption-field mechanics when overlays are editable in Connect.</p>
+      <p class="product-desc">Marketing screenshot overlays you control — "Add Security Key" headlines on gallery frames showing 设置 → 登录与安全性 → 双重认证 → 安全密钥 — are separate caption fields or burned-in PNG text. See <a href="/shop/p/app-store-screenshot-captions-chinese.html">Screenshot captions in Simplified Chinese</a> for caption-field mechanics when overlays are editable in Connect.</p>
     </div>
 
     <div class="panel">
@@ -144,6 +144,7 @@
       <p class="product-desc">Concrete examples AppLocale rewrites from your English source — not Passkeys, SMS 2FA, or Sign in with Apple copy:</p>
       <ul>
         <li><strong>Screenshot caption</strong> — Before: <em>Add a Security Key for Apple ID</em> → After: <em>为 Apple ID 添加安全密钥</em></li>
+        <li><strong>Settings walkthrough caption</strong> — Before: <em>Settings → Sign-In &amp; Security → Security Keys</em> → After: <em>设置 → [你的姓名] → 登录与安全性 → 双重认证 → 安全密钥</em></li>
         <li><strong>Description line</strong> — Before: <em>Supports YubiKey and Titan FIDO2 keys as your Apple ID second factor.</em> → After: <em>支持 YubiKey 与 Titan FIDO2 密钥作为 Apple ID 二次验证。</em></li>
         <li><strong>Subtitle (30 chars)</strong> — Before: <em>FIDO Security Keys</em> → After: <em>FIDO 安全密钥·Apple ID</em></li>
         <li><strong>Screenshot caption</strong> — Before: <em>Tap your key instead of a code</em> → After: <em>用安全密钥代替验证码登录</em></li>
