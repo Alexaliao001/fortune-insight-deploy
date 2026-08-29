@@ -554,6 +554,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-communication-limits-chinese.html</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://fortune-insight.onrender.com/shop/p/tvos-app-store-chinese.html</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -771,6 +777,12 @@
   </url>
   <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-optimized-battery-charging-chinese.html</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-night-mode-chinese.html</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1120,6 +1132,12 @@
   <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-whats-new-chinese.html</loc>
     <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-content-privacy-restrictions-chinese.html</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
