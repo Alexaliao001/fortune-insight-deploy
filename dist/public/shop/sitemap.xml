@@ -1238,6 +1238,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-auto-answer-calls-chinese.html</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-auto-lock-chinese.html</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -1324,6 +1330,12 @@
   <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-hover-text-chinese.html</loc>
     <lastmod>2026-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-hover-typing-chinese.html</loc>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
