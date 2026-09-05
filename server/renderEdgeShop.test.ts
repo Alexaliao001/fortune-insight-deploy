@@ -6,6 +6,7 @@ import { spawn, type ChildProcessWithoutNullStreams } from "child_process";
 const EDGE_ENTRY = path.resolve("dist/index.js");
 const BRIEF_INDEX = path.resolve("dist/public/shop/brief/index.html");
 const BRIEF_FEED = path.resolve("dist/public/shop/brief/feed.xml");
+const PRORAW_PAGE = path.resolve("dist/public/shop/p/app-store-proraw-chinese.html");
 
 describe("Render edge dist/index.js shop pretty URLs", () => {
   it("maps /shop/brief pretty paths in SHOP_PRETTY", () => {
@@ -100,6 +101,48 @@ describe("Render edge dist/index.js shop pretty URLs", () => {
       expect(body).toContain(
         '<atom:link rel="hub" href="https://pubsubhubbub.appspot.com/" />'
       );
+    } finally {
+      child.kill("SIGTERM");
+      await new Promise<void>((resolve) => {
+        child.on("exit", () => resolve());
+        setTimeout(resolve, 1000);
+      });
+    }
+  });
+
+  it("serves /shop/p/app-store-proraw-chinese.html with 200 from dist/public", async () => {
+    expect(fs.existsSync(PRORAW_PAGE)).toBe(true);
+
+    const port = 9878;
+    const child: ChildProcessWithoutNullStreams = spawn(
+      process.execPath,
+      [EDGE_ENTRY],
+      {
+        env: { ...process.env, PORT: String(port), HOST: "127.0.0.1" },
+        stdio: "pipe",
+      }
+    );
+
+    await new Promise<void>((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error("edge server start timeout")), 5000);
+      child.stdout.on("data", (chunk) => {
+        if (String(chunk).includes(String(port))) {
+          clearTimeout(timer);
+          resolve();
+        }
+      });
+      child.on("error", reject);
+    });
+
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:${port}/shop/p/app-store-proraw-chinese.html`
+      );
+      expect(res.status).toBe(200);
+      expect(res.headers.get("content-type")).toContain("text/html");
+      const html = await res.text();
+      expect(html).toContain("ProRAW Photo");
+      expect(html).toContain("Apple ProRAW");
     } finally {
       child.kill("SIGTERM");
       await new Promise<void>((resolve) => {
