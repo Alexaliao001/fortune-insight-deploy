@@ -10,6 +10,7 @@ const RENDER_SHOP_PAGES = [
   "shop/p/app-store-apple-log-chinese.html",
   "shop/p/app-store-smart-reply-chinese.html",
   "shop/p/app-store-proraw-chinese.html",
+  "shop/p/app-store-offline-maps-chinese.html",
 ];
 
 function shopFile(rel: string, tree: "client" | "dist"): string {
@@ -40,6 +41,14 @@ describe("shop static dist/public sync (Render prebuilt deploy)", () => {
       const distHub = shopFile(hub, "dist");
       expect(fs.existsSync(distHub)).toBe(true);
       expect(fs.readFileSync(distHub, "utf8")).toContain("app-store-proraw-chinese.html");
+    }
+  });
+
+  it("dist/public shop hubs reference Offline Maps listing URL", () => {
+    for (const hub of ["shop/index.html", "shop/sitemap.xml", "shop/feed.xml", "shop/llms.txt"]) {
+      const distHub = shopFile(hub, "dist");
+      expect(fs.existsSync(distHub)).toBe(true);
+      expect(fs.readFileSync(distHub, "utf8")).toContain("app-store-offline-maps-chinese.html");
     }
   });
 });
