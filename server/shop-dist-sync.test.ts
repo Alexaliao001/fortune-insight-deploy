@@ -8,6 +8,7 @@ const root = path.resolve(import.meta.dirname, "..");
 const RENDER_SHOP_PAGES = [
   "shop/p/app-store-hdr-chinese.html",
   "shop/p/app-store-apple-log-chinese.html",
+  "shop/p/app-store-smart-reply-chinese.html",
 ];
 
 function shopFile(rel: string, tree: "client" | "dist"): string {
