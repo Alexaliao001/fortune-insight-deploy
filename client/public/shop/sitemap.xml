@@ -290,6 +290,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-flyover-chinese.html</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-ev-routing-chinese.html</loc>
     <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -297,6 +303,12 @@
   </url>
   <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-indoor-maps-chinese.html</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-share-eta-chinese.html</loc>
     <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
