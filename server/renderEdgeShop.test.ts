@@ -12,6 +12,7 @@ const EV_ROUTING_PAGE = path.resolve("dist/public/shop/p/app-store-ev-routing-ch
 const INDOOR_MAPS_PAGE = path.resolve("dist/public/shop/p/app-store-indoor-maps-chinese.html");
 const HIDDEN_APPS_PAGE = path.resolve("dist/public/shop/p/app-store-hidden-apps-chinese.html");
 const OPTICALLY_CORRECT_UI_PAGE = path.resolve("dist/public/shop/p/app-store-optically-correct-ui-chinese.html");
+const PEOPLE_OCCLUSION_PAGE = path.resolve("dist/public/shop/p/app-store-people-occlusion-chinese.html");
 
 describe("Render edge dist/index.js shop pretty URLs", () => {
   it("maps /shop/brief pretty paths in SHOP_PRETTY", () => {
@@ -361,6 +362,49 @@ describe("Render edge dist/index.js shop pretty URLs", () => {
       const html = await res.text();
       expect(html).toContain("Optically Correct UI");
       expect(html).toContain("光学校正界面");
+      expect(html).toContain("buy.stripe.com/eVq8wJ5nYgWE1KRgyxe7m04");
+    } finally {
+      child.kill("SIGTERM");
+      await new Promise<void>((resolve) => {
+        child.on("exit", () => resolve());
+        setTimeout(resolve, 1000);
+      });
+    }
+  });
+
+  it("serves /shop/p/app-store-people-occlusion-chinese.html with 200 from dist/public", async () => {
+    expect(fs.existsSync(PEOPLE_OCCLUSION_PAGE)).toBe(true);
+
+    const port = 9884;
+    const child: ChildProcessWithoutNullStreams = spawn(
+      process.execPath,
+      [EDGE_ENTRY],
+      {
+        env: { ...process.env, PORT: String(port), HOST: "127.0.0.1" },
+        stdio: "pipe",
+      }
+    );
+
+    await new Promise<void>((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error("edge server start timeout")), 5000);
+      child.stdout.on("data", (chunk) => {
+        if (String(chunk).includes(String(port))) {
+          clearTimeout(timer);
+          resolve();
+        }
+      });
+      child.on("error", reject);
+    });
+
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:${port}/shop/p/app-store-people-occlusion-chinese.html`
+      );
+      expect(res.status).toBe(200);
+      expect(res.headers.get("content-type")).toContain("text/html");
+      const html = await res.text();
+      expect(html).toContain("People Occlusion");
+      expect(html).toContain("人物遮挡");
       expect(html).toContain("buy.stripe.com/eVq8wJ5nYgWE1KRgyxe7m04");
     } finally {
       child.kill("SIGTERM");

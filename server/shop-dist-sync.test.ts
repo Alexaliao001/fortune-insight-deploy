@@ -15,6 +15,7 @@ const RENDER_SHOP_PAGES = [
   "shop/p/app-store-indoor-maps-chinese.html",
   "shop/p/app-store-hidden-apps-chinese.html",
   "shop/p/app-store-optically-correct-ui-chinese.html",
+  "shop/p/app-store-people-occlusion-chinese.html",
 ];
 
 function shopFile(rel: string, tree: "client" | "dist"): string {
@@ -85,6 +86,14 @@ describe("shop static dist/public sync (Render prebuilt deploy)", () => {
       const distHub = shopFile(hub, "dist");
       expect(fs.existsSync(distHub)).toBe(true);
       expect(fs.readFileSync(distHub, "utf8")).toContain("app-store-optically-correct-ui-chinese.html");
+    }
+  });
+
+  it("dist/public shop hubs reference People Occlusion listing URL", () => {
+    for (const hub of ["shop/index.html", "shop/sitemap.xml", "shop/feed.xml", "shop/llms.txt"]) {
+      const distHub = shopFile(hub, "dist");
+      expect(fs.existsSync(distHub)).toBe(true);
+      expect(fs.readFileSync(distHub, "utf8")).toContain("app-store-people-occlusion-chinese.html");
     }
   });
 });
