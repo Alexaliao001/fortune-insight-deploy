@@ -14,6 +14,7 @@ const RENDER_SHOP_PAGES = [
   "shop/p/app-store-ev-routing-chinese.html",
   "shop/p/app-store-indoor-maps-chinese.html",
   "shop/p/app-store-hidden-apps-chinese.html",
+  "shop/p/app-store-optically-correct-ui-chinese.html",
   "shop/p/app-store-people-occlusion-chinese.html",
 ];
 
@@ -77,6 +78,14 @@ describe("shop static dist/public sync (Render prebuilt deploy)", () => {
       const distHub = shopFile(hub, "dist");
       expect(fs.existsSync(distHub)).toBe(true);
       expect(fs.readFileSync(distHub, "utf8")).toContain("app-store-hidden-apps-chinese.html");
+    }
+  });
+
+  it("dist/public shop hubs reference Optically Correct UI listing URL", () => {
+    for (const hub of ["shop/index.html", "shop/sitemap.xml", "shop/feed.xml", "shop/llms.txt", "shop/listing-rewrite.html"]) {
+      const distHub = shopFile(hub, "dist");
+      expect(fs.existsSync(distHub)).toBe(true);
+      expect(fs.readFileSync(distHub, "utf8")).toContain("app-store-optically-correct-ui-chinese.html");
     }
   });
 
