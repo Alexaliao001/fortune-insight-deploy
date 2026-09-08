@@ -3255,7 +3255,13 @@
   </url>
   <url>
     <loc>https://fortune-insight.onrender.com/shop/p/app-store-game-mode-chinese.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fortune-insight.onrender.com/shop/p/app-store-buddy-controller-chinese.html</loc>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
