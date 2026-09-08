@@ -17,6 +17,7 @@ const RENDER_SHOP_PAGES = [
   "shop/p/app-store-optically-correct-ui-chinese.html",
   "shop/p/app-store-people-occlusion-chinese.html",
   "shop/p/app-store-ear-tip-fit-test-chinese.html",
+  "shop/p/app-store-reminders-grocery-chinese.html",
 ];
 
 function shopFile(rel: string, tree: "client" | "dist"): string {
@@ -98,11 +99,11 @@ describe("shop static dist/public sync (Render prebuilt deploy)", () => {
     }
   });
 
-  it("dist/public shop hubs reference Ear Tip Fit Test listing URL", () => {
+  it("dist/public shop hubs reference Reminders Grocery Lists listing URL", () => {
     for (const hub of ["shop/index.html", "shop/sitemap.xml", "shop/feed.xml", "shop/llms.txt"]) {
       const distHub = shopFile(hub, "dist");
       expect(fs.existsSync(distHub)).toBe(true);
-      expect(fs.readFileSync(distHub, "utf8")).toContain("app-store-ear-tip-fit-test-chinese.html");
+      expect(fs.readFileSync(distHub, "utf8")).toContain("app-store-reminders-grocery-chinese.html");
     }
   });
 });
